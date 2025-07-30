@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 
-const adminIds = ["user_2zTiwmeur0umKHBR2Ae8AD8vDmt"];
+const adminIds = ["user_2zTiwmeur0umKHBR2Ae8AD8vDmt", "user_30ZT38hHqzHxEgQDA5tVYYli7fG"];
 
 export const isAdmin = async () => {
   const { userId } = await auth();
