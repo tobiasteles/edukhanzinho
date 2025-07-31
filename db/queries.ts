@@ -28,21 +28,6 @@ export const getUserProgress = cache(async () => {
   return data;
 });
 
-export const updateUserProgressHearts = cache(async (hearts: number) => {
-  const { userId } = await auth();
-
-  if (!userId) {
-    return null;
-  }
-
-  const data = await db.update(userProgress)
-    .set({ hearts })
-    .where(eq(userProgress.userId, userId))
-    .returning();
-
-  return data;
-});
-
 export const getUnits = cache(async () => {
   const { userId } = await auth();
   const userProgress = await getUserProgress();
