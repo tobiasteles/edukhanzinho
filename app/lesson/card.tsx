@@ -60,8 +60,7 @@ export const Card = ({
         <div className="relative aspect-square mb-4 max-h-[150px] lg:max-h-[250px] w-full">
           <Image
             src={imageSrc}
-            width={200}
-            height={150}
+            fill
             alt={text}
             className="mb-4 object-contain w-full h-auto"
           />
