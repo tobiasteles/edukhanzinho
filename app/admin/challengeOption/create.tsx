@@ -21,8 +21,8 @@ export const ChallengeOptionCreate = () => {
         >
           <SelectInput optionText="question" validate={[required()]} />
         </ReferenceInput>
-        <TextInput source="imageSrc" validate={[required()]} label="Imagem" />
-        <TextInput source="audioSrc" validate={[required()]} label="Áudio" />
+        <TextInput source="imageSrc" label="Imagem" />
+        <TextInput source="audioSrc" label="Áudio" />
       </SimpleForm>
     </Create>
   );
