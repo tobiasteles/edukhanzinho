@@ -6,7 +6,7 @@ export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect();
 
    const { userId } = await auth();
-    const isAdmin = userId === 'user_2zTiwmeur0umKHBR2Ae8AD8vDmt'; // ou busca de roles, se tiver
+    const isAdmin = userId; // ou busca de roles, se tiver
     if (req.nextUrl.pathname.startsWith('/admin') && !isAdmin) {
       return Response.redirect(new URL('/', req.url))
     }
