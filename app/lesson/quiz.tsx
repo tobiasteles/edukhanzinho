@@ -141,7 +141,9 @@ export const Quiz = ({
             incorrectControls.play();
             setStatus("wrong");
 
-            setHearts((prev) => Math.max(prev - 1, 0));
+            if (!response?.error) {
+              setHearts((prev) => Math.max(prev - 1, 0));
+            }
           })
           .catch(() =>
             toast.error("Algo deu errado. Por favor, tente novamente.")
