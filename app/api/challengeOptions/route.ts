@@ -8,9 +8,13 @@ export const GET = async () => {
     return new NextResponse("Não autorizado", { status: 401 });
   }
 
-  const data = await db.query.challengeOptions.findMany();
-
-  return NextResponse.json(data);
+  try {
+    const data = await db.query.challengeOptions.findMany();
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error("[CHALLENGE_OPTIONS_GET]", error);
+    return new NextResponse("Erro interno", { status: 500 });
+  }
 };
 
 export const POST = async (req: Request) => {
@@ -18,11 +22,17 @@ export const POST = async (req: Request) => {
     return new NextResponse("Não autorizado", { status: 401 });
   }
 
-  const body = await req.json();
-
-  const data = await db.insert(challengeOptions).values({
-    ...body,
-  }).returning();
-
-  return NextResponse.json(data[0]);
+  try {
+    const body = await req.json();
+    const data = await db.insert(challengeOptions).values(body).returning();
+    
+    if (!data[0]) {
+      return new NextResponse("Falha ao criar opção", { status: 400 });
+    }
+    
+    return NextResponse.json(data[0], { status: 201 });
+  } catch (error) {
+    console.error("[CHALLENGE_OPTIONS_POST]", error);
+    return new NextResponse("Erro interno", { status: 500 });
+  }
 };

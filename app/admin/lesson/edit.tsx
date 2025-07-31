@@ -3,6 +3,7 @@ import {
   NumberInput,
   ReferenceInput,
   required,
+  SelectInput,
   SimpleForm,
   TextInput,
 } from "react-admin";
@@ -12,8 +13,9 @@ export const LessonEdit = () => {
     <Edit>
       <SimpleForm>
         <TextInput source="title" validate={[required()]} label="Titulo" />
-        
-        <ReferenceInput source="unitId" reference="units" />
+        <ReferenceInput source="unitId" reference="units" label="Unidade">
+          <SelectInput validate={[required()]} />
+        </ReferenceInput>
         <NumberInput source="order" validate={[required()]} label="Ordem" />
       </SimpleForm>
     </Edit>
