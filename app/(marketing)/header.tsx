@@ -1,33 +1,50 @@
-
 import { Button } from "@/components/ui/button";
 import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 import Image from "next/image";
 
 export const Header = () => {
-    return (
-        <header className="h-20 w-full border-b-2 border-slate-200 px-4">
-            <div className="lg:max-w-screen-lg mx-auto flex items-center justify-between h-full ">
-        <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
-            <Image src="/SELO/SELO 2.png" height={50} width={50} alt="Logo" className="hidden sm:block"/>
-            <h1 className="text-2xl font-extrabold text-blue-700 tracking-wide">Edukhanzinho</h1>
+  return (
+    <header className="h-20 w-full border-b-2 border-slate-200 px-4 bg-white sticky top-0 z-50">
+      <div className="lg:max-w-screen-lg mx-auto flex items-center justify-between h-full">
+        
+        {/* Logo baseado no SÍMBOLO 5.jpg e Nome do App */}
+        <div className="flex items-center gap-x-3 cursor-pointer hover:opacity-90 transition-opacity">
+          <div className="relative h-10 w-10 sm:h-12 sm:w-12 overflow-hidden rounded-lg">
+            <Image 
+              src="/SÍMBOLO/SÍMBOLO 5.jpg" 
+              alt="Edukhanzinho Logo"
+              fill
+              className="object-contain"
+              sizes="(min-width: 640px) 48px, 40px"
+              priority
+            />
+          </div>
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0026ff] tracking-wide">
+            Edukhanzinho <span className="text-emerald-600">Leitura</span>
+          </h1>
         </div>
-        <ClerkLoading>
+
+        {/* Autenticação */}
+        <div className="flex items-center">
+          <ClerkLoading>
             <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
-        </ClerkLoading>
-        <ClerkLoaded>
+          </ClerkLoading>
+          <ClerkLoaded>
             <SignedIn>
-                <UserButton afterSignOutUrl="/" />
+              <UserButton afterSignOutUrl="/" />
             </SignedIn>
             <SignedOut>
-                <SignInButton mode="modal" afterSignInUrl="/learn" afterSignUp="/learn">
-                <Button size="lg" variant="secondary">
-                    Entrar
+              <SignInButton mode="modal" afterSignInUrl="/learn" afterSignUp="/learn">
+                <Button size="default" variant="ghost" className="text-neutral-600 font-bold hover:text-[#0026ff]">
+                  Entrar
                 </Button>
-                </SignInButton>
+              </SignInButton>
             </SignedOut>
-        </ClerkLoaded>
-            </div>
-        </header>
-    );
+          </ClerkLoaded>
+        </div>
+
+      </div>
+    </header>
+  );
 };

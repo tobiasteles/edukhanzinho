@@ -13,9 +13,9 @@ const font = Kode_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Edukhanzinho",
+  title: "Edukhanzinho Leitura",
   description:
-    "Edukhanzinho é uma plataforma gamificada de alfabetização feita para crianças que estão dando os primeiros passos na leitura — começando pelo som das letras até formar palavras, tudo com atividades interativas e progressão divertida.",
+    "Edukhanzinho Leitura é uma plataforma gamificada de interpretação de texto feita para crianças. Através de histórias interativas, tirinhas e mistérios, ajudamos os pequenos a desenvolver o pensamento crítico e dominar a leitura profunda de forma divertida.",
 };
 
 export default function RootLayout({
@@ -25,13 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="pt-BR">
         <body className={font.className}>
           <Toaster />
           <ExitModal />
           <HeartsModal />
           <PracticeModal />
-          {children}</body>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
