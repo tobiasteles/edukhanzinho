@@ -21,7 +21,7 @@ export const Sidebar = ({ className }: Props) => {
       <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3 max-w-full overflow-hidden">
         <Image src="/SELO/SELO 2.png" height={50} width={50} alt="Logo" />
         <h1 className="text-xl lg:text-lg font-extrabold text-blue-700 tracking-wide break-words w-full">
-          Edukhanzinho
+          Edukhanzinho Leitura
         </h1>
       </div>
       </Link>
