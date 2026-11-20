@@ -5,9 +5,7 @@ import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 interface RouteParams {
-  params: {
-    challengeOptionId: string;
-  };
+  params: Promise<{ challengeOptionId: string }>;
 }
 
 export const GET = async (req: Request, { params }: RouteParams) => {
@@ -15,7 +13,7 @@ export const GET = async (req: Request, { params }: RouteParams) => {
     return new NextResponse("Não autorizado", { status: 403 });
   }
 
-  const id = parseInt(params.challengeOptionId);
+  const id = parseInt((await params).challengeOptionId);
   if (isNaN(id)) {
     return new NextResponse("ID inválido", { status: 400 });
   }
@@ -41,7 +39,7 @@ export const PUT = async (req: Request, { params }: RouteParams) => {
     return new NextResponse("Não autorizado", { status: 403 });
   }
 
-  const id = parseInt(params.challengeOptionId);
+  const id = parseInt((await params).challengeOptionId);
   if (isNaN(id)) {
     return new NextResponse("ID inválido", { status: 400 });
   }
@@ -70,7 +68,7 @@ export const DELETE = async (req: Request, { params }: RouteParams) => {
     return new NextResponse("Não autorizado", { status: 403 });
   }
 
-  const id = parseInt(params.challengeOptionId);
+  const id = parseInt((await params).challengeOptionId);
   if (isNaN(id)) {
     return new NextResponse("ID inválido", { status: 400 });
   }

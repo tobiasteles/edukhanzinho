@@ -14,7 +14,6 @@ const adminIds = [
 
 export const isAdmin = async () => {
   const { userId } = await auth();
-  console.log(">> ID do usuário atual:", userId);
   if (!userId) {
     return false;
   }

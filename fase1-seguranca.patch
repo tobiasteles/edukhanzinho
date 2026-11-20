@@ -1,0 +1,590 @@
+diff --git a/actions/challenge-progress.ts b/actions/challenge-progress.ts
+index 44cc8ce..dcb6e2d 100644
+--- a/actions/challenge-progress.ts
++++ b/actions/challenge-progress.ts
+@@ -2,17 +2,22 @@
+ 
+ import db from "@/db/drizzle";
+ import { getUserProgress, getUserSubscription } from "@/db/queries";
+-import { challengeProgress, challenges, userProgress } from "@/db/schema";
++import { challengeOptions, challengeProgress, challenges, userProgress } from "@/db/schema";
+ import { auth } from "@clerk/nextjs/server";
+-import { and, eq } from "drizzle-orm";
++import { and, eq, sql } from "drizzle-orm";
+ import { revalidatePath } from "next/cache";
+ 
+-export const upsertChallengeProgress = async (challengeId: number) => {
++export const upsertChallengeProgress = async (challengeId: number, optionId: number) => {
+   const { userId } = await auth();
+ 
+   if (!userId) {
+     throw new Error("Não autorizado");
+   }
++
++  if (!Number.isInteger(challengeId) || !Number.isInteger(optionId)) {
++    throw new Error("Dados inválidos");
++  }
++
+   const currentUserProgress = await getUserProgress();
+   const userSubscription = await getUserSubscription();
+  
+@@ -28,6 +33,18 @@ export const upsertChallengeProgress = async (challengeId: number) => {
+     throw new Error("Desafio não encontrado");
+   }
+ 
++  // o servidor confere a resposta: não confiamos no que o navegador diz
++  const option = await db.query.challengeOptions.findFirst({
++    where: and(
++      eq(challengeOptions.id, optionId),
++      eq(challengeOptions.challengeId, challengeId)
++    ),
++  });
++
++  if (!option?.correct) {
++    throw new Error("Resposta inválida");
++  }
++
+   const lessonId = challenge.lessonId;
+ 
+   const existingChallengeProgress = await db.query.challengeProgress.findFirst({
+@@ -54,8 +71,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
+     await db
+       .update(userProgress)
+       .set({
+-        hearts: Math.min(currentUserProgress.hearts + 1, 5),
+-        points: currentUserProgress.points + 100,
++        hearts: sql`LEAST(${userProgress.hearts} + 1, 5)`,
+       })
+       .where(eq(userProgress.userId, userId));
+ 
+@@ -76,7 +92,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
+   await db
+     .update(userProgress)
+     .set({
+-      points: currentUserProgress.points + 100,
++      points: sql`${userProgress.points} + 100`,
+     })
+     .where(eq(userProgress.userId, userId));
+ 
+diff --git a/actions/user-progress.ts b/actions/user-progress.ts
+index 0c26695..188e1e3 100644
+--- a/actions/user-progress.ts
++++ b/actions/user-progress.ts
+@@ -9,7 +9,7 @@ import {
+ } from "@/db/queries";
+ import { challengeProgress, challenges, userProgress } from "@/db/schema";
+ import { auth, currentUser } from "@clerk/nextjs/server";
+-import { and, eq } from "drizzle-orm";
++import { and, eq, gte, sql } from "drizzle-orm";
+ import { revalidatePath } from "next/cache";
+ import { redirect } from "next/navigation";
+ 
+@@ -40,7 +40,7 @@ export const upsertUserProgress = async (courseId: number) => {
+       activeCourseId: courseId,
+       userName: user.firstName || "User",
+       userImageSrc: user.imageUrl || "/user.png",
+-    });
++    }).where(eq(userProgress.userId, userId));
+ 
+     revalidatePath("/courses");
+     revalidatePath("/learn");
+@@ -94,7 +94,7 @@ export const reduceHearts = async (challengeId: number, lessonId: number) => {
+     throw new Error("Progresso do usuário não foi encontrado.");
+   }
+ 
+-  if (!userSubscription?.isActive) {
++  if (userSubscription?.isActive) {
+     return { error: "subscription" };
+   }
+ 
+@@ -131,13 +131,18 @@ export const refillHearts = async () => {
+     throw new Error("Não tem pontos o suficiente.");
+   }
+ 
+-  await db
++  const updated = await db
+     .update(userProgress)
+-    .set({
+-      hearts: 5,
+-      points: currentUserProgress.points - POINTS,
+-    })
+-    .where(eq(userProgress.userId, currentUserProgress.userId));
++    .set({ hearts: 5, points: sql`${userProgress.points} - ${POINTS}` })
++    .where(
++      and(
++        eq(userProgress.userId, currentUserProgress.userId),
++        gte(userProgress.points, POINTS)
++      )
++    )
++    .returning({ userId: userProgress.userId });
++
++  if (!updated.length) throw new Error("Não tem pontos o suficiente.");
+ 
+   revalidatePath("/shop");
+   revalidatePath("/learn");
+diff --git a/app/api/challengeOptions/[challengeOptionId]/route.ts b/app/api/challengeOptions/[challengeOptionId]/route.ts
+index dcbb50f..75c0986 100644
+--- a/app/api/challengeOptions/[challengeOptionId]/route.ts
++++ b/app/api/challengeOptions/[challengeOptionId]/route.ts
+@@ -5,9 +5,7 @@ import { eq } from "drizzle-orm";
+ import { NextResponse } from "next/server";
+ 
+ interface RouteParams {
+-  params: {
+-    challengeOptionId: string;
+-  };
++  params: Promise<{ challengeOptionId: string }>;
+ }
+ 
+ export const GET = async (req: Request, { params }: RouteParams) => {
+@@ -15,7 +13,7 @@ export const GET = async (req: Request, { params }: RouteParams) => {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const id = parseInt(params.challengeOptionId);
++  const id = parseInt((await params).challengeOptionId);
+   if (isNaN(id)) {
+     return new NextResponse("ID inválido", { status: 400 });
+   }
+@@ -41,7 +39,7 @@ export const PUT = async (req: Request, { params }: RouteParams) => {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const id = parseInt(params.challengeOptionId);
++  const id = parseInt((await params).challengeOptionId);
+   if (isNaN(id)) {
+     return new NextResponse("ID inválido", { status: 400 });
+   }
+@@ -70,7 +68,7 @@ export const DELETE = async (req: Request, { params }: RouteParams) => {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const id = parseInt(params.challengeOptionId);
++  const id = parseInt((await params).challengeOptionId);
+   if (isNaN(id)) {
+     return new NextResponse("ID inválido", { status: 400 });
+   }
+diff --git a/app/api/challenges/[challengeId]/route.ts b/app/api/challenges/[challengeId]/route.ts
+index 892fead..a3a7a4e 100644
+--- a/app/api/challenges/[challengeId]/route.ts
++++ b/app/api/challenges/[challengeId]/route.ts
+@@ -6,14 +6,14 @@ import { NextResponse } from "next/server";
+ 
+ export const GET = async (
+   req: Request,
+-  { params }: { params: { challengeId: number } }
++  { params }: { params: Promise<{ challengeId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+   const data = await db.query.challenges.findFirst({
+-    where: eq(challenges.id, params.challengeId),
++    where: eq(challenges.id, Number((await params).challengeId)),
+   });
+ 
+   return NextResponse.json(data);
+@@ -22,9 +22,9 @@ export const GET = async (
+ 
+ export const PUT = async (
+   req: Request,
+-  { params }: { params: { challengeId: number } }
++  { params }: { params: Promise<{ challengeId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+@@ -32,7 +32,7 @@ export const PUT = async (
+ 
+   const data = await db.update(challenges).set({
+     ...body,
+-  }).where(eq(challenges.id, params.challengeId)).returning()
++  }).where(eq(challenges.id, Number((await params).challengeId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+@@ -40,13 +40,13 @@ export const PUT = async (
+ 
+ export const DELETE = async (
+   req: Request,
+-  { params }: { params: { challengeId: number } }
++  { params }: { params: Promise<{ challengeId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const data = await db.delete(challenges).where(eq(challenges.id, params.challengeId)).returning()
++  const data = await db.delete(challenges).where(eq(challenges.id, Number((await params).challengeId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+\ No newline at end of file
+diff --git a/app/api/courses/[courseId]/route.ts b/app/api/courses/[courseId]/route.ts
+index b649e6c..624e446 100644
+--- a/app/api/courses/[courseId]/route.ts
++++ b/app/api/courses/[courseId]/route.ts
+@@ -6,14 +6,14 @@ import { NextResponse } from "next/server";
+ 
+ export const GET = async (
+   req: Request,
+-  { params }: { params: { courseId: number } }
++  { params }: { params: Promise<{ courseId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+   const data = await db.query.courses.findFirst({
+-    where: eq(courses.id, params.courseId),
++    where: eq(courses.id, Number((await params).courseId)),
+   });
+ 
+   return NextResponse.json(data);
+@@ -22,9 +22,9 @@ export const GET = async (
+ 
+ export const PUT = async (
+   req: Request,
+-  { params }: { params: { courseId: number } }
++  { params }: { params: Promise<{ courseId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+@@ -32,7 +32,7 @@ export const PUT = async (
+ 
+   const data = await db.update(courses).set({
+     ...body,
+-  }).where(eq(courses.id, params.courseId)).returning()
++  }).where(eq(courses.id, Number((await params).courseId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+@@ -40,13 +40,13 @@ export const PUT = async (
+ 
+ export const DELETE = async (
+   req: Request,
+-  { params }: { params: { courseId: number } }
++  { params }: { params: Promise<{ courseId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const data = await db.delete(courses).where(eq(courses.id, params.courseId)).returning()
++  const data = await db.delete(courses).where(eq(courses.id, Number((await params).courseId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+\ No newline at end of file
+diff --git a/app/api/lessons/[lessonId]/route.ts b/app/api/lessons/[lessonId]/route.ts
+index f0737cf..321fa4b 100644
+--- a/app/api/lessons/[lessonId]/route.ts
++++ b/app/api/lessons/[lessonId]/route.ts
+@@ -6,14 +6,14 @@ import { NextResponse } from "next/server";
+ 
+ export const GET = async (
+   req: Request,
+-  { params }: { params: { lessonId: number } }
++  { params }: { params: Promise<{ lessonId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+   const data = await db.query.lessons.findFirst({
+-    where: eq(lessons.id, params.lessonId),
++    where: eq(lessons.id, Number((await params).lessonId)),
+   });
+ 
+   return NextResponse.json(data);
+@@ -22,9 +22,9 @@ export const GET = async (
+ 
+ export const PUT = async (
+   req: Request,
+-  { params }: { params: { lessonId: number } }
++  { params }: { params: Promise<{ lessonId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+@@ -32,7 +32,7 @@ export const PUT = async (
+ 
+   const data = await db.update(lessons).set({
+     ...body,
+-  }).where(eq(lessons.id, params.lessonId)).returning()
++  }).where(eq(lessons.id, Number((await params).lessonId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+@@ -40,13 +40,13 @@ export const PUT = async (
+ 
+ export const DELETE = async (
+   req: Request,
+-  { params }: { params: { lessonId: number } }
++  { params }: { params: Promise<{ lessonId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const data = await db.delete(lessons).where(eq(lessons.id, params.lessonId)).returning()
++  const data = await db.delete(lessons).where(eq(lessons.id, Number((await params).lessonId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+\ No newline at end of file
+diff --git a/app/api/units/[unitId]/route.ts b/app/api/units/[unitId]/route.ts
+index 3d6384d..4390250 100644
+--- a/app/api/units/[unitId]/route.ts
++++ b/app/api/units/[unitId]/route.ts
+@@ -6,14 +6,14 @@ import { NextResponse } from "next/server";
+ 
+ export const GET = async (
+   req: Request,
+-  { params }: { params: { unitId: number } }
++  { params }: { params: Promise<{ unitId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+   const data = await db.query.units.findFirst({
+-    where: eq(units.id, params.unitId),
++    where: eq(units.id, Number((await params).unitId)),
+   });
+ 
+   return NextResponse.json(data);
+@@ -22,9 +22,9 @@ export const GET = async (
+ 
+ export const PUT = async (
+   req: Request,
+-  { params }: { params: { unitId: number } }
++  { params }: { params: Promise<{ unitId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+@@ -32,7 +32,7 @@ export const PUT = async (
+ 
+   const data = await db.update(units).set({
+     ...body,
+-  }).where(eq(units.id, params.unitId)).returning()
++  }).where(eq(units.id, Number((await params).unitId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+@@ -40,13 +40,13 @@ export const PUT = async (
+ 
+ export const DELETE = async (
+   req: Request,
+-  { params }: { params: { unitId: number } }
++  { params }: { params: Promise<{ unitId: string }> }
+ ) => {
+-  if (!isAdmin()) {
++  if (!(await isAdmin())) {
+     return new NextResponse("Não autorizado", { status: 403 });
+   }
+ 
+-  const data = await db.delete(units).where(eq(units.id, params.unitId)).returning()
++  const data = await db.delete(units).where(eq(units.id, Number((await params).unitId))).returning()
+ 
+   return NextResponse.json(data);
+ };
+\ No newline at end of file
+diff --git a/app/api/webhooks/stripe/route.ts b/app/api/webhooks/stripe/route.ts
+index 30a8539..ba0192f 100644
+--- a/app/api/webhooks/stripe/route.ts
++++ b/app/api/webhooks/stripe/route.ts
+@@ -8,7 +8,11 @@ import type {Stripe} from "stripe";
+ 
+ export async function POST(req: Request) {
+   const body = await req.text();
+-  const signature = (await headers()).get("Stripe-Signature") as string;
++  const signature = (await headers()).get("Stripe-Signature");
++
++  if (!signature) {
++    return new NextResponse("Assinatura ausente", { status: 400 });
++  }
+ 
+   let event: Stripe.Event;
+ 
+@@ -25,37 +29,49 @@ export async function POST(req: Request) {
+     });
+   }
+ 
+-  const session = event.data.object as Stripe.Checkout.Session;
+-
+   if (event.type === "checkout.session.completed") {
++    const session = event.data.object as Stripe.Checkout.Session;
++
++    if (!session.subscription || !session.metadata?.userId) {
++      return new NextResponse("Dados da sessão inválidos", { status: 400 });
++    }
+ 
+-    
+     const subscription = await stripe.subscriptions.retrieve(
+       session.subscription as string
+     );
+-
+-    if (!session?.metadata?.userId) {
+-      return new NextResponse("User ID is required", { status: 400 });
+-    }
+-
+-    await db.insert(userSubscription).values({
+-      userId: session.metadata.userId,
++    const item = subscription.items.data[0];
++    const values = {
+       stripeSubscriptionId: subscription.id,
+       stripeCustomerId: subscription.customer as string,
+-      stripePriceId: subscription.items.data[0].price.id,
+-      stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
+-    });
++      stripePriceId: item.price.id,
++      stripeCurrentPeriodEnd: new Date(item.current_period_end * 1000),
++    };
++
++    await db
++      .insert(userSubscription)
++      .values({ userId: session.metadata.userId, ...values })
++      .onConflictDoUpdate({ target: userSubscription.userId, set: values });
+   }
+ 
+   if (event.type === "invoice.payment_succeeded") {
+-    const subscription = await stripe.subscriptions.retrieve(
+-      session.subscription as string
+-    );
++    const invoice = event.data.object as Stripe.Invoice;
++    const sub = invoice.parent?.subscription_details?.subscription;
++
++    if (sub) {
++      const subscription = await stripe.subscriptions.retrieve(
++        typeof sub === "string" ? sub : sub.id
++      );
++      const item = subscription.items.data[0];
+ 
+-    await db.update(userSubscription).set({
+-      stripePriceId: subscription.items.data[0].price.id,
+-      stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
+-    }).where(eq(userSubscription.stripeSubscriptionId, subscription.id));
++      await db
++        .update(userSubscription)
++        .set({
++          stripePriceId: item.price.id,
++          stripeCurrentPeriodEnd: new Date(item.current_period_end * 1000),
++        })
++        .where(eq(userSubscription.stripeSubscriptionId, subscription.id));
++    }
+   }
++
+   return new NextResponse("Webhook received", { status: 200 });
+ }
+diff --git a/app/lesson/quiz.tsx b/app/lesson/quiz.tsx
+index 0547f42..a9dc7ff 100644
+--- a/app/lesson/quiz.tsx
++++ b/app/lesson/quiz.tsx
+@@ -110,7 +110,7 @@ export const Quiz = ({
+ 
+     if (correctOption && correctOption.id === selectedOption) {
+       startTransition(() => {
+-        upsertChallengeProgress(challenge.id)
++        upsertChallengeProgress(challenge.id, selectedOption)
+           .then((response) => {
+             if (response?.error === "hearts") {
+               openHeartsModel();
+diff --git a/lib/admin.ts b/lib/admin.ts
+index cb1b6c0..d2b3f9a 100644
+--- a/lib/admin.ts
++++ b/lib/admin.ts
+@@ -14,7 +14,6 @@ const adminIds = [
+ 
+ export const isAdmin = async () => {
+   const { userId } = await auth();
+-  console.log(">> ID do usuário atual:", userId);
+   if (!userId) {
+     return false;
+   }
+diff --git a/middleware.ts b/middleware.ts
+index 51baada..6b64a71 100644
+--- a/middleware.ts
++++ b/middleware.ts
+@@ -1,15 +1,20 @@
+ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+ 
+-const isProtectedRoute = createRouteMatcher(['/marketing(.*)', '/api/webhooks/stripe(.*)', '/forum(.*)','/admin(.*)',])
++const isStripeWebhook = createRouteMatcher(['/api/webhooks/stripe(.*)'])
++const isAdminArea = createRouteMatcher([
++  '/admin(.*)',
++  '/api/courses(.*)',
++  '/api/units(.*)',
++  '/api/lessons(.*)',
++  '/api/challenges(.*)',
++  '/api/challengeOptions(.*)',
++])
+ 
+ export default clerkMiddleware(async (auth, req) => {
+-  if (isProtectedRoute(req)) await auth.protect();
+-
+-   const { userId } = await auth();
+-    const isAdmin = userId; // ou busca de roles, se tiver
+-    if (req.nextUrl.pathname.startsWith('/admin') && !isAdmin) {
+-      return Response.redirect(new URL('/', req.url))
+-    }
++  // Stripe não tem sessão Clerk; a segurança aqui é a assinatura validada na rota
++  if (isStripeWebhook(req)) return
++  if (isAdminArea(req)) await auth.protect()
++  // a checagem de admin de verdade continua em lib/admin.ts (defesa em profundidade)
+ })
+ 
+ export const config = {
+diff --git a/next.config.ts b/next.config.ts
+index 12dcaba..7705fb7 100644
+--- a/next.config.ts
++++ b/next.config.ts
+@@ -10,18 +10,6 @@ const nextConfig: NextConfig = {
+       {
+         source: "/api/(.*)",
+         headers: [
+-          {
+-            key: "Access-Control-Allow-Origin",
+-            value: "*",
+-          },
+-          {
+-            key: "Access-Control-Allow-Methods",
+-            value: "GET, POST, PUT, DELETE, OPTIONS",
+-          },
+-          {
+-            key: "Access-Control-Allow-Headers",
+-            value: "Content-Type, Authorization",
+-          },
+           {
+             key: "Content-Range",
+             value: "bytes : 0-9/*",
+diff --git a/package.json b/package.json
+index e36e269..128c876 100644
+--- a/package.json
++++ b/package.json
+@@ -7,6 +7,7 @@
+     "build": "next build",
+     "start": "next start",
+     "lint": "next lint",
++    "typecheck": "tsc --noEmit",
+     "db:studio": "npx drizzle-kit studio",
+     "db:push": "npx drizzle-kit push",
+     "db:seed": "tsx ./scripts/seed.ts",

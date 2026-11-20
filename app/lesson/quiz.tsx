@@ -110,7 +110,7 @@ export const Quiz = ({
 
     if (correctOption && correctOption.id === selectedOption) {
       startTransition(() => {
-        upsertChallengeProgress(challenge.id)
+        upsertChallengeProgress(challenge.id, selectedOption)
           .then((response) => {
             if (response?.error === "hearts") {
               openHeartsModel();
