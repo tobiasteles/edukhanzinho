@@ -9,7 +9,7 @@ import {
 } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, gte, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -40,7 +40,7 @@ export const upsertUserProgress = async (courseId: number) => {
       activeCourseId: courseId,
       userName: user.firstName || "User",
       userImageSrc: user.imageUrl || "/user.png",
-    });
+    }).where(eq(userProgress.userId, userId));
 
     revalidatePath("/courses");
     revalidatePath("/learn");
@@ -94,7 +94,7 @@ export const reduceHearts = async (challengeId: number, lessonId: number) => {
     throw new Error("Progresso do usuário não foi encontrado.");
   }
 
-  if (!userSubscription?.isActive) {
+  if (userSubscription?.isActive) {
     return { error: "subscription" };
   }
 
@@ -131,13 +131,18 @@ export const refillHearts = async () => {
     throw new Error("Não tem pontos o suficiente.");
   }
 
-  await db
+  const updated = await db
     .update(userProgress)
-    .set({
-      hearts: 5,
-      points: currentUserProgress.points - POINTS,
-    })
-    .where(eq(userProgress.userId, currentUserProgress.userId));
+    .set({ hearts: 5, points: sql`${userProgress.points} - ${POINTS}` })
+    .where(
+      and(
+        eq(userProgress.userId, currentUserProgress.userId),
+        gte(userProgress.points, POINTS)
+      )
+    )
+    .returning({ userId: userProgress.userId });
+
+  if (!updated.length) throw new Error("Não tem pontos o suficiente.");
 
   revalidatePath("/shop");
   revalidatePath("/learn");

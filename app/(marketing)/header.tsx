@@ -35,7 +35,7 @@ export const Header = () => {
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
             <SignedOut>
-              <SignInButton mode="modal" afterSignInUrl="/learn" afterSignUp="/learn">
+              <SignInButton mode="modal" forceRedirectUrl="/learn" signUpForceRedirectUrl="/learn">
                 <Button size="default" variant="ghost" className="text-neutral-600 font-bold hover:text-[#0026ff]">
                   Entrar
                 </Button>

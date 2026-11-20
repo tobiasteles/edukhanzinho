@@ -34,10 +34,10 @@ export default function Home() {
           </ClerkLoading>
           <ClerkLoaded>
             <SignedOut>
-              <SignUpButton mode="modal" afterSignInUrl="/learn" afterSignUpUrl="/learn">
+              <SignUpButton mode="modal" forceRedirectUrl="/learn" signInForceRedirectUrl="/learn">
                 <Button size="lg" variant="secondary" className="w-full">Vamos começar?</Button>
               </SignUpButton>
-              <SignInButton mode="modal" afterSignInUrl="/learn" afterSignUpUrl="/learn">
+              <SignInButton mode="modal" forceRedirectUrl="/learn" signUpForceRedirectUrl="/learn">
                 <Button size="lg" variant="primaryOutline" className="w-full">Eu já tenho uma conta</Button>
               </SignInButton>
             </SignedOut>

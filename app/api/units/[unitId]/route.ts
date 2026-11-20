@@ -6,14 +6,14 @@ import { NextResponse } from "next/server";
 
 export const GET = async (
   req: Request,
-  { params }: { params: { unitId: number } }
+  { params }: { params: Promise<{ unitId: string }> }
 ) => {
-  if (!isAdmin()) {
+  if (!(await isAdmin())) {
     return new NextResponse("Não autorizado", { status: 403 });
   }
 
   const data = await db.query.units.findFirst({
-    where: eq(units.id, params.unitId),
+    where: eq(units.id, Number((await params).unitId)),
   });
 
   return NextResponse.json(data);
@@ -22,9 +22,9 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { unitId: number } }
+  { params }: { params: Promise<{ unitId: string }> }
 ) => {
-  if (!isAdmin()) {
+  if (!(await isAdmin())) {
     return new NextResponse("Não autorizado", { status: 403 });
   }
 
@@ -32,7 +32,7 @@ export const PUT = async (
 
   const data = await db.update(units).set({
     ...body,
-  }).where(eq(units.id, params.unitId)).returning()
+  }).where(eq(units.id, Number((await params).unitId))).returning()
 
   return NextResponse.json(data);
 };
@@ -40,13 +40,13 @@ export const PUT = async (
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { unitId: number } }
+  { params }: { params: Promise<{ unitId: string }> }
 ) => {
-  if (!isAdmin()) {
+  if (!(await isAdmin())) {
     return new NextResponse("Não autorizado", { status: 403 });
   }
 
-  const data = await db.delete(units).where(eq(units.id, params.unitId)).returning()
+  const data = await db.delete(units).where(eq(units.id, Number((await params).unitId))).returning()
 
   return NextResponse.json(data);
 };

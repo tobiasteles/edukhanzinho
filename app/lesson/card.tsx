@@ -28,14 +28,15 @@ export const Card = ({
   status,
   type,
 }: Props) => {
-  const [audio, , controls] = useAudio({ src: audioSrc || "" });
+  // sem áudio, não passamos src (string vazia gera erro no React); o play também é pulado
+  const [audio, , controls] = useAudio({ src: audioSrc ?? undefined } as unknown as { src: string });
 
   const handleClick = useCallback(() => {
     if (disabled) return;
 
-    controls.play();
+    if (audioSrc) controls.play();
     onClick();
-  }, [disabled, onClick, controls]);
+  }, [disabled, onClick, controls, audioSrc]);
 
   useKey(shortcut, handleClick, {}, [handleClick]);
 

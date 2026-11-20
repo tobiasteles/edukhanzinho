@@ -1,15 +1,30 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isProtectedRoute = createRouteMatcher(['/marketing(.*)', '/api/webhooks/stripe(.*)', '/forum(.*)','/admin(.*)',])
+const isStripeWebhook = createRouteMatcher(['/api/webhooks/stripe(.*)'])
+// telas do app que exigem login (sem isso, deslogado vê a tela e toma erro 500 ao clicar)
+const isLoggedArea = createRouteMatcher([
+  '/courses(.*)',
+  '/learn(.*)',
+  '/shop(.*)',
+  '/quests(.*)',
+  '/leaderboard(.*)',
+  '/lesson(.*)',
+])
+const isAdminArea = createRouteMatcher([
+  '/admin(.*)',
+  '/api/courses(.*)',
+  '/api/units(.*)',
+  '/api/lessons(.*)',
+  '/api/challenges(.*)',
+  '/api/challengeOptions(.*)',
+])
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) await auth.protect();
-
-   const { userId } = await auth();
-    const isAdmin = userId; // ou busca de roles, se tiver
-    if (req.nextUrl.pathname.startsWith('/admin') && !isAdmin) {
-      return Response.redirect(new URL('/', req.url))
-    }
+  // Stripe não tem sessão Clerk; a segurança aqui é a assinatura validada na rota
+  if (isStripeWebhook(req)) return
+  if (isAdminArea(req)) await auth.protect()
+  if (isLoggedArea(req)) await auth.protect({ unauthenticatedUrl: new URL('/', req.url).toString() })
+  // a checagem de admin de verdade continua em lib/admin.ts (defesa em profundidade)
 })
 
 export const config = {

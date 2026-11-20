@@ -2,17 +2,22 @@
 
 import db from "@/db/drizzle";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
-import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { challengeOptions, challengeProgress, challenges, userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
-export const upsertChallengeProgress = async (challengeId: number) => {
+export const upsertChallengeProgress = async (challengeId: number, optionId: number) => {
   const { userId } = await auth();
 
   if (!userId) {
     throw new Error("Não autorizado");
   }
+
+  if (!Number.isInteger(challengeId) || !Number.isInteger(optionId)) {
+    throw new Error("Dados inválidos");
+  }
+
   const currentUserProgress = await getUserProgress();
   const userSubscription = await getUserSubscription();
  
@@ -26,6 +31,18 @@ export const upsertChallengeProgress = async (challengeId: number) => {
 
   if (!challenge) {
     throw new Error("Desafio não encontrado");
+  }
+
+  // o servidor confere a resposta: não confiamos no que o navegador diz
+  const option = await db.query.challengeOptions.findFirst({
+    where: and(
+      eq(challengeOptions.id, optionId),
+      eq(challengeOptions.challengeId, challengeId)
+    ),
+  });
+
+  if (!option?.correct) {
+    throw new Error("Resposta inválida");
   }
 
   const lessonId = challenge.lessonId;
@@ -54,8 +71,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     await db
       .update(userProgress)
       .set({
-        hearts: Math.min(currentUserProgress.hearts + 1, 5),
-        points: currentUserProgress.points + 100,
+        hearts: sql`LEAST(${userProgress.hearts} + 1, 5)`,
       })
       .where(eq(userProgress.userId, userId));
 
@@ -76,7 +92,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
   await db
     .update(userProgress)
     .set({
-      points: currentUserProgress.points + 100,
+      points: sql`${userProgress.points} + 100`,
     })
     .where(eq(userProgress.userId, userId));
 
