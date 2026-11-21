@@ -28,16 +28,16 @@ export const PracticeModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="max-w-md bg-indigo-500">
+      <DialogContent className="max-w-md bg-edu-blue">
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
             <Image src="/heart.png" alt="Vidas" height={100} width={100} />
           </div>
-          <DialogTitle className="text-center text-yellow-300 font-bold text-2xl">
-            Lições prática
+          <DialogTitle className="text-center text-edu-sun font-bold text-2xl">
+            Hora de praticar!
           </DialogTitle>
-          <DialogDescription className="text-center text-yellow-200">
-            Use lições de prática para recuperar corações e pontos. Você não pode perder corações nem pontos nas lições de prática.
+          <DialogDescription className="text-center text-white/90">
+            Na prática você treina à vontade e ainda recupera vidas. Aqui ninguém perde vida nem estrela!
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="mb-4">
@@ -48,7 +48,7 @@ export const PracticeModal = () => {
               size="lg"
               onClick={close}
             >
-              Eu entendi.
+              Entendi!
             </Button>
           </div>
         </DialogFooter>

@@ -25,7 +25,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
     }
 
     startTransition(() => {
-      refillHearts().catch(() => toast.error("Algo deu errado."));
+      refillHearts().catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
     });
   };
 
@@ -37,7 +37,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
             window.location.href = response.data;
           }
         })
-        .catch(() => toast.error("Algo deu errado."));
+        .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
     });
   };
 

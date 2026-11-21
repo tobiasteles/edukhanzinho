@@ -14,6 +14,7 @@
     "db:reset": "tsx ./scripts/reset.ts"
   },
   "dependencies": {
+    "@clerk/localizations": "^3.37.11",
     "@clerk/nextjs": "^6.39.9",
     "@neondatabase/serverless": "^1.0.1",
     "@radix-ui/react-avatar": "^1.1.10",

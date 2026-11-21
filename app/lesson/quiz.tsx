@@ -8,6 +8,8 @@ import { Challenge } from "./challenge";
 import { Footer } from "./footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
+import { stopSpeaking } from "@/lib/speech";
+import { SpeakButton } from "@/components/speak-button";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
@@ -82,6 +84,12 @@ export const Quiz = ({
     if (finished) celebrateFinish();
   }, [finished]);
 
+  // para a voz ao trocar de pergunta ou sair da lição
+  useEffect(() => {
+    stopSpeaking();
+    return () => stopSpeaking();
+  }, [challenge?.id]);
+
   const onNext = () => {
     setActiveIndex((current) => current + 1);
   };
@@ -132,7 +140,7 @@ export const Quiz = ({
             }
           })
           .catch(() =>
-            toast.error("Alguma coisa deu errado. Por favor, tente de novo.")
+            toast.error("Ops! Algo deu errado. Tente de novo.")
           );
       });
     } else {
@@ -152,7 +160,7 @@ export const Quiz = ({
             }
           })
           .catch(() =>
-            toast.error("Algo deu errado. Por favor, tente novamente.")
+            toast.error("Ops! Algo deu errado. Tente de novo.")
           );
       });
     }
@@ -222,9 +230,12 @@ export const Quiz = ({
               transition={{ duration: 0.25 }}
               className="lg:min-h-[350px] max-w-4xl w-full px-6 lg:px-0 flex flex-col gap-y-8 lg:gap-y-10 mx-auto items-center"
             >
-              <h1 className="font-read text-xl lg:text-3xl text-center lg:text-start font-bold text-edu-ink">
-                {title}
-              </h1>
+              <div className="flex items-center gap-x-3">
+                <SpeakButton text={title} />
+                <h1 className="font-read text-xl lg:text-3xl text-center lg:text-start font-bold text-edu-ink">
+                  {title}
+                </h1>
+              </div>
               <div className="w-full">
                 {challenge.type === "ASSIST" && (
                   <QuestionBubble question={challenge.question} />

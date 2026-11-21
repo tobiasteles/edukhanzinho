@@ -1,3 +1,4 @@
+import { SpeakButton } from "@/components/speak-button";
 import Image from "next/image";
 
 type Props = {
@@ -18,6 +19,7 @@ export const QuestionBubble = ({ question }: Props) => {
         {question}
         <div className="absolute -left-2 top-1/2 h-4 w-4 -translate-y-1/2 rotate-45 border-b-2 border-l-2 border-edu-line bg-white" />
       </div>
+      <SpeakButton text={question} />
     </div>
   );
 };

@@ -34,16 +34,16 @@ export const HeartsModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="max-w-md bg-indigo-500">
+      <DialogContent className="max-w-md bg-edu-blue">
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
             <Image src="/bad.png" alt="Triste" height={80} width={80} />
           </div>
-          <DialogTitle className="text-center text-yellow-300 font-bold text-2xl">
+          <DialogTitle className="text-center text-edu-sun font-bold text-2xl">
             Suas vidas acabaram!
           </DialogTitle>
-          <DialogDescription className="text-center text-yellow-200">
-            Adquira o Pro para vidas ilimitadas ou compre-as na loja.
+          <DialogDescription className="text-center text-white/90">
+            Troque suas estrelas por mais vidas na loja ou libere o Pro para vidas ilimitadas.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="mb-4">
@@ -54,7 +54,7 @@ export const HeartsModal = () => {
               size="lg"
               onClick={onClick}
             >
-              Adquira vidas ilimitadas.
+              Quero vidas ilimitadas
             </Button>
             <Button
               variant="primaryOutline"
@@ -62,7 +62,7 @@ export const HeartsModal = () => {
               size="lg"
               onClick={close}
             >
-              Não, obrigado.
+              Agora não
             </Button>
           </div>
         </DialogFooter>

@@ -93,10 +93,10 @@ export const Card = ({
       }
       transition={{ duration: 0.35, ease: "easeOut" }}
       className={cn(
-        "h-full w-full cursor-pointer select-none rounded-3xl border-2 border-b-[6px] p-4 outline-none transition-colors focus-visible:ring-4 focus-visible:ring-edu-blue/30 lg:p-5",
+        "h-full w-full cursor-pointer select-none rounded-3xl border-2 border-b-[6px] p-4 outline-none transition-colors focus-visible:ring-4 focus-visible:ring-edu-blue/30 lg:p-5 pr-14 lg:pr-16",
         box,
         disabled && "pointer-events-none",
-        type === "ASSIST" && "lg:p-4"
+        type === "ASSIST" && "lg:p-4 lg:pr-16"
       )}
     >
       {audio}

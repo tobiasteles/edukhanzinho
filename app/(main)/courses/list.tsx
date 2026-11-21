@@ -25,7 +25,7 @@ export const List = ({ courses, activeCourseId }: Props) => {
 
         startTransition(() => {
             upsertUserProgress(id)
-            .catch(() => toast.error("Algo deu errado."));
+            .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
         });
     }
 

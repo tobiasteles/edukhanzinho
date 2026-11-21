@@ -29,16 +29,16 @@ export const ExitModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="max-w-md bg-indigo-500">
+      <DialogContent className="max-w-md bg-edu-blue">
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
             <Image src="/sad.png" alt="Triste" height={80} width={80} />
           </div>
-          <DialogTitle className="text-center text-yellow-300 font-bold text-2xl">
-            Tem certeza que deseja sair?
+          <DialogTitle className="text-center text-edu-sun font-bold text-2xl">
+            Já vai embora?
           </DialogTitle>
-          <DialogDescription className="text-center text-yellow-200">
-            Você pode continuar de onde parou na próxima vez que entrar.
+          <DialogDescription className="text-center text-white/90">
+            Sem problema! Quando voltar, você continua de onde parou.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="mb-4">
@@ -49,7 +49,7 @@ export const ExitModal = () => {
               size="lg"
               onClick={close}
             >
-              Ou continue aprendendo
+              Continuar aprendendo
             </Button>
             <Button
               variant="danger"
@@ -60,7 +60,7 @@ export const ExitModal = () => {
                 router.push("/learn");
               }}
             >
-              Encerrar sessão
+              Sair da lição
             </Button>
           </div>
         </DialogFooter>
