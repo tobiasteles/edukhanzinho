@@ -3,10 +3,13 @@ import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignInButton, SignUpBut
 import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ParallaxWorldSection } from "@/components/landing/parallax-world-section";
+import { AppPreviewSection } from "@/components/landing/app-preview-section";
 
 export default function Home() {
   return (
-    <div className="max-w-[988px] mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center p-4 gap-8">
+    <>
+    <div className="max-w-[988px] mx-auto w-full min-h-[calc(100vh-10rem)] flex flex-col lg:flex-row items-center justify-center p-4 gap-8">
       <div className="relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0">
         <Image
           src="/hero.png"
@@ -52,5 +55,8 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <ParallaxWorldSection />
+    <AppPreviewSection />
+    </>
   );
 }

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const Header = () => {
   return (
-    <header className="h-20 w-full border-b-2 border-slate-200 px-4 bg-white sticky top-0 z-50">
+    <header className="h-20 w-full border-b-2 border-slate-200 px-4 bg-edu-cream/90 backdrop-blur-md sticky top-0 z-50">
       <div className="lg:max-w-screen-lg mx-auto flex items-center justify-between h-full">
         
         {/* Logo baseado no SÍMBOLO 5.jpg e Nome do App */}
@@ -20,9 +20,12 @@ export const Header = () => {
               priority
             />
           </div>
-          <h1 className="font-brand text-xl sm:text-2xl font-bold text-[#0026ff] tracking-wide">
-            Edukhanzinho
-          </h1>
+          <div>
+            <h1 className="font-brand text-xl sm:text-2xl font-bold text-[#0026ff] tracking-wide">
+              Edukhanzinho
+            </h1>
+            <p className="text-xs text-edu-ink/60">Leitura e alfabetização</p>
+          </div>
         </div>
 
         {/* Autenticação */}

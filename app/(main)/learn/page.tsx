@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 import { Unit } from "./unit";
 import { lessons, units as unitsSchema } from "@/db/schema";
 import Quests from "@/components/quests";
+import { LearnScenery } from "@/components/learn-scenery";
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
@@ -46,7 +47,9 @@ const LearnPage = async () => {
   const isPro = !!userSubscription?.isActive;
 
   return (
-    <div className="flex flex-row-reverse gap-[48px] px-6">
+    <>
+    <LearnScenery />
+    <div className="relative z-10 flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}
@@ -79,6 +82,7 @@ const LearnPage = async () => {
         ))}
       </FeedWrapper>
     </div>
+    </>
   );
 };
 
