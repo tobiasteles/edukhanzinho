@@ -102,7 +102,7 @@ export const Card = ({
       {audio}
       {imageSrc && (
         <div className="relative mb-3 aspect-square max-h-[150px] w-full lg:max-h-[220px]">
-          <Image src={imageSrc} fill alt={text} className="object-contain" />
+          <Image src={imageSrc} fill alt={text || "Figura"} className="object-contain" />
         </div>
       )}
       <div className="flex items-center gap-x-3 lg:gap-x-4">
@@ -120,7 +120,7 @@ export const Card = ({
             shortcut
           )}
         </span>
-        <p className={cn("font-read text-lg lg:text-2xl", label)}>{text}</p>
+        {text.trim() && <p className={cn("font-read text-lg lg:text-2xl", label)}>{text}</p>}
       </div>
     </motion.div>
   );

@@ -46,7 +46,9 @@ return (
               disabled={disabled}
               type={type}
               />
-              <SpeakButton text={option.text} className="absolute right-3 top-3" />
+              {option.text.trim() && (
+                <SpeakButton text={option.text} className="absolute right-3 top-3" />
+              )}
             </motion.div>
         ))}
     </div>

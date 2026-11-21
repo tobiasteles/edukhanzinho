@@ -1,0 +1,5149 @@
+{
+  "course": {
+    "id": 100,
+    "title": "Edukhanzinho Alfabetização",
+    "imageSrc": "/simbolo-5.jpg"
+  },
+  "units": [
+    {
+      "id": 101,
+      "courseId": 100,
+      "title": "Unidade 1: Conhecendo as Letras",
+      "description": "Descubra as letras do alfabeto, ouça o som de cada uma e ache a letra inicial das palavras.",
+      "order": 1
+    },
+    {
+      "id": 102,
+      "courseId": 100,
+      "title": "Unidade 2: Palavras e Figuras",
+      "description": "Leia a palavra e encontre a figura certa.",
+      "order": 2
+    },
+    {
+      "id": 103,
+      "courseId": 100,
+      "title": "Unidade 3: Sílabas",
+      "description": "Junte as sílabas e complete as palavras.",
+      "order": 3
+    },
+    {
+      "id": 104,
+      "courseId": 100,
+      "title": "Unidade 4: Completando Palavras",
+      "description": "Descubra a letra que está faltando.",
+      "order": 4
+    },
+    {
+      "id": 105,
+      "courseId": 100,
+      "title": "Unidade 5: Frases",
+      "description": "Leia as frases e combine com os desenhos.",
+      "order": 5
+    }
+  ],
+  "lessons": [
+    {
+      "id": 10101,
+      "unitId": 101,
+      "title": "Letras A E I O U",
+      "order": 1
+    },
+    {
+      "id": 10102,
+      "unitId": 101,
+      "title": "Letras B C D F",
+      "order": 2
+    },
+    {
+      "id": 10103,
+      "unitId": 101,
+      "title": "Letras G J L M",
+      "order": 3
+    },
+    {
+      "id": 10104,
+      "unitId": 101,
+      "title": "Letras N P Q R",
+      "order": 4
+    },
+    {
+      "id": 10105,
+      "unitId": 101,
+      "title": "Letras S T V X",
+      "order": 5
+    },
+    {
+      "id": 10106,
+      "unitId": 101,
+      "title": "Letras Z K W Y",
+      "order": 6
+    },
+    {
+      "id": 10201,
+      "unitId": 102,
+      "title": "Figuras 1",
+      "order": 1
+    },
+    {
+      "id": 10202,
+      "unitId": 102,
+      "title": "Figuras 2",
+      "order": 2
+    },
+    {
+      "id": 10203,
+      "unitId": 102,
+      "title": "Figuras 3",
+      "order": 3
+    },
+    {
+      "id": 10204,
+      "unitId": 102,
+      "title": "Figuras 4",
+      "order": 4
+    },
+    {
+      "id": 10205,
+      "unitId": 102,
+      "title": "Figuras 5",
+      "order": 5
+    },
+    {
+      "id": 10301,
+      "unitId": 103,
+      "title": "Sílabas 1",
+      "order": 1
+    },
+    {
+      "id": 10302,
+      "unitId": 103,
+      "title": "Sílabas 2",
+      "order": 2
+    },
+    {
+      "id": 10303,
+      "unitId": 103,
+      "title": "Sílabas 3",
+      "order": 3
+    },
+    {
+      "id": 10304,
+      "unitId": 103,
+      "title": "Sílabas 4",
+      "order": 4
+    },
+    {
+      "id": 10305,
+      "unitId": 103,
+      "title": "Sílabas 5",
+      "order": 5
+    },
+    {
+      "id": 10401,
+      "unitId": 104,
+      "title": "Letra que falta 1",
+      "order": 1
+    },
+    {
+      "id": 10402,
+      "unitId": 104,
+      "title": "Letra que falta 2",
+      "order": 2
+    },
+    {
+      "id": 10403,
+      "unitId": 104,
+      "title": "Letra que falta 3",
+      "order": 3
+    },
+    {
+      "id": 10404,
+      "unitId": 104,
+      "title": "Letra que falta 4",
+      "order": 4
+    },
+    {
+      "id": 10501,
+      "unitId": 105,
+      "title": "Frases 1",
+      "order": 1
+    },
+    {
+      "id": 10502,
+      "unitId": 105,
+      "title": "Frases 2",
+      "order": 2
+    },
+    {
+      "id": 10503,
+      "unitId": 105,
+      "title": "Frases 3",
+      "order": 3
+    },
+    {
+      "id": 10504,
+      "unitId": 105,
+      "title": "Completar frases 1",
+      "order": 4
+    },
+    {
+      "id": 10505,
+      "unitId": 105,
+      "title": "Completar frases 2",
+      "order": 5
+    },
+    {
+      "id": 10506,
+      "unitId": 105,
+      "title": "Completar frases 3",
+      "order": 6
+    }
+  ],
+  "challenges": [
+    {
+      "id": 1010101,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra IGUANA?",
+      "order": 1
+    },
+    {
+      "id": 1010102,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Toque na letra O",
+      "order": 2
+    },
+    {
+      "id": 1010103,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra ABELHA?",
+      "order": 3
+    },
+    {
+      "id": 1010104,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra URSO?",
+      "order": 4
+    },
+    {
+      "id": 1010105,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Toque na letra I",
+      "order": 5
+    },
+    {
+      "id": 1010106,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra ELEFANTE?",
+      "order": 6
+    },
+    {
+      "id": 1010107,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra ÓCULOS?",
+      "order": 7
+    },
+    {
+      "id": 1010108,
+      "lessonId": 10101,
+      "type": "SELECT",
+      "question": "Toque na letra A",
+      "order": 8
+    },
+    {
+      "id": 1010201,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra FOCA?",
+      "order": 1
+    },
+    {
+      "id": 1010202,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Toque na letra C",
+      "order": 2
+    },
+    {
+      "id": 1010203,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra DADO?",
+      "order": 3
+    },
+    {
+      "id": 1010204,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Toque na letra D",
+      "order": 4
+    },
+    {
+      "id": 1010205,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra CASA?",
+      "order": 5
+    },
+    {
+      "id": 1010206,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra BOLA?",
+      "order": 6
+    },
+    {
+      "id": 1010207,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Toque na letra B",
+      "order": 7
+    },
+    {
+      "id": 1010208,
+      "lessonId": 10102,
+      "type": "SELECT",
+      "question": "Toque na letra F",
+      "order": 8
+    },
+    {
+      "id": 1010301,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra JANELA?",
+      "order": 1
+    },
+    {
+      "id": 1010302,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Toque na letra M",
+      "order": 2
+    },
+    {
+      "id": 1010303,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Toque na letra J",
+      "order": 3
+    },
+    {
+      "id": 1010304,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra GATO?",
+      "order": 4
+    },
+    {
+      "id": 1010305,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Toque na letra L",
+      "order": 5
+    },
+    {
+      "id": 1010306,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Toque na letra G",
+      "order": 6
+    },
+    {
+      "id": 1010307,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra MAÇÃ?",
+      "order": 7
+    },
+    {
+      "id": 1010308,
+      "lessonId": 10103,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra LIVRO?",
+      "order": 8
+    },
+    {
+      "id": 1010401,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra QUEIJO?",
+      "order": 1
+    },
+    {
+      "id": 1010402,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra PATO?",
+      "order": 2
+    },
+    {
+      "id": 1010403,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Toque na letra P",
+      "order": 3
+    },
+    {
+      "id": 1010404,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra NAVIO?",
+      "order": 4
+    },
+    {
+      "id": 1010405,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Toque na letra R",
+      "order": 5
+    },
+    {
+      "id": 1010406,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Toque na letra N",
+      "order": 6
+    },
+    {
+      "id": 1010407,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra RATO?",
+      "order": 7
+    },
+    {
+      "id": 1010408,
+      "lessonId": 10104,
+      "type": "SELECT",
+      "question": "Toque na letra Q",
+      "order": 8
+    },
+    {
+      "id": 1010501,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra VASO?",
+      "order": 1
+    },
+    {
+      "id": 1010502,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra SAPO?",
+      "order": 2
+    },
+    {
+      "id": 1010503,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Toque na letra S",
+      "order": 3
+    },
+    {
+      "id": 1010504,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra XÍCARA?",
+      "order": 4
+    },
+    {
+      "id": 1010505,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Toque na letra X",
+      "order": 5
+    },
+    {
+      "id": 1010506,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra TIGRE?",
+      "order": 6
+    },
+    {
+      "id": 1010507,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Toque na letra V",
+      "order": 7
+    },
+    {
+      "id": 1010508,
+      "lessonId": 10105,
+      "type": "SELECT",
+      "question": "Toque na letra T",
+      "order": 8
+    },
+    {
+      "id": 1010601,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Toque na letra W",
+      "order": 1
+    },
+    {
+      "id": 1010602,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Toque na letra K",
+      "order": 2
+    },
+    {
+      "id": 1010603,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra WI-FI?",
+      "order": 3
+    },
+    {
+      "id": 1010604,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Toque na letra Z",
+      "order": 4
+    },
+    {
+      "id": 1010605,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Toque na letra Y",
+      "order": 5
+    },
+    {
+      "id": 1010606,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra KETCHUP?",
+      "order": 6
+    },
+    {
+      "id": 1010607,
+      "lessonId": 10106,
+      "type": "SELECT",
+      "question": "Com qual letra começa a palavra ZEBRA?",
+      "order": 7
+    },
+    {
+      "id": 1020101,
+      "lessonId": 10201,
+      "type": "SELECT",
+      "question": "Toque na figura: WI-FI",
+      "order": 1
+    },
+    {
+      "id": 1020102,
+      "lessonId": 10201,
+      "type": "SELECT",
+      "question": "Toque na figura: ABACAXI",
+      "order": 2
+    },
+    {
+      "id": 1020103,
+      "lessonId": 10201,
+      "type": "SELECT",
+      "question": "Toque na figura: PATO",
+      "order": 3
+    },
+    {
+      "id": 1020104,
+      "lessonId": 10201,
+      "type": "SELECT",
+      "question": "Toque na figura: QUEIJO",
+      "order": 4
+    },
+    {
+      "id": 1020105,
+      "lessonId": 10201,
+      "type": "SELECT",
+      "question": "Toque na figura: HIPOPÓTAMO",
+      "order": 5
+    },
+    {
+      "id": 1020106,
+      "lessonId": 10201,
+      "type": "SELECT",
+      "question": "Toque na figura: TIGRE",
+      "order": 6
+    },
+    {
+      "id": 1020201,
+      "lessonId": 10202,
+      "type": "SELECT",
+      "question": "Toque na figura: GATO",
+      "order": 1
+    },
+    {
+      "id": 1020202,
+      "lessonId": 10202,
+      "type": "SELECT",
+      "question": "Toque na figura: DADO",
+      "order": 2
+    },
+    {
+      "id": 1020203,
+      "lessonId": 10202,
+      "type": "SELECT",
+      "question": "Toque na figura: XÍCARA",
+      "order": 3
+    },
+    {
+      "id": 1020204,
+      "lessonId": 10202,
+      "type": "SELECT",
+      "question": "Toque na figura: JANELA",
+      "order": 4
+    },
+    {
+      "id": 1020205,
+      "lessonId": 10202,
+      "type": "SELECT",
+      "question": "Toque na figura: AVIÃO",
+      "order": 5
+    },
+    {
+      "id": 1020206,
+      "lessonId": 10202,
+      "type": "SELECT",
+      "question": "Toque na figura: LIVRO",
+      "order": 6
+    },
+    {
+      "id": 1020301,
+      "lessonId": 10203,
+      "type": "SELECT",
+      "question": "Toque na figura: ÓCULOS",
+      "order": 1
+    },
+    {
+      "id": 1020302,
+      "lessonId": 10203,
+      "type": "SELECT",
+      "question": "Toque na figura: NAVIO",
+      "order": 2
+    },
+    {
+      "id": 1020303,
+      "lessonId": 10203,
+      "type": "SELECT",
+      "question": "Toque na figura: MAÇÃ",
+      "order": 3
+    },
+    {
+      "id": 1020304,
+      "lessonId": 10203,
+      "type": "SELECT",
+      "question": "Toque na figura: VACA",
+      "order": 4
+    },
+    {
+      "id": 1020305,
+      "lessonId": 10203,
+      "type": "SELECT",
+      "question": "Toque na figura: BANANA",
+      "order": 5
+    },
+    {
+      "id": 1020306,
+      "lessonId": 10203,
+      "type": "SELECT",
+      "question": "Toque na figura: ABELHA",
+      "order": 6
+    },
+    {
+      "id": 1020401,
+      "lessonId": 10204,
+      "type": "SELECT",
+      "question": "Toque na figura: ZEBRA",
+      "order": 1
+    },
+    {
+      "id": 1020402,
+      "lessonId": 10204,
+      "type": "SELECT",
+      "question": "Toque na figura: ELEFANTE",
+      "order": 2
+    },
+    {
+      "id": 1020403,
+      "lessonId": 10204,
+      "type": "SELECT",
+      "question": "Toque na figura: FOCA",
+      "order": 3
+    },
+    {
+      "id": 1020404,
+      "lessonId": 10204,
+      "type": "SELECT",
+      "question": "Toque na figura: SAPO",
+      "order": 4
+    },
+    {
+      "id": 1020405,
+      "lessonId": 10204,
+      "type": "SELECT",
+      "question": "Toque na figura: VASO",
+      "order": 5
+    },
+    {
+      "id": 1020406,
+      "lessonId": 10204,
+      "type": "SELECT",
+      "question": "Toque na figura: KETCHUP",
+      "order": 6
+    },
+    {
+      "id": 1020501,
+      "lessonId": 10205,
+      "type": "SELECT",
+      "question": "Toque na figura: IGUANA",
+      "order": 1
+    },
+    {
+      "id": 1020502,
+      "lessonId": 10205,
+      "type": "SELECT",
+      "question": "Toque na figura: LEÃO",
+      "order": 2
+    },
+    {
+      "id": 1020503,
+      "lessonId": 10205,
+      "type": "SELECT",
+      "question": "Toque na figura: URSO",
+      "order": 3
+    },
+    {
+      "id": 1020504,
+      "lessonId": 10205,
+      "type": "SELECT",
+      "question": "Toque na figura: RATO",
+      "order": 4
+    },
+    {
+      "id": 1020505,
+      "lessonId": 10205,
+      "type": "SELECT",
+      "question": "Toque na figura: CASA",
+      "order": 5
+    },
+    {
+      "id": 1020506,
+      "lessonId": 10205,
+      "type": "SELECT",
+      "question": "Toque na figura: BOLA",
+      "order": 6
+    },
+    {
+      "id": 1030101,
+      "lessonId": 10301,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? A-BA-__-XI",
+      "order": 1
+    },
+    {
+      "id": 1030102,
+      "lessonId": 10301,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? A-__-LHA",
+      "order": 2
+    },
+    {
+      "id": 1030103,
+      "lessonId": 10301,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? A-__-ÃO",
+      "order": 3
+    },
+    {
+      "id": 1030104,
+      "lessonId": 10301,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? BA-__-NA",
+      "order": 4
+    },
+    {
+      "id": 1030105,
+      "lessonId": 10301,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-LA",
+      "order": 5
+    },
+    {
+      "id": 1030106,
+      "lessonId": 10301,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-SA",
+      "order": 6
+    },
+    {
+      "id": 1030201,
+      "lessonId": 10302,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? DA-__",
+      "order": 1
+    },
+    {
+      "id": 1030202,
+      "lessonId": 10302,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? E-LE-FAN-__",
+      "order": 2
+    },
+    {
+      "id": 1030203,
+      "lessonId": 10302,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? FO-__",
+      "order": 3
+    },
+    {
+      "id": 1030204,
+      "lessonId": 10302,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-TO",
+      "order": 4
+    },
+    {
+      "id": 1030205,
+      "lessonId": 10302,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? HI-__-PÓ-TA-MO",
+      "order": 5
+    },
+    {
+      "id": 1030206,
+      "lessonId": 10302,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? I-GUA-__",
+      "order": 6
+    },
+    {
+      "id": 1030301,
+      "lessonId": 10303,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? JA-__-LA",
+      "order": 1
+    },
+    {
+      "id": 1030302,
+      "lessonId": 10303,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-ÃO",
+      "order": 2
+    },
+    {
+      "id": 1030303,
+      "lessonId": 10303,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-VRO",
+      "order": 3
+    },
+    {
+      "id": 1030304,
+      "lessonId": 10303,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-ÇÃ",
+      "order": 4
+    },
+    {
+      "id": 1030305,
+      "lessonId": 10303,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-VI-O",
+      "order": 5
+    },
+    {
+      "id": 1030306,
+      "lessonId": 10303,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? Ó-__-LOS",
+      "order": 6
+    },
+    {
+      "id": 1030401,
+      "lessonId": 10304,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-TO",
+      "order": 1
+    },
+    {
+      "id": 1030402,
+      "lessonId": 10304,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? QUEI-__",
+      "order": 2
+    },
+    {
+      "id": 1030403,
+      "lessonId": 10304,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? RA-__",
+      "order": 3
+    },
+    {
+      "id": 1030404,
+      "lessonId": 10304,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-PO",
+      "order": 4
+    },
+    {
+      "id": 1030405,
+      "lessonId": 10304,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-GRE",
+      "order": 5
+    },
+    {
+      "id": 1030406,
+      "lessonId": 10304,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? UR-__",
+      "order": 6
+    },
+    {
+      "id": 1030501,
+      "lessonId": 10305,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-CA",
+      "order": 1
+    },
+    {
+      "id": 1030502,
+      "lessonId": 10305,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? VA-__",
+      "order": 2
+    },
+    {
+      "id": 1030503,
+      "lessonId": 10305,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? WI-__",
+      "order": 3
+    },
+    {
+      "id": 1030504,
+      "lessonId": 10305,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? XÍ-CA-__",
+      "order": 4
+    },
+    {
+      "id": 1030505,
+      "lessonId": 10305,
+      "type": "SELECT",
+      "question": "Que sílaba completa a palavra? __-BRA",
+      "order": 5
+    },
+    {
+      "id": 1040101,
+      "lessonId": 10401,
+      "type": "SELECT",
+      "question": "Que letra falta? A B A C A X _",
+      "order": 1
+    },
+    {
+      "id": 1040102,
+      "lessonId": 10401,
+      "type": "SELECT",
+      "question": "Que letra falta? A B _ L H A",
+      "order": 2
+    },
+    {
+      "id": 1040103,
+      "lessonId": 10401,
+      "type": "SELECT",
+      "question": "Que letra falta? B A N A N _",
+      "order": 3
+    },
+    {
+      "id": 1040104,
+      "lessonId": 10401,
+      "type": "SELECT",
+      "question": "Que letra falta? B _ L A",
+      "order": 4
+    },
+    {
+      "id": 1040105,
+      "lessonId": 10401,
+      "type": "SELECT",
+      "question": "Que letra falta? C _ S A",
+      "order": 5
+    },
+    {
+      "id": 1040106,
+      "lessonId": 10401,
+      "type": "SELECT",
+      "question": "Que letra falta? D A D _",
+      "order": 6
+    },
+    {
+      "id": 1040201,
+      "lessonId": 10402,
+      "type": "SELECT",
+      "question": "Que letra falta? E L E F A N T _",
+      "order": 1
+    },
+    {
+      "id": 1040202,
+      "lessonId": 10402,
+      "type": "SELECT",
+      "question": "Que letra falta? F _ C A",
+      "order": 2
+    },
+    {
+      "id": 1040203,
+      "lessonId": 10402,
+      "type": "SELECT",
+      "question": "Que letra falta? G A T _",
+      "order": 3
+    },
+    {
+      "id": 1040204,
+      "lessonId": 10402,
+      "type": "SELECT",
+      "question": "Que letra falta? I G U _ N A",
+      "order": 4
+    },
+    {
+      "id": 1040205,
+      "lessonId": 10402,
+      "type": "SELECT",
+      "question": "Que letra falta? J _ N E L A",
+      "order": 5
+    },
+    {
+      "id": 1040206,
+      "lessonId": 10402,
+      "type": "SELECT",
+      "question": "Que letra falta? K _ T C H U P",
+      "order": 6
+    },
+    {
+      "id": 1040301,
+      "lessonId": 10403,
+      "type": "SELECT",
+      "question": "Que letra falta? L I V R _",
+      "order": 1
+    },
+    {
+      "id": 1040302,
+      "lessonId": 10403,
+      "type": "SELECT",
+      "question": "Que letra falta? N A V I _",
+      "order": 2
+    },
+    {
+      "id": 1040303,
+      "lessonId": 10403,
+      "type": "SELECT",
+      "question": "Que letra falta? P _ T O",
+      "order": 3
+    },
+    {
+      "id": 1040304,
+      "lessonId": 10403,
+      "type": "SELECT",
+      "question": "Que letra falta? Q U E _ J O",
+      "order": 4
+    },
+    {
+      "id": 1040305,
+      "lessonId": 10403,
+      "type": "SELECT",
+      "question": "Que letra falta? R _ T O",
+      "order": 5
+    },
+    {
+      "id": 1040306,
+      "lessonId": 10403,
+      "type": "SELECT",
+      "question": "Que letra falta? S A P _",
+      "order": 6
+    },
+    {
+      "id": 1040401,
+      "lessonId": 10404,
+      "type": "SELECT",
+      "question": "Que letra falta? T _ G R E",
+      "order": 1
+    },
+    {
+      "id": 1040402,
+      "lessonId": 10404,
+      "type": "SELECT",
+      "question": "Que letra falta? U R S _",
+      "order": 2
+    },
+    {
+      "id": 1040403,
+      "lessonId": 10404,
+      "type": "SELECT",
+      "question": "Que letra falta? V _ C A",
+      "order": 3
+    },
+    {
+      "id": 1040404,
+      "lessonId": 10404,
+      "type": "SELECT",
+      "question": "Que letra falta? V _ S O",
+      "order": 4
+    },
+    {
+      "id": 1040405,
+      "lessonId": 10404,
+      "type": "SELECT",
+      "question": "Que letra falta? Z _ B R A",
+      "order": 5
+    },
+    {
+      "id": 1050101,
+      "lessonId": 10501,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O cachorro late.",
+      "order": 1
+    },
+    {
+      "id": 1050102,
+      "lessonId": 10501,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A lua é amarela.",
+      "order": 2
+    },
+    {
+      "id": 1050103,
+      "lessonId": 10501,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A estrela brilha.",
+      "order": 3
+    },
+    {
+      "id": 1050104,
+      "lessonId": 10501,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O peixe nada.",
+      "order": 4
+    },
+    {
+      "id": 1050105,
+      "lessonId": 10501,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A nuvem é branca.",
+      "order": 5
+    },
+    {
+      "id": 1050201,
+      "lessonId": 10502,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A flor é rosa.",
+      "order": 1
+    },
+    {
+      "id": 1050202,
+      "lessonId": 10502,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O coelho pula.",
+      "order": 2
+    },
+    {
+      "id": 1050203,
+      "lessonId": 10502,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A abelha voa.",
+      "order": 3
+    },
+    {
+      "id": 1050204,
+      "lessonId": 10502,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A maçã é vermelha.",
+      "order": 4
+    },
+    {
+      "id": 1050205,
+      "lessonId": 10502,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O pato nada.",
+      "order": 5
+    },
+    {
+      "id": 1050301,
+      "lessonId": 10503,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O pássaro canta.",
+      "order": 1
+    },
+    {
+      "id": 1050302,
+      "lessonId": 10503,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O gato dorme.",
+      "order": 2
+    },
+    {
+      "id": 1050303,
+      "lessonId": 10503,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: O sol brilha.",
+      "order": 3
+    },
+    {
+      "id": 1050304,
+      "lessonId": 10503,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A bola é azul.",
+      "order": 4
+    },
+    {
+      "id": 1050305,
+      "lessonId": 10503,
+      "type": "SELECT",
+      "question": "Toque no desenho da frase: A árvore é verde.",
+      "order": 5
+    },
+    {
+      "id": 1050401,
+      "lessonId": 10504,
+      "type": "SELECT",
+      "question": "Complete a frase: O cachorro ___.",
+      "order": 1
+    },
+    {
+      "id": 1050402,
+      "lessonId": 10504,
+      "type": "SELECT",
+      "question": "Complete a frase: A lua é ___.",
+      "order": 2
+    },
+    {
+      "id": 1050403,
+      "lessonId": 10504,
+      "type": "SELECT",
+      "question": "Complete a frase: A estrela ___.",
+      "order": 3
+    },
+    {
+      "id": 1050404,
+      "lessonId": 10504,
+      "type": "SELECT",
+      "question": "Complete a frase: O peixe ___.",
+      "order": 4
+    },
+    {
+      "id": 1050405,
+      "lessonId": 10504,
+      "type": "SELECT",
+      "question": "Complete a frase: A nuvem é ___.",
+      "order": 5
+    },
+    {
+      "id": 1050501,
+      "lessonId": 10505,
+      "type": "SELECT",
+      "question": "Complete a frase: A flor é ___.",
+      "order": 1
+    },
+    {
+      "id": 1050502,
+      "lessonId": 10505,
+      "type": "SELECT",
+      "question": "Complete a frase: O coelho ___.",
+      "order": 2
+    },
+    {
+      "id": 1050503,
+      "lessonId": 10505,
+      "type": "SELECT",
+      "question": "Complete a frase: A abelha ___.",
+      "order": 3
+    },
+    {
+      "id": 1050504,
+      "lessonId": 10505,
+      "type": "SELECT",
+      "question": "Complete a frase: A maçã é ___.",
+      "order": 4
+    },
+    {
+      "id": 1050505,
+      "lessonId": 10505,
+      "type": "SELECT",
+      "question": "Complete a frase: O pato ___.",
+      "order": 5
+    },
+    {
+      "id": 1050601,
+      "lessonId": 10506,
+      "type": "SELECT",
+      "question": "Complete a frase: O pássaro ___.",
+      "order": 1
+    },
+    {
+      "id": 1050602,
+      "lessonId": 10506,
+      "type": "SELECT",
+      "question": "Complete a frase: O gato ___.",
+      "order": 2
+    },
+    {
+      "id": 1050603,
+      "lessonId": 10506,
+      "type": "SELECT",
+      "question": "Complete a frase: O sol ___.",
+      "order": 3
+    },
+    {
+      "id": 1050604,
+      "lessonId": 10506,
+      "type": "SELECT",
+      "question": "Complete a frase: A bola é ___.",
+      "order": 4
+    },
+    {
+      "id": 1050605,
+      "lessonId": 10506,
+      "type": "SELECT",
+      "question": "Complete a frase: A árvore é ___.",
+      "order": 5
+    }
+  ],
+  "options": [
+    {
+      "id": 10101011,
+      "challengeId": 1010101,
+      "text": "I",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10101012,
+      "challengeId": 1010101,
+      "text": "A",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10101013,
+      "challengeId": 1010101,
+      "text": "J",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/j.mp3"
+    },
+    {
+      "id": 10101021,
+      "challengeId": 1010102,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10101022,
+      "challengeId": 1010102,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10101023,
+      "challengeId": 1010102,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10101031,
+      "challengeId": 1010103,
+      "text": "I",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10101032,
+      "challengeId": 1010103,
+      "text": "A",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10101033,
+      "challengeId": 1010103,
+      "text": "U",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10101041,
+      "challengeId": 1010104,
+      "text": "O",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10101042,
+      "challengeId": 1010104,
+      "text": "U",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10101043,
+      "challengeId": 1010104,
+      "text": "I",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10101051,
+      "challengeId": 1010105,
+      "text": "I",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10101052,
+      "challengeId": 1010105,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10101053,
+      "challengeId": 1010105,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10101061,
+      "challengeId": 1010106,
+      "text": "E",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10101062,
+      "challengeId": 1010106,
+      "text": "A",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10101063,
+      "challengeId": 1010106,
+      "text": "U",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10101071,
+      "challengeId": 1010107,
+      "text": "O",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10101072,
+      "challengeId": 1010107,
+      "text": "U",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10101073,
+      "challengeId": 1010107,
+      "text": "A",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10101081,
+      "challengeId": 1010108,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10101082,
+      "challengeId": 1010108,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10101083,
+      "challengeId": 1010108,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10102011,
+      "challengeId": 1010201,
+      "text": "F",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/f.mp3"
+    },
+    {
+      "id": 10102012,
+      "challengeId": 1010201,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10102013,
+      "challengeId": 1010201,
+      "text": "V",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/v.mp3"
+    },
+    {
+      "id": 10102021,
+      "challengeId": 1010202,
+      "text": "K",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_K.png",
+      "audioSrc": "/audioSrc/letras/k.mp3"
+    },
+    {
+      "id": 10102022,
+      "challengeId": 1010202,
+      "text": "G",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_G.png",
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10102023,
+      "challengeId": 1010202,
+      "text": "C",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_C.png",
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10102031,
+      "challengeId": 1010203,
+      "text": "D",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10102032,
+      "challengeId": 1010203,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10102033,
+      "challengeId": 1010203,
+      "text": "T",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/t.mp3"
+    },
+    {
+      "id": 10102041,
+      "challengeId": 1010204,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Q.png",
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10102042,
+      "challengeId": 1010204,
+      "text": "B",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_B.png",
+      "audioSrc": "/audioSrc/letras/b.mp3"
+    },
+    {
+      "id": 10102043,
+      "challengeId": 1010204,
+      "text": "D",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_D.png",
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10102051,
+      "challengeId": 1010205,
+      "text": "C",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10102052,
+      "challengeId": 1010205,
+      "text": "K",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/k.mp3"
+    },
+    {
+      "id": 10102053,
+      "challengeId": 1010205,
+      "text": "G",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10102061,
+      "challengeId": 1010206,
+      "text": "B",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/b.mp3"
+    },
+    {
+      "id": 10102062,
+      "challengeId": 1010206,
+      "text": "D",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10102063,
+      "challengeId": 1010206,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10102071,
+      "challengeId": 1010207,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Q.png",
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10102072,
+      "challengeId": 1010207,
+      "text": "B",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_B.png",
+      "audioSrc": "/audioSrc/letras/b.mp3"
+    },
+    {
+      "id": 10102073,
+      "challengeId": 1010207,
+      "text": "D",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_D.png",
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10102081,
+      "challengeId": 1010208,
+      "text": "F",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_F.png",
+      "audioSrc": "/audioSrc/letras/f.mp3"
+    },
+    {
+      "id": 10102082,
+      "challengeId": 1010208,
+      "text": "V",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_V.png",
+      "audioSrc": "/audioSrc/letras/v.mp3"
+    },
+    {
+      "id": 10102083,
+      "challengeId": 1010208,
+      "text": "J",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_J.png",
+      "audioSrc": "/audioSrc/letras/j.mp3"
+    },
+    {
+      "id": 10103011,
+      "challengeId": 1010301,
+      "text": "Y",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/y.mp3"
+    },
+    {
+      "id": 10103012,
+      "challengeId": 1010301,
+      "text": "J",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/j.mp3"
+    },
+    {
+      "id": 10103013,
+      "challengeId": 1010301,
+      "text": "I",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10103021,
+      "challengeId": 1010302,
+      "text": "N",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_N.png",
+      "audioSrc": "/audioSrc/letras/n.mp3"
+    },
+    {
+      "id": 10103022,
+      "challengeId": 1010302,
+      "text": "M",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_M.png",
+      "audioSrc": "/audioSrc/letras/m.mp3"
+    },
+    {
+      "id": 10103023,
+      "challengeId": 1010302,
+      "text": "Z",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Z.png",
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10103031,
+      "challengeId": 1010303,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10103032,
+      "challengeId": 1010303,
+      "text": "C",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_C.png",
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10103033,
+      "challengeId": 1010303,
+      "text": "J",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_J.png",
+      "audioSrc": "/audioSrc/letras/j.mp3"
+    },
+    {
+      "id": 10103041,
+      "challengeId": 1010304,
+      "text": "G",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10103042,
+      "challengeId": 1010304,
+      "text": "K",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/k.mp3"
+    },
+    {
+      "id": 10103043,
+      "challengeId": 1010304,
+      "text": "C",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10103051,
+      "challengeId": 1010305,
+      "text": "L",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_L.png",
+      "audioSrc": "/audioSrc/letras/l.mp3"
+    },
+    {
+      "id": 10103052,
+      "challengeId": 1010305,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10103053,
+      "challengeId": 1010305,
+      "text": "R",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_R.png",
+      "audioSrc": "/audioSrc/letras/r.mp3"
+    },
+    {
+      "id": 10103061,
+      "challengeId": 1010306,
+      "text": "C",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_C.png",
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10103062,
+      "challengeId": 1010306,
+      "text": "K",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_K.png",
+      "audioSrc": "/audioSrc/letras/k.mp3"
+    },
+    {
+      "id": 10103063,
+      "challengeId": 1010306,
+      "text": "G",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_G.png",
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10103071,
+      "challengeId": 1010307,
+      "text": "Y",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/y.mp3"
+    },
+    {
+      "id": 10103072,
+      "challengeId": 1010307,
+      "text": "M",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/m.mp3"
+    },
+    {
+      "id": 10103073,
+      "challengeId": 1010307,
+      "text": "N",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/n.mp3"
+    },
+    {
+      "id": 10103081,
+      "challengeId": 1010308,
+      "text": "R",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/r.mp3"
+    },
+    {
+      "id": 10103082,
+      "challengeId": 1010308,
+      "text": "F",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/f.mp3"
+    },
+    {
+      "id": 10103083,
+      "challengeId": 1010308,
+      "text": "L",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/l.mp3"
+    },
+    {
+      "id": 10104011,
+      "challengeId": 1010401,
+      "text": "Q",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10104012,
+      "challengeId": 1010401,
+      "text": "D",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10104013,
+      "challengeId": 1010401,
+      "text": "B",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/b.mp3"
+    },
+    {
+      "id": 10104021,
+      "challengeId": 1010402,
+      "text": "D",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10104022,
+      "challengeId": 1010402,
+      "text": "P",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/p.mp3"
+    },
+    {
+      "id": 10104023,
+      "challengeId": 1010402,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10104031,
+      "challengeId": 1010403,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Q.png",
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10104032,
+      "challengeId": 1010403,
+      "text": "P",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_P.png",
+      "audioSrc": "/audioSrc/letras/p.mp3"
+    },
+    {
+      "id": 10104033,
+      "challengeId": 1010403,
+      "text": "D",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_D.png",
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10104041,
+      "challengeId": 1010404,
+      "text": "M",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/m.mp3"
+    },
+    {
+      "id": 10104042,
+      "challengeId": 1010404,
+      "text": "G",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10104043,
+      "challengeId": 1010404,
+      "text": "N",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/n.mp3"
+    },
+    {
+      "id": 10104051,
+      "challengeId": 1010405,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10104052,
+      "challengeId": 1010405,
+      "text": "R",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_R.png",
+      "audioSrc": "/audioSrc/letras/r.mp3"
+    },
+    {
+      "id": 10104053,
+      "challengeId": 1010405,
+      "text": "L",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_L.png",
+      "audioSrc": "/audioSrc/letras/l.mp3"
+    },
+    {
+      "id": 10104061,
+      "challengeId": 1010406,
+      "text": "M",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_M.png",
+      "audioSrc": "/audioSrc/letras/m.mp3"
+    },
+    {
+      "id": 10104062,
+      "challengeId": 1010406,
+      "text": "N",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_N.png",
+      "audioSrc": "/audioSrc/letras/n.mp3"
+    },
+    {
+      "id": 10104063,
+      "challengeId": 1010406,
+      "text": "X",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_X.png",
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10104071,
+      "challengeId": 1010407,
+      "text": "J",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/j.mp3"
+    },
+    {
+      "id": 10104072,
+      "challengeId": 1010407,
+      "text": "R",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/r.mp3"
+    },
+    {
+      "id": 10104073,
+      "challengeId": 1010407,
+      "text": "L",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/l.mp3"
+    },
+    {
+      "id": 10104081,
+      "challengeId": 1010408,
+      "text": "Q",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_Q.png",
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10104082,
+      "challengeId": 1010408,
+      "text": "D",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_D.png",
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10104083,
+      "challengeId": 1010408,
+      "text": "B",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_B.png",
+      "audioSrc": "/audioSrc/letras/b.mp3"
+    },
+    {
+      "id": 10105011,
+      "challengeId": 1010501,
+      "text": "U",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10105012,
+      "challengeId": 1010501,
+      "text": "V",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/v.mp3"
+    },
+    {
+      "id": 10105013,
+      "challengeId": 1010501,
+      "text": "F",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/f.mp3"
+    },
+    {
+      "id": 10105021,
+      "challengeId": 1010502,
+      "text": "X",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10105022,
+      "challengeId": 1010502,
+      "text": "Z",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10105023,
+      "challengeId": 1010502,
+      "text": "S",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/s.mp3"
+    },
+    {
+      "id": 10105031,
+      "challengeId": 1010503,
+      "text": "S",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_S.png",
+      "audioSrc": "/audioSrc/letras/s.mp3"
+    },
+    {
+      "id": 10105032,
+      "challengeId": 1010503,
+      "text": "Z",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Z.png",
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10105033,
+      "challengeId": 1010503,
+      "text": "X",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_X.png",
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10105041,
+      "challengeId": 1010504,
+      "text": "Z",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10105042,
+      "challengeId": 1010504,
+      "text": "S",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/s.mp3"
+    },
+    {
+      "id": 10105043,
+      "challengeId": 1010504,
+      "text": "X",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10105051,
+      "challengeId": 1010505,
+      "text": "S",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_S.png",
+      "audioSrc": "/audioSrc/letras/s.mp3"
+    },
+    {
+      "id": 10105052,
+      "challengeId": 1010505,
+      "text": "X",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_X.png",
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10105053,
+      "challengeId": 1010505,
+      "text": "Z",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Z.png",
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10105061,
+      "challengeId": 1010506,
+      "text": "G",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10105062,
+      "challengeId": 1010506,
+      "text": "T",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/t.mp3"
+    },
+    {
+      "id": 10105063,
+      "challengeId": 1010506,
+      "text": "D",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10105071,
+      "challengeId": 1010507,
+      "text": "V",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_V.png",
+      "audioSrc": "/audioSrc/letras/v.mp3"
+    },
+    {
+      "id": 10105072,
+      "challengeId": 1010507,
+      "text": "F",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_F.png",
+      "audioSrc": "/audioSrc/letras/f.mp3"
+    },
+    {
+      "id": 10105073,
+      "challengeId": 1010507,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10105081,
+      "challengeId": 1010508,
+      "text": "T",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_T.png",
+      "audioSrc": "/audioSrc/letras/t.mp3"
+    },
+    {
+      "id": 10105082,
+      "challengeId": 1010508,
+      "text": "V",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_V.png",
+      "audioSrc": "/audioSrc/letras/v.mp3"
+    },
+    {
+      "id": 10105083,
+      "challengeId": 1010508,
+      "text": "D",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_D.png",
+      "audioSrc": "/audioSrc/letras/d.mp3"
+    },
+    {
+      "id": 10106011,
+      "challengeId": 1010601,
+      "text": "W",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_W.png",
+      "audioSrc": "/audioSrc/letras/w.mp3"
+    },
+    {
+      "id": 10106012,
+      "challengeId": 1010601,
+      "text": "H",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_H.png",
+      "audioSrc": "/audioSrc/letras/h.mp3"
+    },
+    {
+      "id": 10106013,
+      "challengeId": 1010601,
+      "text": "T",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_T.png",
+      "audioSrc": "/audioSrc/letras/t.mp3"
+    },
+    {
+      "id": 10106021,
+      "challengeId": 1010602,
+      "text": "G",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_G.png",
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10106022,
+      "challengeId": 1010602,
+      "text": "C",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_C.png",
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10106023,
+      "challengeId": 1010602,
+      "text": "K",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_K.png",
+      "audioSrc": "/audioSrc/letras/k.mp3"
+    },
+    {
+      "id": 10106031,
+      "challengeId": 1010603,
+      "text": "W",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/w.mp3"
+    },
+    {
+      "id": 10106032,
+      "challengeId": 1010603,
+      "text": "J",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/j.mp3"
+    },
+    {
+      "id": 10106033,
+      "challengeId": 1010603,
+      "text": "U",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10106041,
+      "challengeId": 1010604,
+      "text": "S",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_S.png",
+      "audioSrc": "/audioSrc/letras/s.mp3"
+    },
+    {
+      "id": 10106042,
+      "challengeId": 1010604,
+      "text": "Z",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_Z.png",
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10106043,
+      "challengeId": 1010604,
+      "text": "X",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_X.png",
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10106051,
+      "challengeId": 1010605,
+      "text": "C",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_C.png",
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10106052,
+      "challengeId": 1010605,
+      "text": "Y",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_Y.png",
+      "audioSrc": "/audioSrc/letras/y.mp3"
+    },
+    {
+      "id": 10106053,
+      "challengeId": 1010605,
+      "text": "Q",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_Q.png",
+      "audioSrc": "/audioSrc/letras/q.mp3"
+    },
+    {
+      "id": 10106061,
+      "challengeId": 1010606,
+      "text": "C",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/c.mp3"
+    },
+    {
+      "id": 10106062,
+      "challengeId": 1010606,
+      "text": "K",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/k.mp3"
+    },
+    {
+      "id": 10106063,
+      "challengeId": 1010606,
+      "text": "G",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/g.mp3"
+    },
+    {
+      "id": 10106071,
+      "challengeId": 1010607,
+      "text": "Z",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/z.mp3"
+    },
+    {
+      "id": 10106072,
+      "challengeId": 1010607,
+      "text": "X",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/x.mp3"
+    },
+    {
+      "id": 10106073,
+      "challengeId": 1010607,
+      "text": "S",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": "/audioSrc/letras/s.mp3"
+    },
+    {
+      "id": 10201011,
+      "challengeId": 1020101,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/wifi.png",
+      "audioSrc": "/audioSrc/wifi.mp3"
+    },
+    {
+      "id": 10201012,
+      "challengeId": 1020101,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/sapo.png",
+      "audioSrc": "/audioSrc/sapo.mp3"
+    },
+    {
+      "id": 10201013,
+      "challengeId": 1020101,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/foca.png",
+      "audioSrc": "/audioSrc/foca.mp3"
+    },
+    {
+      "id": 10201021,
+      "challengeId": 1020102,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/abacaxi.png",
+      "audioSrc": "/audioSrc/abacaxi.mp3"
+    },
+    {
+      "id": 10201022,
+      "challengeId": 1020102,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/zebra.png",
+      "audioSrc": "/audioSrc/zebra.mp3"
+    },
+    {
+      "id": 10201023,
+      "challengeId": 1020102,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/rato.png",
+      "audioSrc": "/audioSrc/rato.mp3"
+    },
+    {
+      "id": 10201031,
+      "challengeId": 1020103,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/abelha.png",
+      "audioSrc": "/audioSrc/abelha.mp3"
+    },
+    {
+      "id": 10201032,
+      "challengeId": 1020103,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/pato.png",
+      "audioSrc": "/audioSrc/pato.mp3"
+    },
+    {
+      "id": 10201033,
+      "challengeId": 1020103,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/banana.png",
+      "audioSrc": "/audioSrc/banana.mp3"
+    },
+    {
+      "id": 10201041,
+      "challengeId": 1020104,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/wifi.png",
+      "audioSrc": "/audioSrc/wifi.mp3"
+    },
+    {
+      "id": 10201042,
+      "challengeId": 1020104,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/queijo.png",
+      "audioSrc": "/audioSrc/queijo.mp3"
+    },
+    {
+      "id": 10201043,
+      "challengeId": 1020104,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/maca.png",
+      "audioSrc": "/audioSrc/maca.mp3"
+    },
+    {
+      "id": 10201051,
+      "challengeId": 1020105,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/hipopotamo.png",
+      "audioSrc": "/audioSrc/hipopotamo.mp3"
+    },
+    {
+      "id": 10201052,
+      "challengeId": 1020105,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/gato.png",
+      "audioSrc": "/audioSrc/gato.mp3"
+    },
+    {
+      "id": 10201053,
+      "challengeId": 1020105,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/rato.png",
+      "audioSrc": "/audioSrc/rato.mp3"
+    },
+    {
+      "id": 10201061,
+      "challengeId": 1020106,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/hipopotamo.png",
+      "audioSrc": "/audioSrc/hipopotamo.mp3"
+    },
+    {
+      "id": 10201062,
+      "challengeId": 1020106,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/tigre.png",
+      "audioSrc": "/audioSrc/tigre.mp3"
+    },
+    {
+      "id": 10201063,
+      "challengeId": 1020106,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/dado.png",
+      "audioSrc": "/audioSrc/dado.mp3"
+    },
+    {
+      "id": 10202011,
+      "challengeId": 1020201,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/pato.png",
+      "audioSrc": "/audioSrc/pato.mp3"
+    },
+    {
+      "id": 10202012,
+      "challengeId": 1020201,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/abacaxi.png",
+      "audioSrc": "/audioSrc/abacaxi.mp3"
+    },
+    {
+      "id": 10202013,
+      "challengeId": 1020201,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/gato.png",
+      "audioSrc": "/audioSrc/gato.mp3"
+    },
+    {
+      "id": 10202021,
+      "challengeId": 1020202,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/dado.png",
+      "audioSrc": "/audioSrc/dado.mp3"
+    },
+    {
+      "id": 10202022,
+      "challengeId": 1020202,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/xicara.png",
+      "audioSrc": "/audioSrc/xicara.mp3"
+    },
+    {
+      "id": 10202023,
+      "challengeId": 1020202,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/abacaxi.png",
+      "audioSrc": "/audioSrc/abacaxi.mp3"
+    },
+    {
+      "id": 10202031,
+      "challengeId": 1020203,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/xicara.png",
+      "audioSrc": "/audioSrc/xicara.mp3"
+    },
+    {
+      "id": 10202032,
+      "challengeId": 1020203,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/banana.png",
+      "audioSrc": "/audioSrc/banana.mp3"
+    },
+    {
+      "id": 10202033,
+      "challengeId": 1020203,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/livro.png",
+      "audioSrc": "/audioSrc/livro.mp3"
+    },
+    {
+      "id": 10202041,
+      "challengeId": 1020204,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/janela.png",
+      "audioSrc": "/audioSrc/janela.mp3"
+    },
+    {
+      "id": 10202042,
+      "challengeId": 1020204,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/sapo.png",
+      "audioSrc": "/audioSrc/sapo.mp3"
+    },
+    {
+      "id": 10202043,
+      "challengeId": 1020204,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/urso.png",
+      "audioSrc": "/audioSrc/urso.mp3"
+    },
+    {
+      "id": 10202051,
+      "challengeId": 1020205,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/oculos.png",
+      "audioSrc": "/audioSrc/oculos.mp3"
+    },
+    {
+      "id": 10202052,
+      "challengeId": 1020205,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/xicara.png",
+      "audioSrc": "/audioSrc/xicara.mp3"
+    },
+    {
+      "id": 10202053,
+      "challengeId": 1020205,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/aviao.png",
+      "audioSrc": "/audioSrc/aviao.mp3"
+    },
+    {
+      "id": 10202061,
+      "challengeId": 1020206,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/livro.png",
+      "audioSrc": "/audioSrc/livro.mp3"
+    },
+    {
+      "id": 10202062,
+      "challengeId": 1020206,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/xicara.png",
+      "audioSrc": "/audioSrc/xicara.mp3"
+    },
+    {
+      "id": 10202063,
+      "challengeId": 1020206,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/aviao.png",
+      "audioSrc": "/audioSrc/aviao.mp3"
+    },
+    {
+      "id": 10203011,
+      "challengeId": 1020301,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/banana.png",
+      "audioSrc": "/audioSrc/banana.mp3"
+    },
+    {
+      "id": 10203012,
+      "challengeId": 1020301,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/zebra.png",
+      "audioSrc": "/audioSrc/zebra.mp3"
+    },
+    {
+      "id": 10203013,
+      "challengeId": 1020301,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/oculos.png",
+      "audioSrc": "/audioSrc/oculos.mp3"
+    },
+    {
+      "id": 10203021,
+      "challengeId": 1020302,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/navio.png",
+      "audioSrc": "/audioSrc/navio.mp3"
+    },
+    {
+      "id": 10203022,
+      "challengeId": 1020302,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/livro.png",
+      "audioSrc": "/audioSrc/livro.mp3"
+    },
+    {
+      "id": 10203023,
+      "challengeId": 1020302,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/dado.png",
+      "audioSrc": "/audioSrc/dado.mp3"
+    },
+    {
+      "id": 10203031,
+      "challengeId": 1020303,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/banana.png",
+      "audioSrc": "/audioSrc/banana.mp3"
+    },
+    {
+      "id": 10203032,
+      "challengeId": 1020303,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/maca.png",
+      "audioSrc": "/audioSrc/maca.mp3"
+    },
+    {
+      "id": 10203033,
+      "challengeId": 1020303,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/tigre.png",
+      "audioSrc": "/audioSrc/tigre.mp3"
+    },
+    {
+      "id": 10203041,
+      "challengeId": 1020304,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/vaca.png",
+      "audioSrc": "/audioSrc/vaca.mp3"
+    },
+    {
+      "id": 10203042,
+      "challengeId": 1020304,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/elefante.png",
+      "audioSrc": "/audioSrc/elefante.mp3"
+    },
+    {
+      "id": 10203043,
+      "challengeId": 1020304,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/ketchup.png",
+      "audioSrc": "/audioSrc/ketchup.mp3"
+    },
+    {
+      "id": 10203051,
+      "challengeId": 1020305,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/banana.png",
+      "audioSrc": "/audioSrc/banana.mp3"
+    },
+    {
+      "id": 10203052,
+      "challengeId": 1020305,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/hipopotamo.png",
+      "audioSrc": "/audioSrc/hipopotamo.mp3"
+    },
+    {
+      "id": 10203053,
+      "challengeId": 1020305,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/janela.png",
+      "audioSrc": "/audioSrc/janela.mp3"
+    },
+    {
+      "id": 10203061,
+      "challengeId": 1020306,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/bola.png",
+      "audioSrc": "/audioSrc/bola.mp3"
+    },
+    {
+      "id": 10203062,
+      "challengeId": 1020306,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/abelha.png",
+      "audioSrc": "/audioSrc/abelha.mp3"
+    },
+    {
+      "id": 10203063,
+      "challengeId": 1020306,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/casa.png",
+      "audioSrc": "/audioSrc/casa.mp3"
+    },
+    {
+      "id": 10204011,
+      "challengeId": 1020401,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/pato.png",
+      "audioSrc": "/audioSrc/pato.mp3"
+    },
+    {
+      "id": 10204012,
+      "challengeId": 1020401,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/zebra.png",
+      "audioSrc": "/audioSrc/zebra.mp3"
+    },
+    {
+      "id": 10204013,
+      "challengeId": 1020401,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/maca.png",
+      "audioSrc": "/audioSrc/maca.mp3"
+    },
+    {
+      "id": 10204021,
+      "challengeId": 1020402,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/pato.png",
+      "audioSrc": "/audioSrc/pato.mp3"
+    },
+    {
+      "id": 10204022,
+      "challengeId": 1020402,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/elefante.png",
+      "audioSrc": "/audioSrc/elefante.mp3"
+    },
+    {
+      "id": 10204023,
+      "challengeId": 1020402,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/wifi.png",
+      "audioSrc": "/audioSrc/wifi.mp3"
+    },
+    {
+      "id": 10204031,
+      "challengeId": 1020403,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/abelha.png",
+      "audioSrc": "/audioSrc/abelha.mp3"
+    },
+    {
+      "id": 10204032,
+      "challengeId": 1020403,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/dado.png",
+      "audioSrc": "/audioSrc/dado.mp3"
+    },
+    {
+      "id": 10204033,
+      "challengeId": 1020403,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/foca.png",
+      "audioSrc": "/audioSrc/foca.mp3"
+    },
+    {
+      "id": 10204041,
+      "challengeId": 1020404,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/abacaxi.png",
+      "audioSrc": "/audioSrc/abacaxi.mp3"
+    },
+    {
+      "id": 10204042,
+      "challengeId": 1020404,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/sapo.png",
+      "audioSrc": "/audioSrc/sapo.mp3"
+    },
+    {
+      "id": 10204043,
+      "challengeId": 1020404,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/urso.png",
+      "audioSrc": "/audioSrc/urso.mp3"
+    },
+    {
+      "id": 10204051,
+      "challengeId": 1020405,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/janela.png",
+      "audioSrc": "/audioSrc/janela.mp3"
+    },
+    {
+      "id": 10204052,
+      "challengeId": 1020405,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/vaso.png",
+      "audioSrc": "/audioSrc/vaso.mp3"
+    },
+    {
+      "id": 10204053,
+      "challengeId": 1020405,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/foca.png",
+      "audioSrc": "/audioSrc/foca.mp3"
+    },
+    {
+      "id": 10204061,
+      "challengeId": 1020406,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/maca.png",
+      "audioSrc": "/audioSrc/maca.mp3"
+    },
+    {
+      "id": 10204062,
+      "challengeId": 1020406,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/ketchup.png",
+      "audioSrc": "/audioSrc/ketchup.mp3"
+    },
+    {
+      "id": 10204063,
+      "challengeId": 1020406,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/aviao.png",
+      "audioSrc": "/audioSrc/aviao.mp3"
+    },
+    {
+      "id": 10205011,
+      "challengeId": 1020501,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/pato.png",
+      "audioSrc": "/audioSrc/pato.mp3"
+    },
+    {
+      "id": 10205012,
+      "challengeId": 1020501,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/iguana.png",
+      "audioSrc": "/audioSrc/iguana.mp3"
+    },
+    {
+      "id": 10205013,
+      "challengeId": 1020501,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/aviao.png",
+      "audioSrc": "/audioSrc/aviao.mp3"
+    },
+    {
+      "id": 10205021,
+      "challengeId": 1020502,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/leao.png",
+      "audioSrc": "/audioSrc/leao.mp3"
+    },
+    {
+      "id": 10205022,
+      "challengeId": 1020502,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/navio.png",
+      "audioSrc": "/audioSrc/navio.mp3"
+    },
+    {
+      "id": 10205023,
+      "challengeId": 1020502,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/hipopotamo.png",
+      "audioSrc": "/audioSrc/hipopotamo.mp3"
+    },
+    {
+      "id": 10205031,
+      "challengeId": 1020503,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/bola.png",
+      "audioSrc": "/audioSrc/bola.mp3"
+    },
+    {
+      "id": 10205032,
+      "challengeId": 1020503,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/urso.png",
+      "audioSrc": "/audioSrc/urso.mp3"
+    },
+    {
+      "id": 10205033,
+      "challengeId": 1020503,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/queijo.png",
+      "audioSrc": "/audioSrc/queijo.mp3"
+    },
+    {
+      "id": 10205041,
+      "challengeId": 1020504,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/bola.png",
+      "audioSrc": "/audioSrc/bola.mp3"
+    },
+    {
+      "id": 10205042,
+      "challengeId": 1020504,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/rato.png",
+      "audioSrc": "/audioSrc/rato.mp3"
+    },
+    {
+      "id": 10205043,
+      "challengeId": 1020504,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/livro.png",
+      "audioSrc": "/audioSrc/livro.mp3"
+    },
+    {
+      "id": 10205051,
+      "challengeId": 1020505,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/queijo.png",
+      "audioSrc": "/audioSrc/queijo.mp3"
+    },
+    {
+      "id": 10205052,
+      "challengeId": 1020505,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/janela.png",
+      "audioSrc": "/audioSrc/janela.mp3"
+    },
+    {
+      "id": 10205053,
+      "challengeId": 1020505,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/casa.png",
+      "audioSrc": "/audioSrc/casa.mp3"
+    },
+    {
+      "id": 10205061,
+      "challengeId": 1020506,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/queijo.png",
+      "audioSrc": "/audioSrc/queijo.mp3"
+    },
+    {
+      "id": 10205062,
+      "challengeId": 1020506,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/xicara.png",
+      "audioSrc": "/audioSrc/xicara.mp3"
+    },
+    {
+      "id": 10205063,
+      "challengeId": 1020506,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/bola.png",
+      "audioSrc": "/audioSrc/bola.mp3"
+    },
+    {
+      "id": 10301011,
+      "challengeId": 1030101,
+      "text": "LA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301012,
+      "challengeId": 1030101,
+      "text": "CA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301013,
+      "challengeId": 1030101,
+      "text": "CO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301021,
+      "challengeId": 1030102,
+      "text": "BE",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301022,
+      "challengeId": 1030102,
+      "text": "BI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301023,
+      "challengeId": 1030102,
+      "text": "LE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301031,
+      "challengeId": 1030103,
+      "text": "FI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301032,
+      "challengeId": 1030103,
+      "text": "VI",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301033,
+      "challengeId": 1030103,
+      "text": "VE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301041,
+      "challengeId": 1030104,
+      "text": "NA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301042,
+      "challengeId": 1030104,
+      "text": "NI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301043,
+      "challengeId": 1030104,
+      "text": "BA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301051,
+      "challengeId": 1030105,
+      "text": "CO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301052,
+      "challengeId": 1030105,
+      "text": "BO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301053,
+      "challengeId": 1030105,
+      "text": "BA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301061,
+      "challengeId": 1030106,
+      "text": "CO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301062,
+      "challengeId": 1030106,
+      "text": "CA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10301063,
+      "challengeId": 1030106,
+      "text": "BA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302011,
+      "challengeId": 1030201,
+      "text": "DE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302012,
+      "challengeId": 1030201,
+      "text": "DO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302013,
+      "challengeId": 1030201,
+      "text": "PO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302021,
+      "challengeId": 1030202,
+      "text": "TE",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302022,
+      "challengeId": 1030202,
+      "text": "NE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302023,
+      "challengeId": 1030202,
+      "text": "TI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302031,
+      "challengeId": 1030203,
+      "text": "CE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302032,
+      "challengeId": 1030203,
+      "text": "CA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302033,
+      "challengeId": 1030203,
+      "text": "PA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302041,
+      "challengeId": 1030204,
+      "text": "GU",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302042,
+      "challengeId": 1030204,
+      "text": "MA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302043,
+      "challengeId": 1030204,
+      "text": "GA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302051,
+      "challengeId": 1030205,
+      "text": "PE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302052,
+      "challengeId": 1030205,
+      "text": "PO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302053,
+      "challengeId": 1030205,
+      "text": "TO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302061,
+      "challengeId": 1030206,
+      "text": "NI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302062,
+      "challengeId": 1030206,
+      "text": "GA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10302063,
+      "challengeId": 1030206,
+      "text": "NA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303011,
+      "challengeId": 1030301,
+      "text": "NE",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303012,
+      "challengeId": 1030301,
+      "text": "NI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303013,
+      "challengeId": 1030301,
+      "text": "ME",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303021,
+      "challengeId": 1030302,
+      "text": "LE",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303022,
+      "challengeId": 1030302,
+      "text": "LI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303023,
+      "challengeId": 1030302,
+      "text": "VE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303031,
+      "challengeId": 1030303,
+      "text": "BI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303032,
+      "challengeId": 1030303,
+      "text": "LE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303033,
+      "challengeId": 1030303,
+      "text": "LI",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303041,
+      "challengeId": 1030304,
+      "text": "TA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303042,
+      "challengeId": 1030304,
+      "text": "MA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303043,
+      "challengeId": 1030304,
+      "text": "ME",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303051,
+      "challengeId": 1030305,
+      "text": "NE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303052,
+      "challengeId": 1030305,
+      "text": "CA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303053,
+      "challengeId": 1030305,
+      "text": "NA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303061,
+      "challengeId": 1030306,
+      "text": "MU",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303062,
+      "challengeId": 1030306,
+      "text": "CO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10303063,
+      "challengeId": 1030306,
+      "text": "CU",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304011,
+      "challengeId": 1030401,
+      "text": "BA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304012,
+      "challengeId": 1030401,
+      "text": "PI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304013,
+      "challengeId": 1030401,
+      "text": "PA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304021,
+      "challengeId": 1030402,
+      "text": "JE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304022,
+      "challengeId": 1030402,
+      "text": "LO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304023,
+      "challengeId": 1030402,
+      "text": "JO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304031,
+      "challengeId": 1030403,
+      "text": "TO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304032,
+      "challengeId": 1030403,
+      "text": "TE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304033,
+      "challengeId": 1030403,
+      "text": "LO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304041,
+      "challengeId": 1030404,
+      "text": "SI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304042,
+      "challengeId": 1030404,
+      "text": "VA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304043,
+      "challengeId": 1030404,
+      "text": "SA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304051,
+      "challengeId": 1030405,
+      "text": "TE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304052,
+      "challengeId": 1030405,
+      "text": "TI",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304053,
+      "challengeId": 1030405,
+      "text": "CI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304061,
+      "challengeId": 1030406,
+      "text": "SI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304062,
+      "challengeId": 1030406,
+      "text": "CO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10304063,
+      "challengeId": 1030406,
+      "text": "SO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305011,
+      "challengeId": 1030501,
+      "text": "VA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305012,
+      "challengeId": 1030501,
+      "text": "VE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305013,
+      "challengeId": 1030501,
+      "text": "BA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305021,
+      "challengeId": 1030502,
+      "text": "LO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305022,
+      "challengeId": 1030502,
+      "text": "SO",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305023,
+      "challengeId": 1030502,
+      "text": "SI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305031,
+      "challengeId": 1030503,
+      "text": "FI",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305032,
+      "challengeId": 1030503,
+      "text": "FO",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305033,
+      "challengeId": 1030503,
+      "text": "LI",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305041,
+      "challengeId": 1030504,
+      "text": "SA",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305042,
+      "challengeId": 1030504,
+      "text": "RA",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305043,
+      "challengeId": 1030504,
+      "text": "RE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305051,
+      "challengeId": 1030505,
+      "text": "PE",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305052,
+      "challengeId": 1030505,
+      "text": "ZU",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10305053,
+      "challengeId": 1030505,
+      "text": "ZE",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10401011,
+      "challengeId": 1040101,
+      "text": "I",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10401012,
+      "challengeId": 1040101,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10401013,
+      "challengeId": 1040101,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10401021,
+      "challengeId": 1040102,
+      "text": "E",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10401022,
+      "challengeId": 1040102,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10401023,
+      "challengeId": 1040102,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10401031,
+      "challengeId": 1040103,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10401032,
+      "challengeId": 1040103,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10401033,
+      "challengeId": 1040103,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10401041,
+      "challengeId": 1040104,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10401042,
+      "challengeId": 1040104,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10401043,
+      "challengeId": 1040104,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10401051,
+      "challengeId": 1040105,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10401052,
+      "challengeId": 1040105,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10401053,
+      "challengeId": 1040105,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10401061,
+      "challengeId": 1040106,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10401062,
+      "challengeId": 1040106,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10401063,
+      "challengeId": 1040106,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10402011,
+      "challengeId": 1040201,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10402012,
+      "challengeId": 1040201,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10402013,
+      "challengeId": 1040201,
+      "text": "E",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10402021,
+      "challengeId": 1040202,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10402022,
+      "challengeId": 1040202,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10402023,
+      "challengeId": 1040202,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10402031,
+      "challengeId": 1040203,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10402032,
+      "challengeId": 1040203,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10402033,
+      "challengeId": 1040203,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10402041,
+      "challengeId": 1040204,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10402042,
+      "challengeId": 1040204,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10402043,
+      "challengeId": 1040204,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10402051,
+      "challengeId": 1040205,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10402052,
+      "challengeId": 1040205,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10402053,
+      "challengeId": 1040205,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10402061,
+      "challengeId": 1040206,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10402062,
+      "challengeId": 1040206,
+      "text": "E",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10402063,
+      "challengeId": 1040206,
+      "text": "O",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10403011,
+      "challengeId": 1040301,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10403012,
+      "challengeId": 1040301,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10403013,
+      "challengeId": 1040301,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10403021,
+      "challengeId": 1040302,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10403022,
+      "challengeId": 1040302,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10403023,
+      "challengeId": 1040302,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10403031,
+      "challengeId": 1040303,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10403032,
+      "challengeId": 1040303,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10403033,
+      "challengeId": 1040303,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10403041,
+      "challengeId": 1040304,
+      "text": "I",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10403042,
+      "challengeId": 1040304,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10403043,
+      "challengeId": 1040304,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10403051,
+      "challengeId": 1040305,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10403052,
+      "challengeId": 1040305,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10403053,
+      "challengeId": 1040305,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10403061,
+      "challengeId": 1040306,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10403062,
+      "challengeId": 1040306,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10403063,
+      "challengeId": 1040306,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10404011,
+      "challengeId": 1040401,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10404012,
+      "challengeId": 1040401,
+      "text": "I",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10404013,
+      "challengeId": 1040401,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10404021,
+      "challengeId": 1040402,
+      "text": "O",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_O.png",
+      "audioSrc": "/audioSrc/letras/o.mp3"
+    },
+    {
+      "id": 10404022,
+      "challengeId": 1040402,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10404023,
+      "challengeId": 1040402,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10404031,
+      "challengeId": 1040403,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10404032,
+      "challengeId": 1040403,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10404033,
+      "challengeId": 1040403,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10404041,
+      "challengeId": 1040404,
+      "text": "U",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_U.png",
+      "audioSrc": "/audioSrc/letras/u.mp3"
+    },
+    {
+      "id": 10404042,
+      "challengeId": 1040404,
+      "text": "A",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10404043,
+      "challengeId": 1040404,
+      "text": "E",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10404051,
+      "challengeId": 1040405,
+      "text": "A",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_A.png",
+      "audioSrc": "/a.mp3"
+    },
+    {
+      "id": 10404052,
+      "challengeId": 1040405,
+      "text": "E",
+      "correct": true,
+      "imageSrc": "/imageSrc/letras/letra_E.png",
+      "audioSrc": "/audioSrc/letras/e.mp3"
+    },
+    {
+      "id": 10404053,
+      "challengeId": 1040405,
+      "text": "I",
+      "correct": false,
+      "imageSrc": "/imageSrc/letras/letra_I.png",
+      "audioSrc": "/audioSrc/letras/i.mp3"
+    },
+    {
+      "id": 10501011,
+      "challengeId": 1050101,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501012,
+      "challengeId": 1050101,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_sol_brilha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501013,
+      "challengeId": 1050101,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_cachorro_late.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501021,
+      "challengeId": 1050102,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_maca_e_vermelha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501022,
+      "challengeId": 1050102,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_bola_e_azul.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501023,
+      "challengeId": 1050102,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_lua_e_amarela.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501031,
+      "challengeId": 1050103,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_gato_dorme.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501032,
+      "challengeId": 1050103,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_lua_e_amarela.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501033,
+      "challengeId": 1050103,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_estrela_brilha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501041,
+      "challengeId": 1050104,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_maca_e_vermelha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501042,
+      "challengeId": 1050104,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_estrela_brilha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501043,
+      "challengeId": 1050104,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_peixe_nada.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501051,
+      "challengeId": 1050105,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_nuvem_e_branca.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501052,
+      "challengeId": 1050105,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_passaro_canta.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10501053,
+      "challengeId": 1050105,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502011,
+      "challengeId": 1050201,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_maca_e_vermelha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502012,
+      "challengeId": 1050201,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_flor_e_rosa.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502013,
+      "challengeId": 1050201,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_pato_nada.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502021,
+      "challengeId": 1050202,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_estrela_brilha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502022,
+      "challengeId": 1050202,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_cachorro_late.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502023,
+      "challengeId": 1050202,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502031,
+      "challengeId": 1050203,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502032,
+      "challengeId": 1050203,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_peixe_nada.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502033,
+      "challengeId": 1050203,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_abelha_voa.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502041,
+      "challengeId": 1050204,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502042,
+      "challengeId": 1050204,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_maca_e_vermelha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502043,
+      "challengeId": 1050204,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_cachorro_late.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502051,
+      "challengeId": 1050205,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_gato_dorme.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502052,
+      "challengeId": 1050205,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10502053,
+      "challengeId": 1050205,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_pato_nada.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503011,
+      "challengeId": 1050301,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_passaro_canta.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503012,
+      "challengeId": 1050301,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_arvore_e_verde.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503013,
+      "challengeId": 1050301,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_bola_e_azul.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503021,
+      "challengeId": 1050302,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_gato_dorme.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503022,
+      "challengeId": 1050302,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_sol_brilha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503023,
+      "challengeId": 1050302,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_passaro_canta.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503031,
+      "challengeId": 1050303,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_maca_e_vermelha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503032,
+      "challengeId": 1050303,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/o_sol_brilha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503033,
+      "challengeId": 1050303,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_lua_e_amarela.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503041,
+      "challengeId": 1050304,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_bola_e_azul.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503042,
+      "challengeId": 1050304,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/o_coelho_pula.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503043,
+      "challengeId": 1050304,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_maca_e_vermelha.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503051,
+      "challengeId": 1050305,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_bola_e_azul.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503052,
+      "challengeId": 1050305,
+      "text": "",
+      "correct": false,
+      "imageSrc": "/imageSrc/frases/a_nuvem_e_branca.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10503053,
+      "challengeId": 1050305,
+      "text": "",
+      "correct": true,
+      "imageSrc": "/imageSrc/frases/a_arvore_e_verde.png",
+      "audioSrc": null
+    },
+    {
+      "id": 10504011,
+      "challengeId": 1050401,
+      "text": "late",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504012,
+      "challengeId": 1050401,
+      "text": "brilha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504013,
+      "challengeId": 1050401,
+      "text": "canta",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504021,
+      "challengeId": 1050402,
+      "text": "amarela",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504022,
+      "challengeId": 1050402,
+      "text": "verde",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504023,
+      "challengeId": 1050402,
+      "text": "vermelha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504031,
+      "challengeId": 1050403,
+      "text": "brilha",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504032,
+      "challengeId": 1050403,
+      "text": "late",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504033,
+      "challengeId": 1050403,
+      "text": "canta",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504041,
+      "challengeId": 1050404,
+      "text": "pula",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504042,
+      "challengeId": 1050404,
+      "text": "brilha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504043,
+      "challengeId": 1050404,
+      "text": "nada",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504051,
+      "challengeId": 1050405,
+      "text": "vermelha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504052,
+      "challengeId": 1050405,
+      "text": "amarela",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10504053,
+      "challengeId": 1050405,
+      "text": "branca",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505011,
+      "challengeId": 1050501,
+      "text": "rosa",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505012,
+      "challengeId": 1050501,
+      "text": "verde",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505013,
+      "challengeId": 1050501,
+      "text": "vermelha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505021,
+      "challengeId": 1050502,
+      "text": "pula",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505022,
+      "challengeId": 1050502,
+      "text": "late",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505023,
+      "challengeId": 1050502,
+      "text": "dorme",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505031,
+      "challengeId": 1050503,
+      "text": "voa",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505032,
+      "challengeId": 1050503,
+      "text": "nada",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505033,
+      "challengeId": 1050503,
+      "text": "brilha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505041,
+      "challengeId": 1050504,
+      "text": "azul",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505042,
+      "challengeId": 1050504,
+      "text": "branca",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505043,
+      "challengeId": 1050504,
+      "text": "vermelha",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505051,
+      "challengeId": 1050505,
+      "text": "late",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505052,
+      "challengeId": 1050505,
+      "text": "canta",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10505053,
+      "challengeId": 1050505,
+      "text": "nada",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506011,
+      "challengeId": 1050601,
+      "text": "canta",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506012,
+      "challengeId": 1050601,
+      "text": "nada",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506013,
+      "challengeId": 1050601,
+      "text": "pula",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506021,
+      "challengeId": 1050602,
+      "text": "voa",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506022,
+      "challengeId": 1050602,
+      "text": "nada",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506023,
+      "challengeId": 1050602,
+      "text": "dorme",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506031,
+      "challengeId": 1050603,
+      "text": "dorme",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506032,
+      "challengeId": 1050603,
+      "text": "brilha",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506033,
+      "challengeId": 1050603,
+      "text": "canta",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506041,
+      "challengeId": 1050604,
+      "text": "azul",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506042,
+      "challengeId": 1050604,
+      "text": "branca",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506043,
+      "challengeId": 1050604,
+      "text": "rosa",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506051,
+      "challengeId": 1050605,
+      "text": "verde",
+      "correct": true,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506052,
+      "challengeId": 1050605,
+      "text": "amarela",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    },
+    {
+      "id": 10506053,
+      "challengeId": 1050605,
+      "text": "vermelha",
+      "correct": false,
+      "imageSrc": null,
+      "audioSrc": null
+    }
+  ],
+  "stats": {
+    "unidades": 5,
+    "licoes": 26,
+    "desafios": 159,
+    "opcoes": 477,
+    "ignorados_duplicados": 0,
+    "figuras": 30,
+    "letras": 26,
+    "frases": 15,
+    "audios_encontrados": 78,
+    "palavras_sem_silabas": [
+      "ketchup"
+    ]
+  }
+}
