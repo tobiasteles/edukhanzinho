@@ -1,16 +1,17 @@
 "use client";
 
 import { challengeOptions, challenges, userSubscription } from "@/db/schema";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { Footer } from "./footer";
-import Confetti from "react-confetti";
+import { AnimatePresence, motion } from "framer-motion";
+import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
-import { useAudio, useWindowSize, useMount } from "react-use";
+import { useAudio, useMount } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
@@ -47,7 +48,6 @@ export const Quiz = ({
     }
   })
 
-  const { width, height } = useWindowSize();
   const router = useRouter();
 
   const [finishAudio] = useAudio({ src: "/finished.wav", autoPlay: true });
@@ -76,6 +76,11 @@ export const Quiz = ({
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
+
+  const finished = !challenge;
+  useEffect(() => {
+    if (finished) celebrateFinish();
+  }, [finished]);
 
   const onNext = () => {
     setActiveIndex((current) => current + 1);
@@ -119,6 +124,7 @@ export const Quiz = ({
 
             correctControls.play();
             setStatus("correct");
+            celebrateCorrect();
             setPercentage((prev) => prev + 100 / challenges.length);
 
             if (initialPercentage === 100) {
@@ -155,17 +161,12 @@ export const Quiz = ({
     return (
       <>
         {finishAudio}
-        <div className="fixed inset-0 z-50 pointer-events-none">
-          <Confetti
-            width={width}
-            height={height}
-            recycle={false}
-            numberOfPieces={500}
-            tweenDuration={10000}
-          />
-        </div>
-
-        <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full"
+        >
           <Image
             src="/finish.png"
             alt="Finalizado"
@@ -180,14 +181,14 @@ export const Quiz = ({
             height={100}
             width={100}
           />
-          <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
+          <h1 className="font-ui text-2xl lg:text-4xl font-semibold text-edu-ink">
             Bom trabalho! <br /> Lição concluída!
           </h1>
           <div className="flex items-center gap-x-4 w-full">
             <ResultCard variant="points" value={challenges.length * 100} />
             <ResultCard variant="hearts" value={hearts} />
           </div>
-        </div>
+        </motion.div>
         <Footer
           lessonId={lessonId}
           status="completed"
@@ -212,24 +213,33 @@ export const Quiz = ({
       />
       <div className="flex-1">
         <div className="h-full flex items-center justify-center">
-          <div className="lg:min-h-[350px] max-w-4xl w-full px-8 lg:px-0 flex flex-col gap-y-12 mx-auto items-center">
-            <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">
-              {title}
-            </h1>
-            <div>
-              {challenge.type === "ASSIST" && (
-                <QuestionBubble question={challenge.question} />
-              )}
-              <Challenge
-                options={options}
-                onSelect={onSelect}
-                status={status}
-                selectedOption={selectedOption}
-                disabled={pending}
-                type={challenge.type}
-              />
-            </div>
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={challenge.id}
+              initial={{ opacity: 0, x: 48 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -48 }}
+              transition={{ duration: 0.25 }}
+              className="lg:min-h-[350px] max-w-4xl w-full px-6 lg:px-0 flex flex-col gap-y-8 lg:gap-y-10 mx-auto items-center"
+            >
+              <h1 className="font-read text-xl lg:text-3xl text-center lg:text-start font-bold text-edu-ink">
+                {title}
+              </h1>
+              <div className="w-full">
+                {challenge.type === "ASSIST" && (
+                  <QuestionBubble question={challenge.question} />
+                )}
+                <Challenge
+                  options={options}
+                  onSelect={onSelect}
+                  status={status}
+                  selectedOption={selectedOption}
+                  disabled={pending}
+                  type={challenge.type}
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
       <Footer

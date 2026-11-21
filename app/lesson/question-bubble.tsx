@@ -1,29 +1,23 @@
 import Image from "next/image";
 
 type Props = {
-    question: string;
+  question: string;
 };
 
 export const QuestionBubble = ({ question }: Props) => {
-    return (
-        <div className="flex items-center gap-x-4 mb-6">
-            <Image
-            src="/face.png"
-            alt="User Avatar"
-            width={60}
-            height={60}
-            className="hidden lg:block"
-            />
-            <Image
-            src="/face.png"
-            alt="User Avatar"
-            width={60}
-            height={60}
-            className="block lg:hidden"/>
-            <div className="relative py-2 px-4 border-2 rounded-xl text-sm lg:text-base">
-                {question}
-                <div className="absolute -left-3 top-1/2 w-0 h-2 border-x-8 border-x-transparent border-t-8 transform -translate-y-1/2 rotate-90" />
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="mb-6 flex items-center gap-x-4">
+      <Image
+        src="/face.png"
+        alt="Personagem do Edukhanzinho"
+        width={72}
+        height={72}
+        className="h-14 w-14 shrink-0 lg:h-[72px] lg:w-[72px]"
+      />
+      <div className="relative rounded-3xl border-2 border-b-[6px] border-edu-line bg-white px-5 py-3 font-read text-lg text-edu-ink lg:text-2xl">
+        {question}
+        <div className="absolute -left-2 top-1/2 h-4 w-4 -translate-y-1/2 rotate-45 border-b-2 border-l-2 border-edu-line bg-white" />
+      </div>
+    </div>
+  );
+};

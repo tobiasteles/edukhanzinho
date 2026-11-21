@@ -1,5 +1,6 @@
 import { useKey, useMedia } from "react-use";
 import { CheckCircle, XCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -13,28 +14,36 @@ type Props = {
 
 export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
   useKey("Enter", onCheck, {}, [onCheck]);
-  const isMobile = useMedia("(max-width: 1024px)");
+  const isMobile = useMedia("(max-width: 1024px)", false);
 
   return (
     <footer
       className={cn(
-        "lg:-h[140px] h-[100px] border-t-2 border-white",
-        status === "correct" && "border-transparent bg-green-100",
-        status === "wrong" && "border-transparent bg-rose-100"
+        "h-[100px] lg:h-[140px] border-t-2 border-edu-line/60 transition-colors duration-300",
+        status === "correct" && "border-transparent bg-edu-green-soft",
+        status === "wrong" && "border-transparent bg-edu-coral-soft"
       )}
     >
       <div className="max-w-[1140px] h-full mx-auto flex items-center justify-between px-6 lg:px-10">
         {status === "correct" && (
-          <div className="text-blue-700 font-bold text-base lg:text-2xl flex items-center">
-            <CheckCircle className="h-6 w-6 lg:h-10 lg:w-10 mr-4" />
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-ui text-edu-green-edge font-semibold text-lg lg:text-3xl flex items-center"
+          >
+            <CheckCircle className="h-7 w-7 lg:h-10 lg:w-10 mr-3 lg:mr-4" />
             Muito bem!
-          </div>
+          </motion.div>
         )}
         {status === "wrong" && (
-          <div className="text-rose-700 font-bold text-base lg:text-2xl flex items-center">
-            <XCircle className="h-6 w-6 lg:h-10 lg:w-10 mr-4" />
-            Tente novamente.
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-ui text-edu-coral-edge font-semibold text-lg lg:text-3xl flex items-center"
+          >
+            <XCircle className="h-7 w-7 lg:h-10 lg:w-10 mr-3 lg:mr-4" />
+            Quase! Tente de novo.
+          </motion.div>
         )}
         {status === "completed" && (
          <Button
@@ -50,12 +59,12 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
           className="ml-auto"
           onClick={onCheck}
           size={isMobile ? "sm" : "lg"}
-          variant={status === "wrong" ? "danger" : "primary"}
+          variant={status === "wrong" ? "danger" : "secondary"}
         >
           {status === "none" && "Verificar"}
           {status === "correct" && "Próximo"}
-          {status === "wrong" && "Tente Novamente"}
-          {status === "completed" && "Continue"}
+          {status === "wrong" && "Tentar de novo"}
+          {status === "completed" && "Continuar"}
         </Button>
       </div>
     </footer>

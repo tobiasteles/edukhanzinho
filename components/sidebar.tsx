@@ -20,9 +20,12 @@ export const Sidebar = ({ className }: Props) => {
         <Link href="/learn">
       <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3 max-w-full overflow-hidden">
         <Image src="/SELO/SELO 2.png" height={50} width={50} alt="Logo" />
-        <h1 className="text-xl lg:text-lg font-extrabold text-blue-700 tracking-wide break-words w-full">
-          Edukhanzinho Leitura
-        </h1>
+        <div className="w-full">
+          <h1 className="font-brand text-xl lg:text-lg font-bold text-blue-700 tracking-wide break-words">
+            Edukhanzinho
+          </h1>
+          <p className="text-xs text-slate-500">Leitura e alfabetização</p>
+        </div>
       </div>
       </Link>
       <div className="flex flex-col gap-y-2 flex-1">

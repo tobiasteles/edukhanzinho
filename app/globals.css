@@ -1,6 +1,39 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Fontes: brand = só marca/logo | ui = interface e botões | read = o que a criança lê nos exercícios */
+@theme inline {
+  --font-brand: var(--font-kode-mono), ui-monospace, monospace;
+  --font-ui: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+  --font-read: var(--font-andika), ui-rounded, system-ui, sans-serif;
+}
+
+/* Paleta Edukhanzinho (cor + "edge" = cor da borda inferior 3D) */
+@theme {
+  --color-edu-blue: #1849d6;
+  --color-edu-blue-edge: #12369e;
+  --color-edu-sky: #4db8f0;
+  --color-edu-sky-edge: #2e94cc;
+  --color-edu-sun: #ffc800;
+  --color-edu-sun-edge: #d99a00;
+  --color-edu-sun-ink: #3d2b00;
+  --color-edu-green: #22a559;
+  --color-edu-green-edge: #197a41;
+  --color-edu-coral: #ff5a5f;
+  --color-edu-coral-edge: #d13a40;
+  --color-edu-grape: #8b5cf6;
+  --color-edu-grape-edge: #6338d0;
+  --color-edu-cream: #faf6ee;
+  --color-edu-ink: #1b2559;
+  --color-edu-line: #e6ddc3;
+  --color-edu-blue-soft: #e3ebff;
+  --color-edu-green-soft: #dcf5e4;
+  --color-edu-coral-soft: #ffe4e4;
+  --color-edu-magenta: #d946ef;
+  --color-edu-magenta-track: #f3e8ff;
+  --color-edu-sky-soft: #e0f2fe;
+}
+
 html,
 body,
 :root {

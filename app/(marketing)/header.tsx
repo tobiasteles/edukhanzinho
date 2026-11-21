@@ -20,8 +20,8 @@ export const Header = () => {
               priority
             />
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0026ff] tracking-wide">
-            Edukhanzinho <span className="text-emerald-600">Leitura</span>
+          <h1 className="font-brand text-xl sm:text-2xl font-bold text-[#0026ff] tracking-wide">
+            Edukhanzinho
           </h1>
         </div>
 

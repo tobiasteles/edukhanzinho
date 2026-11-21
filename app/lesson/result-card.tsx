@@ -16,22 +16,22 @@ variant
 return (
     <div className={cn(
       "rounded-2xl border-2 w-full ",
-      variant === "points" && "bg-orange-400 border-orange-400",
-      variant === "hearts" && "bg-rose-500 border-rose-500",
+      variant === "points" && "bg-edu-sun border-edu-sun",
+      variant === "hearts" && "bg-edu-coral border-edu-coral",
     )}>
       <div className={
         cn(
           "p-1.5 text-white rounded-t-xl font-bold text-center uppercase text-xs",
-          variant === "hearts" && "bg-rose-500",
-          variant === "points" && "bg-orange-400"
+          variant === "hearts" && "bg-edu-coral",
+          variant === "points" && "bg-edu-sun text-edu-sun-ink"
         )
       }>
         {variant === "hearts" ? "Vidas" : "XP Total"}
       </div>
       <div className={cn(
         "rounded-2xl bg-white items-center flex justify-center p-6 font-bold text-lg",
-        variant === "hearts" && "text-rose-500",
-        variant === "points" && "text-orange-400",
+        variant === "hearts" && "text-edu-coral-edge",
+        variant === "points" && "text-edu-sun-ink",
       )}>
         <Image 
         alt="Icone"

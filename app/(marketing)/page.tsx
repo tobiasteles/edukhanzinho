@@ -10,7 +10,7 @@ export default function Home() {
       <div className="relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0">
         <Image
           src="/hero.png"
-          alt="Edukhanzinho Leitura - Heróis da Interpretação"
+          alt="Edukhanzinho - leitura e alfabetização para crianças"
           fill
           className="object-contain"
           sizes="(min-width: 1024px) 424px, 240px"
@@ -20,11 +20,11 @@ export default function Home() {
 
       <div className="flex flex-col items-center gap-y-8 text-center px-4">
         <div className="flex flex-col gap-y-3 items-center">
-          <span className="text-sm font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-            Edukhanzinho Leitura
+          <span className="text-sm font-semibold uppercase tracking-wider text-edu-blue bg-edu-blue/10 px-3 py-1 rounded-full border border-edu-blue/30">
+            Leitura e alfabetização
           </span>
-          <h1 className="text-xl lg:text-3xl font-bold text-neutral-700 max-w-[480px] leading-tight">
-            Viaje por histórias, decifre mistérios e domine a interpretação de texto!
+          <h1 className="text-xl lg:text-3xl font-semibold text-edu-ink max-w-[480px] leading-tight">
+            Aprenda a ler e a escrever brincando, uma letrinha de cada vez!
           </h1>
         </div>
 
