@@ -1,0 +1,8 @@
+# Palavras extras para o gerador de atividades (uma por linha, separadas por ponto e vírgula).
+# Formato:  arquivo;PALAVRA COM ACENTO;SÍ-LA-BAS;dica curta (opcional, sem dar a resposta)
+#   arquivo = nome do arquivo SEM extensão. Se existir public/imageSrc/<arquivo>.png a figura é usada,
+#             e se existir public/audioSrc/<arquivo>.mp3 o som da palavra é usado.
+# Basta listar a palavra: o gerador cria dezenas de exercícios sozinho (letra inicial, sílabas, letra que falta...).
+# Exemplos (apague o # para ativar):
+# uva;UVA;U-VA;fruta roxa em cachos
+# pipoca;PIPOCA;PI-PO-CA;estoura na panela
