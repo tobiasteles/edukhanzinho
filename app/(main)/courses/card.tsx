@@ -37,9 +37,9 @@ export const Card = ({
       <Image
         src={imageSrc}
         alt={title}
-        height={70}
-        width={93.33}
-        className="rounded-lg drop-shadow-md border object-cover"
+        height={80}
+        width={80}
+        className="rounded-2xl bg-edu-sky-soft p-1 object-contain drop-shadow-md"
       />
       <p className="text-neutral-750 text-center font-bold mt-3">{title}</p>
     </div>

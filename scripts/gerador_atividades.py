@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Gerador determinístico (sem IA) de atividades de alfabetização — a cada execução cria uma RODADA NOVA.
+"""Gerador determinístico (sem IA) de atividades de alfabetização — a cada execução cria um CURSO NOVO.
 
 Cada execução lê o JSON anterior, gera a mesma quantidade de desafios NOVOS (nunca repete um que já existe)
-e acrescenta lições às unidades. Depois: npm run db:seed:gerado
+e os coloca num curso novo ("Edukhanzinho Alfabetização 2", "3"...). Depois: npm run db:seed:gerado
 
 Uso:
-  python scripts/gerador_atividades.py                  # +150 desafios novos (30 por unidade)
+  python scripts/gerador_atividades.py                  # novo curso com 150 desafios (30 por unidade)
   python scripts/gerador_atividades.py --quantidade 100
   python scripts/gerador_atividades.py --reiniciar      # recomeça do zero (rodada 1)
 Entradas: public/imageSrc, public/audioSrc e (opcional) scripts/entradas/palavras-extras.csv
@@ -15,6 +15,10 @@ from pathlib import Path
 
 COURSE_ID, COURSE_TITLE, COURSE_IMG = 100, "Edukhanzinho Alfabetização", "/simbolo-5.jpg"
 PER_LESSON = 6
+# capas dos cursos: cada curso gerado usa uma figura diferente (na ordem; se acabar, recomeça). "livro" é da capa do curso antigo.
+COVER_ORDER = ["leao", "elefante", "tigre", "zebra", "urso", "sapo", "foca", "hipopotamo", "iguana", "vaca", "gato", "rato", "pato",
+               "abelha", "aviao", "navio", "bola", "casa", "banana", "abacaxi", "maca", "queijo", "janela", "vaso", "dado", "xicara", "oculos"]
+LEGACY_COVERS = {1: "livro"}  # curso antigo "Interpretação de Texto" (id 1)
 
 # arquivo (sem extensão) -> (texto exibido, sílabas ou None). Arquivos novos entram sozinhos; use o CSV para sílabas.
 WORDS = {
@@ -70,6 +74,11 @@ def norm(s):
     return re.sub(r"[^a-z0-9_]", "", "".join(c for c in s if unicodedata.category(c) != "Mn").lower())
 
 
+def cover(index, words_img):
+    avail = [k for k in COVER_ORDER if k in words_img] + sorted(k for k in words_img if k not in COVER_ORDER and k not in LEGACY_COVERS.values())
+    return words_img[avail[index % len(avail)]] if avail else COURSE_IMG
+
+
 def spaced(w, j):
     return " ".join("_" if i == j else c for i, c in enumerate(w))
 
@@ -115,9 +124,9 @@ class Store:
     def sig(ctype, question, opts):
         return (ctype, question, tuple(sorted((o["text"], o.get("imageSrc") or "") for o in opts)))
 
-    def unit(self, uid, title, desc):
+    def unit(self, uid, course_id, order, title, desc):
         if not any(u["id"] == uid for u in self.units):
-            self.units.append({"id": uid, "courseId": COURSE_ID, "title": title, "description": desc, "order": uid - 100})
+            self.units.append({"id": uid, "courseId": course_id, "title": title, "description": desc, "order": order})
 
     def lesson(self, uid, title):
         n = 1 + sum(1 for l in self.lessons if l["unitId"] == uid)
@@ -317,31 +326,41 @@ def build(public, seed, quantidade, out, reiniciar, csv_path):
     info = {k: WORDS.get(k, (k.upper(), None)) for k in uni}
     if out.is_file() and not reiniciar:
         data = json.loads(out.read_text(encoding="utf-8"))
-        lote = data.get("lotes", 1) + 1
+        if "courses" not in data:  # arquivo da versão antiga: tinha um curso só
+            data["courses"] = [data.pop("course")] if "course" in data else []
+        lote = data.get("lotes", len(data["courses"]) or 1) + 1
     else:
-        data, lote = {"units": [], "lessons": [], "challenges": [], "options": []}, 1
+        data, lote = {"courses": [], "units": [], "lessons": [], "challenges": [], "options": []}, 1
+    if lote > 90:
+        sys.exit("Limite de 90 cursos gerados atingido. Use --reiniciar ou peça para eu aumentar o limite.")
     store = Store(data)
+    course = {"id": COURSE_ID + lote - 1, "title": COURSE_TITLE if lote == 1 else f"{COURSE_TITLE} {lote}", "imageSrc": COURSE_IMG}
+    data["courses"].append(course)
+    for i, c in enumerate(data["courses"]):  # recalcula todas as capas: cursos já existentes também ganham figura própria
+        c["imageSrc"] = cover(i, words_img)
     ctx = dict(info=info, img=words_img, letters=letters, phrases=phrases, aud_words=aw, aud_letters=al, aud_phr=ap,
                nivel=min(lote, 3), uni=uni)
     quota, avisos, por_unidade = math.ceil(quantidade / len(UNITS)), [], {}
     tpl = make_templates(ctx)
-    for uid, title, desc, short in UNITS:
-        picked = pick_batch(store, tpl[uid], quota, seed, lote)
-        store.unit(uid, title, desc)
+    for base_id, title, desc, short in UNITS:
+        k = base_id - 100
+        uid = 100 + (lote - 1) * 10 + k  # ids únicos por curso; o curso 1 mantém 101..105
+        picked = pick_batch(store, tpl[base_id], quota, seed, lote)
+        store.unit(uid, course["id"], k, title, desc)
         for i in range(0, len(picked), PER_LESSON):
-            lid = store.lesson(uid, f"{short} {lote}.{i // PER_LESSON + 1}")
+            lid = store.lesson(uid, f"{short} {i // PER_LESSON + 1}")
             for ctype, q, opts in picked[i:i + PER_LESSON]:
                 store.add(lid, ctype, q, opts)
         por_unidade[short] = len(picked)
         if len(picked) < quota:
             avisos.append(f"{short}: só {len(picked)} de {quota} (combinações esgotadas). Adicione figuras, áudios ou palavras no CSV.")
     novos = sum(por_unidade.values())
-    result = {"course": {"id": COURSE_ID, "title": COURSE_TITLE, "imageSrc": COURSE_IMG}, "units": store.units, "lessons": store.lessons,
-              "challenges": store.challenges, "options": store.options, "lotes": lote,
-              "stats": {"rodada": lote, "novos_desafios": novos, "por_unidade": por_unidade, "total_desafios": len(store.challenges),
-                        "total_licoes": len(store.lessons), "palavras": len(uni), "letras": len(letters), "frases": len(phrases),
-                        "audios_palavras": len(aw), "audios_letras": len(al), "avisos": avisos}}
-    return result
+    return {"courses": data["courses"], "units": store.units, "lessons": store.lessons,
+            "challenges": store.challenges, "options": store.options, "lotes": lote,
+            "capasExistentes": {str(i): words_img[k] for i, k in LEGACY_COVERS.items() if k in words_img},
+            "stats": {"curso_novo": course["title"], "novos_desafios": novos, "por_unidade": por_unidade,
+                      "total_cursos": len(data["courses"]), "total_desafios": len(store.challenges), "palavras": len(uni),
+                      "letras": len(letters), "frases": len(phrases), "audios_palavras": len(aw), "audios_letras": len(al), "avisos": avisos}}
 
 
 def main():
@@ -350,7 +369,7 @@ def main():
     ap.add_argument("--quantidade", type=int, default=150, help="desafios novos por execução (padrão 150)")
     ap.add_argument("--out", default="scripts/generated/curso-alfabetizacao.json")
     ap.add_argument("--csv", default="scripts/entradas/palavras-extras.csv")
-    ap.add_argument("--reiniciar", action="store_true", help="ignora o JSON anterior e recomeça na rodada 1")
+    ap.add_argument("--reiniciar", action="store_true", help="ignora o JSON anterior e recomeça só com o primeiro curso")
     a = ap.parse_args()
     public = Path(a.public)
     if not (public / "imageSrc").is_dir():

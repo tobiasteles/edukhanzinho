@@ -1,10 +1,10 @@
 // Grava no banco o curso gerado por scripts/gerador_atividades.py.
 // Seguro para rodar várias vezes: atualiza pelo id (sem duplicar) e NÃO apaga usuários,
 // progresso, assinaturas nem o curso antigo. Só mexe nos ids gerados (curso 100+, unidades 100+,
-// lições 10000+, desafios 1000000+).
+// lições 10000+, desafios 1000000+, cursos 100+).
 import "dotenv/config";
 import { neon } from "@neondatabase/serverless";
-import { and, gte, inArray, notInArray, sql } from "drizzle-orm";
+import { and, eq, gte, inArray, notInArray, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/neon-http";
 import { readFileSync } from "node:fs";
 import * as schema from "../db/schema";
@@ -12,7 +12,9 @@ import * as schema from "../db/schema";
 const db = drizzle(neon(process.env.DATABASE_URL!), { schema });
 
 type Generated = {
-  course: typeof schema.courses.$inferInsert;
+  course?: typeof schema.courses.$inferInsert; // formato antigo (um curso só)
+  courses?: (typeof schema.courses.$inferInsert)[];
+  capasExistentes?: Record<string, string>; // trocar só a capa de cursos que já existem (ex.: o curso antigo)
   units: (typeof schema.units.$inferInsert)[];
   lessons: (typeof schema.lessons.$inferInsert)[];
   challenges: (typeof schema.challenges.$inferInsert)[];
@@ -31,13 +33,20 @@ const main = async () => {
 
   console.log(`Lendo ${file}...`);
 
-  await db
-    .insert(schema.courses)
-    .values(data.course)
-    .onConflictDoUpdate({
-      target: schema.courses.id,
-      set: { title: data.course.title, imageSrc: data.course.imageSrc },
-    });
+  const courseList = data.courses ?? (data.course ? [data.course] : []);
+  for (const course of courseList) {
+    await db
+      .insert(schema.courses)
+      .values(course)
+      .onConflictDoUpdate({
+        target: schema.courses.id,
+        set: { title: course.title, imageSrc: course.imageSrc },
+      });
+  }
+
+  for (const [id, imageSrc] of Object.entries(data.capasExistentes ?? {})) {
+    await db.update(schema.courses).set({ imageSrc }).where(eq(schema.courses.id, Number(id)));
+  }
 
   for (const part of chunk(data.units, 50)) {
     await db.insert(schema.units).values(part).onConflictDoUpdate({
@@ -88,13 +97,21 @@ const main = async () => {
   await db.delete(schema.lessons).where(and(gte(schema.lessons.id, 10_000), notInArray(schema.lessons.id, data.lessons.map((l) => l.id as number))));
   await db.delete(schema.units).where(and(gte(schema.units.id, 100), notInArray(schema.units.id, data.units.map((u) => u.id as number))));
 
+  // cursos gerados que sumiram do JSON (ex.: --reiniciar): solta os usuários antes, para não apagar o progresso deles
+  const courseIds = courseList.map((c) => c.id as number);
+  await db
+    .update(schema.userProgress)
+    .set({ activeCourseId: null })
+    .where(and(gte(schema.userProgress.activeCourseId, 100), notInArray(schema.userProgress.activeCourseId, courseIds)));
+  await db.delete(schema.courses).where(and(gte(schema.courses.id, 100), notInArray(schema.courses.id, courseIds)));
+
   // ids foram gravados à mão: alinha os contadores para o painel admin não colidir depois
   for (const table of ["courses", "units", "lessons", "challenges", "challenge_options"]) {
     await db.execute(sql.raw(`SELECT setval(pg_get_serial_sequence('${table}', 'id'), (SELECT COALESCE(MAX(id), 1) FROM ${table}))`));
   }
 
   console.log(
-    `Pronto: ${data.units.length} unidades, ${data.lessons.length} lições, ${data.challenges.length} desafios, ${data.options.length} opções.`
+    `Pronto: ${courseList.length} cursos, ${data.units.length} unidades, ${data.lessons.length} lições, ${data.challenges.length} desafios, ${data.options.length} opções.`
   );
 };
 
