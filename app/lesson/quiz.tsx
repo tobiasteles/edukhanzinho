@@ -32,6 +32,12 @@ type Props = {
   } | null;
 };
 
+// som da tela final: só existe (e só toca) quando a tela final aparece
+const FinishSound = () => {
+  const [audio] = useAudio({ src: "/finished.wav", autoPlay: true });
+  return audio;
+};
+
 export const Quiz = ({
   initialPercentage,
   initialLessonId,
@@ -48,7 +54,6 @@ export const Quiz = ({
 
   const router = useRouter();
 
-  const [finishAudio] = useAudio({ src: "/finished.wav", autoPlay: true });
   const [correctAudio, , correctControls] = useAudio({ src: "/correct.wav" });
   const [incorrectAudio, , incorrectControls] = useAudio({
     src: "/incorrect.wav",
@@ -166,7 +171,7 @@ export const Quiz = ({
   if (!challenge) {
     return (
       <>
-        {finishAudio}
+        <FinishSound />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
