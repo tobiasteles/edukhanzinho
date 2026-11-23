@@ -1,0 +1,7 @@
+*   [33me23bfc8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfase4-sem-vidas[m[33m)[m Merge branch 'master' into fase4-sem-vidas # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+[31m|[m[32m\[m  
+[31m|[m * [33m0c8931d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m fix: aviso do useAudio no quiz
+* [32m|[m [33mf8a9dc9[m[33m ([m[1;31morigin/fase4-sem-vidas[m[33m)[m feat: adiciona som da tela final ao componente Quiz
+* [32m|[m [33m321c942[m feat: sem vidas e pergunta falada; corrige redirecionamento
+[32m|[m[32m/[m  
+* [33m2cccf7a[m[33m ([m[1;31morigin/fase1-seguranca[m[33m, [m[1;32mfase1-seguranca[m[33m)[m feat: refactor activity generator to create multiple courses with unique covers
