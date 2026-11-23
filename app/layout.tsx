@@ -5,7 +5,6 @@ import { ptBR } from "@clerk/localizations";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ExitModal } from "@/components/modals/exit-modal";
-import { HeartsModal } from "@/components/modals/hearts-modal";
 import { PracticeModal } from "@/components/modals/practice-modal";
 
 // Kode Mono: só na marca (logo/nome). Fredoka: interface e botões. Andika: textos que a criança lê nos exercícios.
@@ -36,7 +35,6 @@ export default function RootLayout({
         >
           <Toaster />
           <ExitModal />
-          <HeartsModal />
           <PracticeModal />
           {children}
         </body>

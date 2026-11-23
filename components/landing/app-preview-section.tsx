@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { motion, useReducedMotion } from "framer-motion";
-import { BookOpen, Crown, Heart, Star } from "lucide-react";
+import { BookOpen, Crown, Star } from "lucide-react";
 
 const reveal = {
   initial: { opacity: 0, y: 32 },
@@ -24,7 +24,7 @@ export const AppPreviewSection = () => {
       <div className="mx-auto max-w-5xl">
         <motion.div {...reveal} className="mb-10 text-center">
           <h2 className="font-ui text-3xl font-semibold text-edu-ink md:text-4xl">Por dentro da aventura</h2>
-          <p className="mt-2 font-ui text-edu-ink/70">Lições curtas, estrelas, vidas e missões para aprender brincando.</p>
+          <p className="mt-2 font-ui text-edu-ink/70">Lições curtas, estrelas e missões para aprender brincando.</p>
         </motion.div>
 
         <div aria-hidden="true" className="pointer-events-none grid select-none gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -65,9 +65,6 @@ export const AppPreviewSection = () => {
             <div className="flex gap-3 font-ui font-semibold">
               <div className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-edu-sun/25 px-3 py-2 text-edu-sun-ink">
                 <Star className="h-5 w-5 fill-edu-sun text-edu-sun-edge" /> 600
-              </div>
-              <div className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-edu-coral-soft px-3 py-2 text-edu-coral-edge">
-                <Heart className="h-5 w-5 fill-edu-coral text-edu-coral" /> 2
               </div>
             </div>
             <div className="rounded-3xl border-2 border-edu-line bg-white p-5">

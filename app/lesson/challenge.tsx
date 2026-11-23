@@ -9,6 +9,7 @@ type Props = {
     onSelect: (id: number) => void;
     status: "correct" | "wrong" | "none";
     selectedOption?: number;
+    revealOption?: number;
     disabled?: boolean;
     type: typeof challenges.$inferSelect["type"];
 }
@@ -18,6 +19,7 @@ export const Challenge = ({
     onSelect,
     status,
     selectedOption,
+    revealOption,
     disabled,
     type
 }: Props) => {
@@ -39,9 +41,9 @@ return (
               text={option.text}
               imageSrc={option.imageSrc}
               shortcut = {`${i+1}`}
-              selected={selectedOption === option.id}
+              selected={selectedOption === option.id || option.id === revealOption}
               onClick={() => onSelect(option.id)}
-              status={status}
+              status={option.id === revealOption ? "correct" : status}
               audioSrc={option.audioSrc}
               disabled={disabled}
               type={type}

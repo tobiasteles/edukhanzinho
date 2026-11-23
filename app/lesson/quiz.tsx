@@ -8,21 +8,20 @@ import { Challenge } from "./challenge";
 import { Footer } from "./footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
-import { stopSpeaking } from "@/lib/speech";
+import { questionSpeech, speak, stopSpeaking } from "@/lib/speech";
+import { useAutoRead } from "@/lib/use-auto-read";
 import { SpeakButton } from "@/components/speak-button";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
-import { reduceHearts } from "@/actions/user-progress";
 import { useAudio, useMount } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
-import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
 
 type Props = {
   initialPercentage: number;
-  initialHearts: number;
+  initialHearts?: number; // vidas foram removidas: ignorado
   initialLessonId: number;
   initalLessonChallenges: (typeof challenges.$inferSelect & {
     completed: boolean;
@@ -35,13 +34,10 @@ type Props = {
 
 export const Quiz = ({
   initialPercentage,
-  initialHearts,
   initialLessonId,
   initalLessonChallenges,
-  userSubscription,
 }: Props) => {
 
-  const { open: openHeartsModel } = useHeartsModal();
   const { open: openPracticeModel } = usePracticeModal();
 
   useMount(() => {
@@ -61,7 +57,6 @@ export const Quiz = ({
 
   const [lessonId] = useState(initialLessonId);
 
-  const [hearts, setHearts] = useState(initialHearts);
   const [percentage, setPercentage] = useState(() => {
     return initialPercentage === 100 ? 0 : initialPercentage;
   });
@@ -75,6 +70,9 @@ export const Quiz = ({
 
   const [selectedOption, setSelectedOption] = useState<number>();
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
+  const [wrongCount, setWrongCount] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+  const { autoRead, toggleAutoRead } = useAutoRead();
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
@@ -90,13 +88,26 @@ export const Quiz = ({
     return () => stopSpeaking();
   }, [challenge?.id]);
 
+  // lê a pergunta (e opções curtas) sozinho, para crianças que ainda não leem
+  useEffect(() => {
+    if (!challenge || !autoRead) return;
+    const t = setTimeout(
+      () => speak(questionSpeech(challenge.question, challenge.challengeOptions.map((o) => o.text))),
+      400
+    );
+    return () => clearTimeout(t);
+  }, [challenge?.id, autoRead]);
+
   const onNext = () => {
     setActiveIndex((current) => current + 1);
+    setWrongCount(0);
+    setRevealed(false);
   };
 
   const onSelect = (id: number) => {
     if (status !== "none") return;
 
+    stopSpeaking();
     setSelectedOption(id);
   };
 
@@ -104,6 +115,7 @@ export const Quiz = ({
     if (!selectedOption) return;
 
     if (status === "wrong") {
+      if (revealed) onNext(); // depois de 2 erros mostramos a resposta e seguimos em frente
       setStatus("none");
       setSelectedOption(undefined);
       return;
@@ -124,45 +136,31 @@ export const Quiz = ({
     if (correctOption && correctOption.id === selectedOption) {
       startTransition(() => {
         upsertChallengeProgress(challenge.id, selectedOption)
-          .then((response) => {
-            if (response?.error === "hearts") {
-              openHeartsModel();
-              return;
-            }
-
+          .then(() => {
             correctControls.play();
             setStatus("correct");
             celebrateCorrect();
             setPercentage((prev) => prev + 100 / challenges.length);
-
-            if (initialPercentage === 100) {
-              setHearts((prev) => Math.min(prev + 1, 5));
-            }
           })
           .catch(() =>
             toast.error("Ops! Algo deu errado. Tente de novo.")
           );
       });
     } else {
-      startTransition(() => {
-        reduceHearts(challenge.id, initialLessonId)
-          .then((response) => {
-            if (response?.error === "hearts") {
-              openHeartsModel();
-              return;
-            }
+      const attempts = wrongCount + 1;
+      setWrongCount(attempts);
+      incorrectControls.play();
+      setStatus("wrong");
 
-            incorrectControls.play();
-            setStatus("wrong");
-
-            if (!response?.error) {
-              setHearts((prev) => Math.max(prev - 1, 0));
-            }
-          })
-          .catch(() =>
-            toast.error("Ops! Algo deu errado. Tente de novo.")
-          );
-      });
+      if (attempts >= 2) {
+        // 2 erros: mostra a resposta certa (com som) e deixa a criança seguir
+        setRevealed(true);
+        if (correctOption.text.trim()) {
+          speak(`A resposta certa é ${questionSpeech(correctOption.text, [])}`);
+        } else if (correctOption.audioSrc) {
+          new Audio(correctOption.audioSrc).play().catch(() => {});
+        }
+      }
     }
   };
   if (!challenge) {
@@ -194,7 +192,6 @@ export const Quiz = ({
           </h1>
           <div className="flex items-center gap-x-4 w-full">
             <ResultCard variant="points" value={challenges.length * 100} />
-            <ResultCard variant="hearts" value={hearts} />
           </div>
         </motion.div>
         <Footer
@@ -215,9 +212,9 @@ export const Quiz = ({
       {incorrectAudio}
       {correctAudio}
       <Header
-        hearts={hearts}
         percentage={percentage}
-        hasActiveSubscription={!!userSubscription?.isActive}
+        autoRead={autoRead}
+        onToggleAutoRead={toggleAutoRead}
       />
       <div className="flex-1">
         <div className="h-full flex items-center justify-center">
@@ -245,6 +242,7 @@ export const Quiz = ({
                   onSelect={onSelect}
                   status={status}
                   selectedOption={selectedOption}
+                  revealOption={revealed ? options.find((o) => o.correct)?.id : undefined}
                   disabled={pending}
                   type={challenge.type}
                 />
@@ -256,6 +254,7 @@ export const Quiz = ({
       <Footer
         disabled={pending || !selectedOption}
         status={status}
+        revealed={revealed}
         onCheck={onContinue}
       />
     </>

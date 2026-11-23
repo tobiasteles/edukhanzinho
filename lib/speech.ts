@@ -35,3 +35,11 @@ export const speak = (text: string) => {
 export const stopSpeaking = () => {
   if (isSpeechSupported()) window.speechSynthesis.cancel();
 };
+
+// Monta o que será lido: a pergunta e, quando as opções são curtas (letras, sílabas, números), as opções também.
+export const questionSpeech = (question: string, options: string[]) => {
+  const clean = (t: string) => t.replace(/_+/g, " ... ").replace(/\s+/g, " ").trim();
+  const texts = options.map((o) => o.trim());
+  const short = texts.length > 1 && texts.every((t) => t.length > 0 && t.length <= 12);
+  return clean(question) + (short ? ". " + texts.map(clean).join(". ") + "." : "");
+};

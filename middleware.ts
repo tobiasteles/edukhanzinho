@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server'
 
 const isStripeWebhook = createRouteMatcher(['/api/webhooks/stripe(.*)'])
 // telas do app que exigem login (sem isso, deslogado vê a tela e toma erro 500 ao clicar)
@@ -23,7 +24,11 @@ export default clerkMiddleware(async (auth, req) => {
   // Stripe não tem sessão Clerk; a segurança aqui é a assinatura validada na rota
   if (isStripeWebhook(req)) return
   if (isAdminArea(req)) await auth.protect()
-  if (isLoggedArea(req)) await auth.protect({ unauthenticatedUrl: new URL('/', req.url).toString() })
+  if (isLoggedArea(req)) {
+    // deslogado volta para a página inicial (redirecionamento explícito, sem depender do 404 do auth.protect)
+    const { userId } = await auth()
+    if (!userId) return NextResponse.redirect(new URL('/', req.url))
+  }
   // a checagem de admin de verdade continua em lib/admin.ts (defesa em profundidade)
 })
 

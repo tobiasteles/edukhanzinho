@@ -10,9 +10,10 @@ type Props = {
   status: "correct" | "wrong" | "none" | "completed";
   disabled?: boolean;
   lessonId?: number;
+  revealed?: boolean;
 };
 
-export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
+export const Footer = ({ onCheck, status, disabled, lessonId, revealed }: Props) => {
   useKey("Enter", onCheck, {}, [onCheck]);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
@@ -42,7 +43,7 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
             className="font-ui text-edu-coral-edge font-semibold text-lg lg:text-3xl flex items-center"
           >
             <XCircle className="h-7 w-7 lg:h-10 lg:w-10 mr-3 lg:mr-4" />
-            Quase! Tente de novo.
+            {revealed ? "Veja a resposta certa em verde!" : "Quase! Tente de novo."}
           </motion.div>
         )}
         {status === "completed" && (
@@ -59,11 +60,11 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
           className="ml-auto"
           onClick={onCheck}
           size={isMobile ? "sm" : "lg"}
-          variant={status === "wrong" ? "danger" : "secondary"}
+          variant={status === "wrong" && !revealed ? "danger" : "secondary"}
         >
           {status === "none" && "Verificar"}
           {status === "correct" && "Próximo"}
-          {status === "wrong" && "Tentar de novo"}
+          {status === "wrong" && (revealed ? "Próximo" : "Tentar de novo")}
           {status === "completed" && "Continuar"}
         </Button>
       </div>

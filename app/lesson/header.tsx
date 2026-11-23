@@ -1,19 +1,18 @@
 import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 import { useExitModal } from "@/store/use-exit-modal";
-import { InfinityIcon, X } from "lucide-react";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { Volume2, VolumeX, X } from "lucide-react";
 
 type Props = {
-    hearts: number;
     percentage: number;
-    hasActiveSubscription: boolean;
+    autoRead: boolean;
+    onToggleAutoRead: () => void;
 }
 
 export const Header = ({
-    hearts,
     percentage,
-    hasActiveSubscription,
+    autoRead,
+    onToggleAutoRead,
 }: Props) => {
     const { open } = useExitModal();
 
@@ -24,22 +23,20 @@ export const Header = ({
             className="h-7 w-7 shrink-0 text-edu-ink/40 hover:text-edu-coral transition cursor-pointer"
             />
             <Progress value={percentage} className="h-4" />
-            <div className="flex items-center rounded-2xl bg-edu-coral-soft px-3 py-1 font-ui font-semibold text-edu-coral-edge">
-                <Image
-                src="/heart.png"
-                height={28}
-                width={28}
-                alt="Vidas"
-                className="mr-2"
-                />
-                {hasActiveSubscription
-                ? <InfinityIcon className="h-6 w-6 stroke-[3] shrink-0" /> : (
-                    <motion.span key={hearts} initial={{ scale: 1.6 }} animate={{ scale: 1 }} className="inline-block">
-                        {hearts}
-                    </motion.span>
-                )
-                }
-            </div>
+            <button
+            type="button"
+            onClick={onToggleAutoRead}
+            aria-pressed={autoRead}
+            aria-label={autoRead ? "Desligar a leitura automática" : "Ligar a leitura automática"}
+            title="Ler sozinho"
+            className={cn(
+                "flex shrink-0 items-center gap-x-2 rounded-2xl px-3 py-1 font-ui font-semibold transition-colors",
+                autoRead ? "bg-edu-sky-soft text-edu-blue" : "bg-edu-cream text-edu-ink/50"
+            )}
+            >
+                {autoRead ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
+                <span className="hidden sm:inline">Ler sozinho</span>
+            </button>
         </header>
     )
 }
