@@ -5,6 +5,7 @@ import { useEffect, useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
+import { BuildChallenge } from "./build-challenge";
 import { Footer } from "./footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
@@ -77,10 +78,13 @@ export const Quiz = ({
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
   const [wrongCount, setWrongCount] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [built, setBuilt] = useState<number[]>([]);
   const { autoRead, toggleAutoRead } = useAutoRead();
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
+  const isBuild = challenge?.type === "BUILD";
+  const answerSeq = options.filter((o) => o.correct).sort((a, b) => a.id - b.id);
 
   const finished = !challenge;
   useEffect(() => {
@@ -97,7 +101,12 @@ export const Quiz = ({
   useEffect(() => {
     if (!challenge || !autoRead) return;
     const t = setTimeout(
-      () => speak(questionSpeech(challenge.question, challenge.challengeOptions.map((o) => o.text))),
+      () =>
+        speak(
+          challenge.type === "BUILD"
+            ? challenge.question
+            : questionSpeech(challenge.question, challenge.challengeOptions.map((o) => o.text))
+        ),
       400
     );
     return () => clearTimeout(t);
@@ -107,6 +116,7 @@ export const Quiz = ({
     setActiveIndex((current) => current + 1);
     setWrongCount(0);
     setRevealed(false);
+    setBuilt([]);
   };
 
   const onSelect = (id: number) => {
@@ -117,18 +127,20 @@ export const Quiz = ({
   };
 
   const onContinue = () => {
-    if (!selectedOption) return;
+    if (isBuild ? built.length < answerSeq.length : !selectedOption) return;
 
     if (status === "wrong") {
       if (revealed) onNext(); // depois de 2 erros mostramos a resposta e seguimos em frente
       setStatus("none");
       setSelectedOption(undefined);
+      setBuilt([]);
       return;
     }
     if (status === "correct") {
       onNext();
       setStatus("none");
       setSelectedOption(undefined);
+      setBuilt([]);
       return;
     }
 
@@ -138,9 +150,13 @@ export const Quiz = ({
       return;
     }
 
-    if (correctOption && correctOption.id === selectedOption) {
+    const isRight = isBuild
+      ? built.every((id, i) => options.find((o) => o.id === id)?.text === answerSeq[i]?.text)
+      : correctOption.id === selectedOption;
+
+    if (isRight) {
       startTransition(() => {
-        upsertChallengeProgress(challenge.id, selectedOption)
+        upsertChallengeProgress(challenge.id, isBuild ? built : (selectedOption as number))
           .then(() => {
             correctControls.play();
             setStatus("correct");
@@ -160,7 +176,10 @@ export const Quiz = ({
       if (attempts >= 2) {
         // 2 erros: mostra a resposta certa (com som) e deixa a criança seguir
         setRevealed(true);
-        if (correctOption.text.trim()) {
+        if (isBuild) {
+          setBuilt(answerSeq.map((o) => o.id));
+          speak(`A palavra é ${answerSeq.map((o) => o.text).join("")}`);
+        } else if (correctOption.text.trim()) {
           speak(`A resposta certa é ${questionSpeech(correctOption.text, [])}`);
         } else if (correctOption.audioSrc) {
           new Audio(correctOption.audioSrc).play().catch(() => {});
@@ -242,22 +261,34 @@ export const Quiz = ({
                 {challenge.type === "ASSIST" && (
                   <QuestionBubble question={challenge.question} />
                 )}
-                <Challenge
-                  options={options}
-                  onSelect={onSelect}
-                  status={status}
-                  selectedOption={selectedOption}
-                  revealOption={revealed ? options.find((o) => o.correct)?.id : undefined}
-                  disabled={pending}
-                  type={challenge.type}
-                />
+                {isBuild ? (
+                  <BuildChallenge
+                    options={options}
+                    built={built}
+                    onChange={setBuilt}
+                    status={status}
+                    revealed={revealed}
+                    disabled={pending || status !== "none"}
+                    seed={challenge.id}
+                  />
+                ) : (
+                  <Challenge
+                    options={options}
+                    onSelect={onSelect}
+                    status={status}
+                    selectedOption={selectedOption}
+                    revealOption={revealed ? options.find((o) => o.correct)?.id : undefined}
+                    disabled={pending}
+                    type={challenge.type}
+                  />
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
       <Footer
-        disabled={pending || !selectedOption}
+        disabled={pending || (isBuild ? built.length < answerSeq.length : !selectedOption)}
         status={status}
         revealed={revealed}
         onCheck={onContinue}

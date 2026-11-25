@@ -23,6 +23,10 @@ export const ChallengeList = () => {
           {
             id: "ASSIST",
             name: "ASSIST"
+          },
+          {
+            id: "BUILD",
+            name: "Montar a palavra"
           }
         ]}
         />

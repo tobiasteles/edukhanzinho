@@ -24,6 +24,10 @@ export const ChallengeCreate = () => {
           {
             id: "ASSIST",
             name: "Assistida"
+          },
+          {
+            id: "BUILD",
+            name: "Montar a palavra"
           }
         ]}
         validate={[required()]}

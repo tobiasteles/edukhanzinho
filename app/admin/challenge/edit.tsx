@@ -23,6 +23,10 @@ export const ChallengeEdit = () => {
           {
             id: "ASSIST",
             name: "ASSIST"
+          },
+          {
+            id: "BUILD",
+            name: "Montar a palavra"
           }
         ]}
         validate={[required()]}

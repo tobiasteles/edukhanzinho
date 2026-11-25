@@ -7,14 +7,18 @@ import { auth } from "@clerk/nextjs/server";
 import { and, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
-export const upsertChallengeProgress = async (challengeId: number, optionId: number) => {
+export const upsertChallengeProgress = async (challengeId: number, answer: number | number[]) => {
   const { userId } = await auth();
 
   if (!userId) {
     throw new Error("Não autorizado");
   }
 
-  if (!Number.isInteger(challengeId) || !Number.isInteger(optionId)) {
+  const valid = Array.isArray(answer)
+    ? answer.length > 0 && answer.length <= 12 && answer.every((id) => Number.isInteger(id))
+    : Number.isInteger(answer);
+
+  if (!Number.isInteger(challengeId) || !valid) {
     throw new Error("Dados inválidos");
   }
 
@@ -34,15 +38,24 @@ export const upsertChallengeProgress = async (challengeId: number, optionId: num
   }
 
   // o servidor confere a resposta: não confiamos no que o navegador diz
-  const option = await db.query.challengeOptions.findFirst({
-    where: and(
-      eq(challengeOptions.id, optionId),
-      eq(challengeOptions.challengeId, challengeId)
-    ),
+  const allOptions = await db.query.challengeOptions.findMany({
+    where: eq(challengeOptions.challengeId, challengeId),
   });
 
-  if (!option?.correct) {
-    throw new Error("Resposta inválida");
+  if (challenge.type === "BUILD") {
+    // montar a palavra: confere a ordem das peças pelo texto (letras repetidas são peças diferentes)
+    if (!Array.isArray(answer)) throw new Error("Resposta inválida");
+    const expected = allOptions.filter((o) => o.correct).sort((a, b) => a.id - b.id).map((o) => o.text);
+    const byId = new Map(allOptions.map((o) => [o.id, o.text]));
+    const given = answer.map((id) => byId.get(id));
+    const distinct = new Set(answer).size === answer.length;
+    if (!distinct || given.length !== expected.length || given.some((t, i) => t !== expected[i])) {
+      throw new Error("Resposta inválida");
+    }
+  } else {
+    if (typeof answer !== "number") throw new Error("Resposta inválida");
+    const option = allOptions.find((o) => o.id === answer);
+    if (!option?.correct) throw new Error("Resposta inválida");
   }
 
   const lessonId = challenge.lessonId;

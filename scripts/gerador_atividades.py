@@ -245,7 +245,18 @@ def make_templates(ctx):
             ok = [k for k in imgw if info[k][1] and info[k][1][0] == s]; bad = [k for k in imgw if not info[k][1] or info[k][1][0] != s]; r.shuffle(bad)
             return ("SELECT", f"Toque na figura que começa com a sílaba {s}", shuf([fopt(r.choice(ok), True)] + [fopt(x, False) for x in bad[:2]], r))
         return g
-    u3 = [("u3-falta", [((k, j), syl_missing(k, j)) for k in sylw for j, s in enumerate(info[k][1]) if CV.match(s)]),
+    def build_syl(k):
+        def g(r):
+            syls = info[k][1]
+            hint = {"imageSrc": img.get(k), "audioSrc": aw.get(k)}
+            pool = sorted({v for s_ in syls if CV.match(s_) for v in [s_[0] + x for x in VOWELS] + [c + s_[1] for c in "BCDFGLMNPRSTV"]} - set(syls))
+            if len(pool) < 2: return None
+            r.shuffle(pool)
+            tiles = [{"text": t, "correct": True, **(hint if i == 0 else {})} for i, t in enumerate(syls)] + [{"text": t, "correct": False} for t in pool[:2]]
+            return ("BUILD", "Ouça e monte a palavra" if aw.get(k) else "Monte o nome da figura", tiles)
+        return g
+    build_syl_items = [k for k in sylw if 2 <= len(info[k][1]) <= 4 and (aw.get(k) or img.get(k))]
+    u3 = [("u3-monte", [(k, build_syl(k)) for k in build_syl_items]), ("u3-falta", [((k, j), syl_missing(k, j)) for k in sylw for j, s in enumerate(info[k][1]) if CV.match(s)]),
           ("u3-primeira", [(k, syl_first(k)) for k in sylw]),
           ("u3-conta", [(k, (lambda k: lambda r: count_q(r, len(info[k][1]), f"Quantas sílabas tem a palavra {show(k)}?"))(k)) for k in sylw]),
           ("u3-figsil", [(s, fig_syl(s)) for s in sorted({info[k][1][0] for k in imgw if info[k][1]})])]
@@ -262,7 +273,17 @@ def make_templates(ctx):
                 ks = pick_letters(r, t)
             return ("SELECT", f"Que letra falta{dica(k)}? " + spaced(w, j), shuf([lopt(x, x == t) for x in ks], r))
         return g
-    u4 = [("u4-vogal", [((k, j), miss(k, j)) for k in plain for j, c in enumerate(show(k)) if c in VOWELS]),
+    def build_letters(k):
+        def g(r):
+            w = show(k)
+            hint = {"imageSrc": img.get(k), "audioSrc": aw.get(k)}
+            extra = [c for c in pick_letters(r, r.choice(w))[1:] if c not in w]
+            if not extra: return None
+            tiles = [{"text": c, "correct": True, **(hint if i == 0 else {})} for i, c in enumerate(w)] + [{"text": c, "correct": False} for c in extra[:2]]
+            return ("BUILD", "Ouça e monte a palavra" if aw.get(k) else "Monte o nome da figura", tiles)
+        return g
+    build_letter_items = [k for k in plain if 3 <= len(show(k)) <= 6 and (aw.get(k) or img.get(k))]
+    u4 = [("u4-monte", [(k, build_letters(k)) for k in build_letter_items]), ("u4-vogal", [((k, j), miss(k, j)) for k in plain for j, c in enumerate(show(k)) if c in VOWELS]),
           ("u4-inicial", [((k, 0), miss(k, 0)) for k in plain if show(k)[0] not in VOWELS]),
           ("u4-final", [((k, len(show(k)) - 1), miss(k, len(show(k)) - 1)) for k in plain]),
           ("u4-conta", [(k, (lambda k: lambda r: count_q(r, len(show(k)), f"Quantas letras tem a palavra {show(k)}?"))(k)) for k in plain])]
@@ -313,7 +334,9 @@ def pick_batch(store, templates, quota, seed, lote):
         for lst in lists:
             while lst and len(picked) < quota:
                 ctype, q, opts = lst.pop(0)
-                if q in used_q or sum(o["correct"] for o in opts) != 1 or len(opts) < 2: continue
+                many = ctype == "BUILD"  # montar a palavra: várias peças corretas, mesma pergunta para palavras diferentes
+                n_ok = sum(o["correct"] for o in opts)
+                if (q in used_q and not many) or (n_ok < 2 if many else n_ok != 1) or len(opts) < 2: continue
                 if Store.sig(ctype, q, opts) in store.sigs: continue
                 picked.append((ctype, q, opts)); used_q.add(q); store.sigs.add(Store.sig(ctype, q, opts)); break
     return picked
