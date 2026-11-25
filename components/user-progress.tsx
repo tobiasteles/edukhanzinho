@@ -17,6 +17,7 @@ export const UserProgress = ({ activeCourse, points }: Props) => {
         <Button variant="ghost">
           <Image
             src={activeCourse.imageSrc}
+            priority
             alt={activeCourse.title}
             className="rounded-md border bg-edu-sky-soft object-contain p-0.5"
             width={32}

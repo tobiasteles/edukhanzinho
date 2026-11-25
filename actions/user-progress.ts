@@ -44,7 +44,7 @@ export const upsertUserProgress = async (courseId: number) => {
 
     revalidatePath("/courses");
     revalidatePath("/learn");
-    redirect("/learn");
+    return { ok: true as const }; // o cliente navega para /learn (redirect no servidor causava um aviso falso de erro)
   }
 
   await db.insert(userProgress).values({
@@ -56,7 +56,7 @@ export const upsertUserProgress = async (courseId: number) => {
 
   revalidatePath("/courses");
   revalidatePath("/learn");
-  redirect("/learn");
+  return { ok: true as const }; // o cliente navega para /learn (redirect no servidor causava um aviso falso de erro)
 };
 
 export const reduceHearts = async (challengeId: number, lessonId: number) => {
