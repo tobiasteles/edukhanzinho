@@ -42,8 +42,8 @@ export const upsertChallengeProgress = async (challengeId: number, answer: numbe
     where: eq(challengeOptions.challengeId, challengeId),
   });
 
-  if (challenge.type === "BUILD") {
-    // montar a palavra: confere a ordem das peças pelo texto (letras repetidas são peças diferentes)
+  if (challenge.type === "BUILD" || challenge.type === "HANGMAN") {
+    // montar a palavra e forca: confere a ordem das peças pelo texto (letras repetidas são peças diferentes)
     if (!Array.isArray(answer)) throw new Error("Resposta inválida");
     const expected = allOptions.filter((o) => o.correct).sort((a, b) => a.id - b.id).map((o) => o.text);
     const byId = new Map(allOptions.map((o) => [o.id, o.text]));

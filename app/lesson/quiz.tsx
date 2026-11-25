@@ -6,6 +6,7 @@ import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { BuildChallenge } from "./build-challenge";
+import { HangmanChallenge } from "./hangman-challenge";
 import { Footer } from "./footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
@@ -84,6 +85,7 @@ export const Quiz = ({
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
   const isBuild = challenge?.type === "BUILD";
+  const isHangman = challenge?.type === "HANGMAN";
   const answerSeq = options.filter((o) => o.correct).sort((a, b) => a.id - b.id);
 
   const finished = !challenge;
@@ -103,7 +105,7 @@ export const Quiz = ({
     const t = setTimeout(
       () =>
         speak(
-          challenge.type === "BUILD"
+          challenge.type === "BUILD" || challenge.type === "HANGMAN"
             ? challenge.question
             : questionSpeech(challenge.question, challenge.challengeOptions.map((o) => o.text))
         ),
@@ -126,8 +128,31 @@ export const Quiz = ({
     setSelectedOption(id);
   };
 
+  // forca do balão: o jogo termina sozinho (acertou a palavra ou soltou todas as cordas)
+  const onHangmanSolved = () => {
+    if (!challenge || status !== "none") return;
+    startTransition(() => {
+      upsertChallengeProgress(challenge.id, answerSeq.map((o) => o.id))
+        .then(() => {
+          correctControls.play();
+          setStatus("correct");
+          celebrateCorrect();
+          setPercentage((prev) => prev + 100 / challenges.length);
+        })
+        .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
+    });
+  };
+
+  const onHangmanFailed = () => {
+    if (status !== "none") return;
+    incorrectControls.play();
+    setStatus("wrong");
+    setRevealed(true);
+    speak(`A palavra é ${answerSeq.map((o) => o.text).join("")}`);
+  };
+
   const onContinue = () => {
-    if (isBuild ? built.length < answerSeq.length : !selectedOption) return;
+    if (isHangman ? status === "none" : isBuild ? built.length < answerSeq.length : !selectedOption) return;
 
     if (status === "wrong") {
       if (revealed) onNext(); // depois de 2 erros mostramos a resposta e seguimos em frente
@@ -261,7 +286,15 @@ export const Quiz = ({
                 {challenge.type === "ASSIST" && (
                   <QuestionBubble question={challenge.question} />
                 )}
-                {isBuild ? (
+                {isHangman ? (
+                  <HangmanChallenge
+                    options={options}
+                    status={status}
+                    revealed={revealed}
+                    onSolved={onHangmanSolved}
+                    onFailed={onHangmanFailed}
+                  />
+                ) : isBuild ? (
                   <BuildChallenge
                     options={options}
                     built={built}
@@ -288,7 +321,7 @@ export const Quiz = ({
         </div>
       </div>
       <Footer
-        disabled={pending || (isBuild ? built.length < answerSeq.length : !selectedOption)}
+        disabled={pending || (isHangman ? status === "none" : isBuild ? built.length < answerSeq.length : !selectedOption)}
         status={status}
         revealed={revealed}
         onCheck={onContinue}

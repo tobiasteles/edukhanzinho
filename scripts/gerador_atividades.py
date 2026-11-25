@@ -283,7 +283,15 @@ def make_templates(ctx):
             return ("BUILD", "Ouça e monte a palavra" if aw.get(k) else "Monte o nome da figura", tiles)
         return g
     build_letter_items = [k for k in plain if 3 <= len(show(k)) <= 6 and (aw.get(k) or img.get(k))]
-    u4 = [("u4-monte", [(k, build_letters(k)) for k in build_letter_items]), ("u4-vogal", [((k, j), miss(k, j)) for k in plain for j, c in enumerate(show(k)) if c in VOWELS]),
+    def forca(k):
+        def g(r):
+            w = show(k)
+            hint = {"imageSrc": img.get(k), "audioSrc": aw.get(k)}
+            tiles = [{"text": c, "correct": True, **(hint if i == 0 else {})} for i, c in enumerate(w)]
+            return ("HANGMAN", f"Salve o balão! Descubra a palavra{dica(k)}", tiles)
+        return g
+    forca_items = [k for k in uni if re.fullmatch(r"[A-ZÀ-Ú]{3,8}", show(k)) and (aw.get(k) or img.get(k) or k in DICAS)]
+    u4 = [("u4-forca", [(k, forca(k)) for k in forca_items]), ("u4-monte", [(k, build_letters(k)) for k in build_letter_items]), ("u4-vogal", [((k, j), miss(k, j)) for k in plain for j, c in enumerate(show(k)) if c in VOWELS]),
           ("u4-inicial", [((k, 0), miss(k, 0)) for k in plain if show(k)[0] not in VOWELS]),
           ("u4-final", [((k, len(show(k)) - 1), miss(k, len(show(k)) - 1)) for k in plain]),
           ("u4-conta", [(k, (lambda k: lambda r: count_q(r, len(show(k)), f"Quantas letras tem a palavra {show(k)}?"))(k)) for k in plain])]
@@ -334,7 +342,7 @@ def pick_batch(store, templates, quota, seed, lote):
         for lst in lists:
             while lst and len(picked) < quota:
                 ctype, q, opts = lst.pop(0)
-                many = ctype == "BUILD"  # montar a palavra: várias peças corretas, mesma pergunta para palavras diferentes
+                many = ctype in ("BUILD", "HANGMAN")  # várias peças corretas, mesma pergunta para palavras diferentes
                 n_ok = sum(o["correct"] for o in opts)
                 if (q in used_q and not many) or (n_ok < 2 if many else n_ok != 1) or len(opts) < 2: continue
                 if Store.sig(ctype, q, opts) in store.sigs: continue
