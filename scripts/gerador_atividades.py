@@ -388,6 +388,7 @@ def build(public, seed, quantidade, out, reiniciar, csv_path):
     novos = sum(por_unidade.values())
     return {"courses": data["courses"], "units": store.units, "lessons": store.lessons,
             "challenges": store.challenges, "options": store.options, "lotes": lote,
+            "catalogo": [{"key": k, "nome": WORDS.get(k, (k.upper(), None))[0].capitalize(), "imagem": f"/imageSrc/{k}.png"} for k in sorted(words_img)],
             "capasExistentes": {str(i): words_img[k] for i, k in LEGACY_COVERS.items() if k in words_img},
             "stats": {"curso_novo": course["title"], "novos_desafios": novos, "por_unidade": por_unidade,
                       "total_cursos": len(data["courses"]), "total_desafios": len(store.challenges), "palavras": len(uni),
@@ -400,6 +401,7 @@ def main():
     ap.add_argument("--quantidade", type=int, default=150, help="desafios novos por execução (padrão 150)")
     ap.add_argument("--out", default="scripts/generated/curso-alfabetizacao.json")
     ap.add_argument("--csv", default="scripts/entradas/palavras-extras.csv")
+    ap.add_argument("--catalogo", default="lib/stickers-catalogo.json", help="lista de figurinhas lida pelo app")
     ap.add_argument("--reiniciar", action="store_true", help="ignora o JSON anterior e recomeça só com o primeiro curso")
     a = ap.parse_args()
     public = Path(a.public)
@@ -407,6 +409,9 @@ def main():
         sys.exit(f"Pasta {public}/imageSrc nao encontrada. Rode a partir da raiz do projeto.")
     out = Path(a.out); out.parent.mkdir(parents=True, exist_ok=True)
     data = build(public, a.seed, a.quantidade, out, a.reiniciar, Path(a.csv))
+    cat = data.pop("catalogo")
+    cat_path = Path(a.catalogo); cat_path.parent.mkdir(parents=True, exist_ok=True)
+    cat_path.write_text(json.dumps(cat, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     out.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(data["stats"], ensure_ascii=False, indent=2)); print(f"Gerado: {out}")
 

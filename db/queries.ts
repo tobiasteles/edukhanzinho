@@ -9,6 +9,7 @@ import {
   challengeProgress,
   lessons,
   userSubscription,
+  userStickers,
 } from "@/db/schema";
 
 export const getUserProgress = cache(async () => {
@@ -256,4 +257,12 @@ export const getTopTenUsers = cache(async () => {
   });
 
   return data;
+});
+
+export const getUserStickers = cache(async () => {
+  const { userId } = await auth();
+
+  if (!userId) return [];
+
+  return db.select().from(userStickers).where(eq(userStickers.userId, userId));
 });

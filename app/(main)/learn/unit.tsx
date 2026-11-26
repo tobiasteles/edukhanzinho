@@ -29,7 +29,7 @@ export const Unit = ({
        <div className="flex items-center flex-col relative">
         {lessons.map((lesson, index) =>{
             const isCurrent = lesson.id === activeLesson?.id;
-            const isLocked = !lesson.completed && !isCurrent;
+            const isLocked = false; // todas as lições ficam liberadas, em qualquer ordem
 
             return (
                 <LessonButton
@@ -39,6 +39,7 @@ export const Unit = ({
                 totalCount={lessons.length - 1}
                 current={isCurrent} 
                 locked={isLocked}
+                completed={lesson.completed}
                 percentage={activeLessonPercentage}
                  />
             )

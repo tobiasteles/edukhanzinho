@@ -13,6 +13,7 @@ type Props = {
   index: number;
   totalCount: number;
   locked?: boolean;
+  completed?: boolean;
   current?: boolean;
   percentage?: number;
 };
@@ -22,6 +23,7 @@ export const LessonButton = ({
   index,
   totalCount,
   locked,
+  completed,
   current,
   percentage,
 }: Props) => {
@@ -44,11 +46,12 @@ export const LessonButton = ({
 
   const isFirst = index === 0;
   const isLast = index === totalCount;
-  const isCompleted = !current && !locked;
+  const isCompleted = !!completed;
 
   const Icon = isCompleted ? Check : isLast ? Crown : Star;
 
-  const href = isCompleted ? `/lesson/${id}` : "/lesson";
+  // a lição atual abre onde a criança parou; qualquer outra abre pelo próprio id (todas ficam liberadas)
+  const href = current ? "/lesson" : `/lesson/${id}`;
 
   return (
     <Link
@@ -82,7 +85,7 @@ export const LessonButton = ({
             >
               <Button
                 size="rounded"
-                variant={locked ? "locked" : "secondary"}
+                variant={locked ? "locked" : isCompleted || current ? "secondary" : "primary"}
                 className="h-[70px] w-[70px] border-b-8"
               >
                 <Icon
@@ -100,7 +103,7 @@ export const LessonButton = ({
         ) : (
           <Button
                 size="rounded"
-                variant={locked ? "locked" : "secondary"}
+                variant={locked ? "locked" : isCompleted || current ? "secondary" : "primary"}
                 className="h-[70px] w-[70px] border-b-8"
               >
                 <Icon

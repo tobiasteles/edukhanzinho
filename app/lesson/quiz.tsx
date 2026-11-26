@@ -128,16 +128,28 @@ export const Quiz = ({
     setSelectedOption(id);
   };
 
+  const announceSticker = (sticker?: { nome: string; times: number } | null) => {
+    if (!sticker) return;
+    toast.success(
+      sticker.times === 1
+        ? `Nova figurinha: ${sticker.nome}!`
+        : sticker.times === 3
+          ? `Você dominou a palavra ${sticker.nome}!`
+          : `${sticker.nome}: mais uma estrela!`
+    );
+  };
+
   // forca do balão: o jogo termina sozinho (acertou a palavra ou soltou todas as cordas)
   const onHangmanSolved = () => {
     if (!challenge || status !== "none") return;
     startTransition(() => {
       upsertChallengeProgress(challenge.id, answerSeq.map((o) => o.id))
-        .then(() => {
+        .then((res) => {
           correctControls.play();
           setStatus("correct");
           celebrateCorrect();
           setPercentage((prev) => prev + 100 / challenges.length);
+          announceSticker(res?.sticker);
         })
         .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
     });
@@ -182,11 +194,12 @@ export const Quiz = ({
     if (isRight) {
       startTransition(() => {
         upsertChallengeProgress(challenge.id, isBuild ? built : (selectedOption as number))
-          .then(() => {
+          .then((res) => {
             correctControls.play();
             setStatus("correct");
             celebrateCorrect();
             setPercentage((prev) => prev + 100 / challenges.length);
+            announceSticker(res?.sticker);
           })
           .catch(() =>
             toast.error("Ops! Algo deu errado. Tente de novo.")

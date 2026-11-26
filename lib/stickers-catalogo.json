@@ -1,0 +1,152 @@
+[
+  {
+    "key": "abacaxi",
+    "nome": "Abacaxi",
+    "imagem": "/imageSrc/abacaxi.png"
+  },
+  {
+    "key": "abelha",
+    "nome": "Abelha",
+    "imagem": "/imageSrc/abelha.png"
+  },
+  {
+    "key": "aviao",
+    "nome": "Avião",
+    "imagem": "/imageSrc/aviao.png"
+  },
+  {
+    "key": "banana",
+    "nome": "Banana",
+    "imagem": "/imageSrc/banana.png"
+  },
+  {
+    "key": "bola",
+    "nome": "Bola",
+    "imagem": "/imageSrc/bola.png"
+  },
+  {
+    "key": "casa",
+    "nome": "Casa",
+    "imagem": "/imageSrc/casa.png"
+  },
+  {
+    "key": "dado",
+    "nome": "Dado",
+    "imagem": "/imageSrc/dado.png"
+  },
+  {
+    "key": "elefante",
+    "nome": "Elefante",
+    "imagem": "/imageSrc/elefante.png"
+  },
+  {
+    "key": "foca",
+    "nome": "Foca",
+    "imagem": "/imageSrc/foca.png"
+  },
+  {
+    "key": "gato",
+    "nome": "Gato",
+    "imagem": "/imageSrc/gato.png"
+  },
+  {
+    "key": "hipopotamo",
+    "nome": "Hipopótamo",
+    "imagem": "/imageSrc/hipopotamo.png"
+  },
+  {
+    "key": "iguana",
+    "nome": "Iguana",
+    "imagem": "/imageSrc/iguana.png"
+  },
+  {
+    "key": "janela",
+    "nome": "Janela",
+    "imagem": "/imageSrc/janela.png"
+  },
+  {
+    "key": "ketchup",
+    "nome": "Ketchup",
+    "imagem": "/imageSrc/ketchup.png"
+  },
+  {
+    "key": "leao",
+    "nome": "Leão",
+    "imagem": "/imageSrc/leao.png"
+  },
+  {
+    "key": "livro",
+    "nome": "Livro",
+    "imagem": "/imageSrc/livro.png"
+  },
+  {
+    "key": "maca",
+    "nome": "Maçã",
+    "imagem": "/imageSrc/maca.png"
+  },
+  {
+    "key": "navio",
+    "nome": "Navio",
+    "imagem": "/imageSrc/navio.png"
+  },
+  {
+    "key": "oculos",
+    "nome": "Óculos",
+    "imagem": "/imageSrc/oculos.png"
+  },
+  {
+    "key": "pato",
+    "nome": "Pato",
+    "imagem": "/imageSrc/pato.png"
+  },
+  {
+    "key": "queijo",
+    "nome": "Queijo",
+    "imagem": "/imageSrc/queijo.png"
+  },
+  {
+    "key": "rato",
+    "nome": "Rato",
+    "imagem": "/imageSrc/rato.png"
+  },
+  {
+    "key": "sapo",
+    "nome": "Sapo",
+    "imagem": "/imageSrc/sapo.png"
+  },
+  {
+    "key": "tigre",
+    "nome": "Tigre",
+    "imagem": "/imageSrc/tigre.png"
+  },
+  {
+    "key": "urso",
+    "nome": "Urso",
+    "imagem": "/imageSrc/urso.png"
+  },
+  {
+    "key": "vaca",
+    "nome": "Vaca",
+    "imagem": "/imageSrc/vaca.png"
+  },
+  {
+    "key": "vaso",
+    "nome": "Vaso",
+    "imagem": "/imageSrc/vaso.png"
+  },
+  {
+    "key": "wifi",
+    "nome": "Wi-fi",
+    "imagem": "/imageSrc/wifi.png"
+  },
+  {
+    "key": "xicara",
+    "nome": "Xícara",
+    "imagem": "/imageSrc/xicara.png"
+  },
+  {
+    "key": "zebra",
+    "nome": "Zebra",
+    "imagem": "/imageSrc/zebra.png"
+  }
+]

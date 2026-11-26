@@ -7,6 +7,7 @@ import {
   serial,
   text,
   timestamp,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 
 export const userProgress = pgTable("user_progress", {
@@ -145,3 +146,16 @@ export const userSubscription = pgTable("user_subscription", {
   stripeCurrentPeriodEnd: timestamp("stripe_current_period_end").notNull(),
 });
 
+
+// Álbum de figurinhas: uma linha por criança e figura; times = quantas atividades dessa palavra foram concluídas (3 = dominada)
+export const userStickers = pgTable(
+  "user_stickers",
+  {
+    id: serial("id").primaryKey(),
+    userId: text("user_id").notNull(),
+    stickerKey: text("sticker_key").notNull(),
+    times: integer("times").notNull().default(0),
+    firstAt: timestamp("first_at").defaultNow().notNull(),
+  },
+  (t) => [uniqueIndex("user_stickers_user_key").on(t.userId, t.stickerKey)]
+);

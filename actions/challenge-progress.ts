@@ -2,7 +2,8 @@
 
 import db from "@/db/drizzle";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
-import { challengeOptions, challengeProgress, challenges, userProgress } from "@/db/schema";
+import { challengeOptions, challengeProgress, challenges, userProgress, userStickers } from "@/db/schema";
+import catalogo from "@/lib/stickers-catalogo.json";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -98,10 +99,29 @@ export const upsertChallengeProgress = async (challengeId: number, answer: numbe
     })
     .where(eq(userProgress.userId, userId));
 
+  // figurinha: usa a figura da resposta certa (só figuras de palavras, na raiz de /imageSrc)
+  let sticker: { key: string; nome: string; imagem: string; times: number } | null = null;
+  const figure = allOptions.filter((o) => o.correct).sort((a, b) => a.id - b.id).find((o) => o.imageSrc);
+  const key = figure?.imageSrc?.match(/^\/imageSrc\/([a-z0-9]+)\.png$/)?.[1];
+  const entry = key ? catalogo.find((c) => c.key === key) : undefined;
+
+  if (entry) {
+    const [row] = await db
+      .insert(userStickers)
+      .values({ userId, stickerKey: entry.key, times: 1 })
+      .onConflictDoUpdate({
+        target: [userStickers.userId, userStickers.stickerKey],
+        set: { times: sql`${userStickers.times} + 1` },
+      })
+      .returning({ times: userStickers.times });
+    sticker = { key: entry.key, nome: entry.nome, imagem: entry.imagem, times: row?.times ?? 1 };
+  }
+
   revalidatePath("/learn");
   revalidatePath("/lesson");
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
+  revalidatePath("/album");
   revalidatePath(`/lesson/${lessonId}`);
-  return;
+  return { sticker };
 };
