@@ -170,3 +170,13 @@ export const userAvatar = pgTable("user_avatar", {
   neck: text("neck"),
   back: text("back"),
 });
+
+// Itens de apoio: estoque atual e quantos já foram ganhos por marcos (para não ganhar duas vezes pelo mesmo marco)
+export const userSupplies = pgTable("user_supplies", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").notNull().unique(),
+  penas: integer("penas").notNull().default(2),
+  cordas: integer("cordas").notNull().default(1),
+  penasGanhas: integer("penas_ganhas").notNull().default(0),
+  cordasGanhas: integer("cordas_ganhas").notNull().default(0),
+});

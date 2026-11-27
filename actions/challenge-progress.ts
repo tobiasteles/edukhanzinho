@@ -4,6 +4,7 @@ import db from "@/db/drizzle";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
 import { challengeOptions, challengeProgress, challenges, userProgress, userStickers } from "@/db/schema";
 import catalogo from "@/lib/stickers-catalogo.json";
+import { syncSupplies } from "@/lib/supplies";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -117,11 +118,14 @@ export const upsertChallengeProgress = async (challengeId: number, answer: numbe
     sticker = { key: entry.key, nome: entry.nome, imagem: entry.imagem, times: row?.times ?? 1 };
   }
 
+  // itens de apoio: +1 pena a cada 5 atividades, +1 corda por palavra dominada (com limite de estoque)
+  const supplies = await syncSupplies(userId);
+
   revalidatePath("/learn");
   revalidatePath("/lesson");
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
   revalidatePath("/album");
   revalidatePath(`/lesson/${lessonId}`);
-  return { sticker };
+  return { sticker, supplies };
 };

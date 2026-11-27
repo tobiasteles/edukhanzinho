@@ -20,11 +20,13 @@ type Props = {
   revealed: boolean;
   onSolved: () => void;
   onFailed: () => void;
+  hintTick?: number; // a cada aumento, revela uma letra (Pena da dica)
+  ropeBonus?: number; // cordas extras (Corda extra)
 };
 
 // Forca do balão: cada letra errada solta uma corda; sem "perder": no fim a palavra aparece e a criança segue.
 // As letras da palavra são as opções corretas, na ordem do id. A figura e o som vêm da primeira letra.
-export const HangmanChallenge = ({ options, status, revealed, onSolved, onFailed }: Props) => {
+export const HangmanChallenge = ({ options, status, revealed, onSolved, onFailed, hintTick = 0, ropeBonus = 0 }: Props) => {
   const letters = useMemo(() => options.filter((o) => o.correct).sort((a, b) => a.id - b.id), [options]);
   const hint = letters[0];
   const [guessed, setGuessed] = useState<string[]>([]);
@@ -34,7 +36,9 @@ export const HangmanChallenge = ({ options, status, revealed, onSolved, onFailed
   const wrongCount = guessed.filter((g) => !isHit(g)).length;
   const solved = letters.length > 0 && letters.every((l) => guessed.includes(base(l.text)));
   const finished = status !== "none";
-  const remaining = Math.max(MAX_WRONG - wrongCount, 0);
+  const maxWrong = MAX_WRONG + ropeBonus;
+  const remaining = Math.max(maxWrong - wrongCount, 0);
+  const lastTick = useRef(hintTick);
 
   const guess = useCallback(
     (letter: string) => {
@@ -62,11 +66,20 @@ export const HangmanChallenge = ({ options, status, revealed, onSolved, onFailed
       reported.current = true;
       speak(letters.map((l) => l.text).join(""));
       onSolved();
-    } else if (wrongCount >= MAX_WRONG) {
+    } else if (wrongCount >= maxWrong) {
       reported.current = true;
       onFailed();
     }
-  }, [solved, wrongCount, letters, onSolved, onFailed]);
+  }, [solved, wrongCount, maxWrong, letters, onSolved, onFailed]);
+
+  // Pena da dica: revela a próxima letra que falta (sem custar corda)
+  useEffect(() => {
+    if (hintTick === lastTick.current) return;
+    lastTick.current = hintTick;
+    if (status !== "none" || reported.current) return;
+    const next = letters.find((l) => !guessed.includes(base(l.text)));
+    if (next) setGuessed((prev) => (prev.includes(base(next.text)) ? prev : [...prev, base(next.text)]));
+  }, [hintTick, letters, guessed, status]);
 
   const playWord = () => {
     if (hint?.audioSrc) new Audio(hint.audioSrc).play().catch(() => {});

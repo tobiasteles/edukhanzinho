@@ -36,7 +36,7 @@ export const ITEMS: Item[] = [
   { key: "sol", nome: "Óculos de sol", slot: "face", regra: { tipo: "figurinhas", valor: 8 } },
   { key: "gravata", nome: "Gravata-borboleta", slot: "neck", regra: { tipo: "atividades", valor: 15 } },
   { key: "cachecol", nome: "Cachecol", slot: "neck", regra: { tipo: "figurinhas", valor: 5 } },
-  { key: "mochila", nome: "Mochila", slot: "back", regra: { tipo: "atividades", valor: 30 } },
+  { key: "mochila", nome: "Mochila", slot: "back", regra: { tipo: "atividades", valor: 30 }, poder: "Guarda até 5 itens de apoio (em vez de 3)" },
   { key: "capa", nome: "Capa de herói", slot: "back", regra: { tipo: "dominadas", valor: 5 } },
 ];
 

@@ -10,6 +10,7 @@ type Props = {
     status: "correct" | "wrong" | "none";
     selectedOption?: number;
     revealOption?: number;
+    hiddenOptions?: number[];
     disabled?: boolean;
     type: typeof challenges.$inferSelect["type"];
 }
@@ -20,6 +21,7 @@ export const Challenge = ({
     status,
     selectedOption,
     revealOption,
+    hiddenOptions,
     disabled,
     type
 }: Props) => {
@@ -28,7 +30,7 @@ return (
         "grid auto-rows-fr gap-4 lg:gap-6", type === "ASSIST" && "grid-cols-1",
         type === "SELECT" && "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3",
     )}>
-        {options.map((option, i) => (
+        {options.filter((o) => !hiddenOptions?.includes(o.id)).map((option, i) => (
             <motion.div
               key={option.id}
               initial={{ opacity: 0, y: 16 }}

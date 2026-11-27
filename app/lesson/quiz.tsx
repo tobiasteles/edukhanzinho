@@ -13,6 +13,9 @@ import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
 import { questionSpeech, setSpeechSlow, speak, stopSpeaking } from "@/lib/speech";
 import { useAutoRead } from "@/lib/use-auto-read";
 import { SpeakButton } from "@/components/speak-button";
+import { Button } from "@/components/ui/button";
+import { spendSupply } from "@/actions/supplies";
+import { Feather, LifeBuoy } from "lucide-react";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { useAudio, useMount } from "react-use";
@@ -33,6 +36,7 @@ type Props = {
     isActive: boolean;
   } | null;
   equipped?: { hat: string | null; face: string | null; neck: string | null; back: string | null };
+  supplies?: { penas: number; cordas: number };
 };
 
 // som da tela final: só existe (e só toca) quando a tela final aparece
@@ -46,6 +50,7 @@ export const Quiz = ({
   initialLessonId,
   initalLessonChallenges,
   equipped,
+  supplies,
 }: Props) => {
 
   const { open: openPracticeModel } = usePracticeModal();
@@ -82,6 +87,11 @@ export const Quiz = ({
   const [wrongCount, setWrongCount] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [built, setBuilt] = useState<number[]>([]);
+  const [penas, setPenas] = useState(supplies?.penas ?? 0);
+  const [cordas, setCordas] = useState(supplies?.cordas ?? 0);
+  const [hidden, setHidden] = useState<number[]>([]);
+  const [hintTick, setHintTick] = useState(0);
+  const [ropeBonus, setRopeBonus] = useState(0);
   const { autoRead, toggleAutoRead } = useAutoRead();
 
   // poder do Fone de ouvido: a voz fala mais devagar
@@ -127,6 +137,8 @@ export const Quiz = ({
     setWrongCount(0);
     setRevealed(false);
     setBuilt([]);
+    setHidden([]);
+    setRopeBonus(0);
   };
 
   const onSelect = (id: number) => {
@@ -134,6 +146,65 @@ export const Quiz = ({
 
     stopSpeaking();
     setSelectedOption(id);
+  };
+
+  // itens de apoio: o servidor desconta do estoque; a ajuda depende do tipo de atividade
+  const wrongVisible = options.filter((o) => !o.correct && !hidden.includes(o.id) && o.id !== selectedOption);
+  const canPena =
+    status === "none" &&
+    !pending &&
+    penas > 0 &&
+    (isHangman || (isBuild ? built.length < answerSeq.length : wrongVisible.length >= 2));
+  const canCorda = status === "none" && !pending && cordas > 0 && isHangman;
+
+  const onUsePena = () => {
+    if (!challenge || !canPena) return;
+    startTransition(() => {
+      spendSupply("pena")
+        .then((r) => {
+          setPenas(r.penas);
+          setCordas(r.cordas);
+          if (!r.ok) {
+            toast.error("Você não tem mais penas.");
+            return;
+          }
+          if (isHangman) {
+            setHintTick((n) => n + 1);
+          } else if (isBuild) {
+            let k = 0;
+            while (k < built.length && options.find((o) => o.id === built[k])?.text === answerSeq[k]?.text) k++;
+            setBuilt(answerSeq.slice(0, Math.min(k + 1, answerSeq.length)).map((o) => o.id));
+          } else if (wrongVisible.length >= 2) {
+            setHidden((prev) => [...prev, wrongVisible[0].id]);
+          }
+        })
+        .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
+    });
+  };
+
+  const onUseCorda = () => {
+    if (!challenge || !canCorda) return;
+    startTransition(() => {
+      spendSupply("corda")
+        .then((r) => {
+          setPenas(r.penas);
+          setCordas(r.cordas);
+          if (!r.ok) {
+            toast.error("Você não tem mais cordas.");
+            return;
+          }
+          setRopeBonus((n) => n + 1);
+        })
+        .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
+    });
+  };
+
+  const applySupplies = (s?: { penas: number; cordas: number; novasPenas: number; novasCordas: number } | null) => {
+    if (!s) return;
+    setPenas(s.penas);
+    setCordas(s.cordas);
+    if (s.novasPenas > 0) toast.success("Você ganhou uma pena da dica!");
+    if (s.novasCordas > 0) toast.success("Você ganhou uma corda extra!");
   };
 
   const announceSticker = (sticker?: { nome: string; times: number } | null) => {
@@ -158,6 +229,7 @@ export const Quiz = ({
           celebrateCorrect();
           setPercentage((prev) => prev + 100 / challenges.length);
           announceSticker(res?.sticker);
+          applySupplies(res?.supplies);
         })
         .catch(() => toast.error("Ops! Algo deu errado. Tente de novo."));
     });
@@ -208,6 +280,7 @@ export const Quiz = ({
             celebrateCorrect();
             setPercentage((prev) => prev + 100 / challenges.length);
             announceSticker(res?.sticker);
+          applySupplies(res?.supplies);
           })
           .catch(() =>
             toast.error("Ops! Algo deu errado. Tente de novo.")
@@ -304,6 +377,16 @@ export const Quiz = ({
                   {title}
                 </h1>
               </div>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Button variant="sun" onClick={onUsePena} disabled={!canPena}>
+                  <Feather className="h-5 w-5" /> Pena da dica ({penas})
+                </Button>
+                {isHangman && (
+                  <Button variant="sun" onClick={onUseCorda} disabled={!canCorda}>
+                    <LifeBuoy className="h-5 w-5" /> Corda extra ({cordas})
+                  </Button>
+                )}
+              </div>
               <div className="w-full">
                 {challenge.type === "ASSIST" && (
                   <QuestionBubble question={challenge.question} />
@@ -315,6 +398,8 @@ export const Quiz = ({
                     revealed={revealed}
                     onSolved={onHangmanSolved}
                     onFailed={onHangmanFailed}
+                    hintTick={hintTick}
+                    ropeBonus={ropeBonus}
                   />
                 ) : isBuild ? (
                   <BuildChallenge
@@ -333,6 +418,7 @@ export const Quiz = ({
                     status={status}
                     selectedOption={selectedOption}
                     revealOption={revealed ? options.find((o) => o.correct)?.id : undefined}
+                    hiddenOptions={hidden}
                     disabled={pending}
                     type={challenge.type}
                   />

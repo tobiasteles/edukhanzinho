@@ -11,6 +11,7 @@ import {
   userSubscription,
   userStickers,
   userAvatar,
+  userSupplies,
 } from "@/db/schema";
 
 export const getUserProgress = cache(async () => {
@@ -289,4 +290,15 @@ export const getAvatarData = cache(async () => {
       dominadas: stickers.filter((s) => s.times >= 3).length,
     },
   };
+});
+
+// Estoque de itens de apoio (sem gravar nada: quem ainda não tem linha começa com os valores iniciais)
+export const getSupplies = cache(async () => {
+  const { userId } = await auth();
+
+  if (!userId) return { penas: 0, cordas: 0 };
+
+  const [row] = await db.select().from(userSupplies).where(eq(userSupplies.userId, userId));
+
+  return { penas: row?.penas ?? 2, cordas: row?.cordas ?? 1 };
 });

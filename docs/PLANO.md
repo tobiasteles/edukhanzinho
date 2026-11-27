@@ -14,8 +14,9 @@ Decisões: personagem base = **bichinho** que a criança escolhe e veste; itens 
 (sem armas, sem sorteio, sem compra com dinheiro, sem ranking de itens); "chefão" fica para depois da Fase 5.
 - [x] **A. Álbum de figurinhas** — cada palavra com figura vira uma figurinha (1 estrela ao acertar, 3 = dominada).
 - [x] **B. Personagem e guarda-roupa** — 6 bichinhos (gato, leão, urso, coelho, elefante, sapo) e 10 peças em 4 posições (chapéu, rosto, pescoço, costas), liberadas por regras: atividades concluídas, figurinhas e palavras dominadas. Página `/personagem`.
-- [~] **C1. Poderes das peças** — Fone de ouvido (voz mais devagar) e Óculos redondos (letras maiores). As demais peças são só visuais.
-- [ ] **C2. Itens de apoio** — Pena da dica e Corda extra (estoque, regras para ganhar, botão na atividade); depois Pulo e Mochila leve.
+- [x] **C1. Poderes das peças** — Fone de ouvido (voz mais devagar) e Óculos redondos (letras maiores). As demais peças são só visuais.
+- [x] **C2. Itens de apoio** — Pena da dica (tira opção errada / revela letra na forca / põe a próxima peça) e Corda extra (forca). Começa com 2 penas e 1 corda, limite 3 (5 com a Mochila); +1 pena a cada 5 atividades, +1 corda por palavra dominada.
+- [ ] **C3 (opcional)**: Pulo e Mochila leve (lição com 3 atividades).
 - [ ] **D. Avatar no lugar da foto** — perfil e classificação usam só apelido + bichinho.
 
 ## Depois
