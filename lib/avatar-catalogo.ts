@@ -25,14 +25,14 @@ export const RULE_NAME: Record<keyof Stats, string> = {
   dominadas: "palavras dominadas",
 };
 
-export type Item = { key: string; nome: string; slot: Slot; regra: { tipo: keyof Stats; valor: number } };
+export type Item = { key: string; nome: string; slot: Slot; regra: { tipo: keyof Stats; valor: number }; poder?: string };
 
 export const ITEMS: Item[] = [
-  { key: "fone", nome: "Fone de ouvido", slot: "hat", regra: { tipo: "atividades", valor: 0 } },
+  { key: "fone", nome: "Fone de ouvido", slot: "hat", regra: { tipo: "atividades", valor: 0 }, poder: "Voz mais devagar" },
   { key: "explorador", nome: "Chapéu de explorador", slot: "hat", regra: { tipo: "atividades", valor: 10 } },
   { key: "festa", nome: "Chapéu de festa", slot: "hat", regra: { tipo: "figurinhas", valor: 3 } },
   { key: "coroa", nome: "Coroa", slot: "hat", regra: { tipo: "dominadas", valor: 3 } },
-  { key: "oculos", nome: "Óculos redondos", slot: "face", regra: { tipo: "atividades", valor: 20 } },
+  { key: "oculos", nome: "Óculos redondos", slot: "face", regra: { tipo: "atividades", valor: 20 }, poder: "Letras maiores nas atividades" },
   { key: "sol", nome: "Óculos de sol", slot: "face", regra: { tipo: "figurinhas", valor: 8 } },
   { key: "gravata", nome: "Gravata-borboleta", slot: "neck", regra: { tipo: "atividades", valor: 15 } },
   { key: "cachecol", nome: "Cachecol", slot: "neck", regra: { tipo: "figurinhas", valor: 5 } },

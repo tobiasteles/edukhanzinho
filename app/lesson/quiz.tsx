@@ -10,7 +10,7 @@ import { HangmanChallenge } from "./hangman-challenge";
 import { Footer } from "./footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { celebrateCorrect, celebrateFinish } from "@/lib/confetti";
-import { questionSpeech, speak, stopSpeaking } from "@/lib/speech";
+import { questionSpeech, setSpeechSlow, speak, stopSpeaking } from "@/lib/speech";
 import { useAutoRead } from "@/lib/use-auto-read";
 import { SpeakButton } from "@/components/speak-button";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
@@ -32,6 +32,7 @@ type Props = {
   userSubscription: typeof userSubscription.$inferSelect & {
     isActive: boolean;
   } | null;
+  equipped?: { hat: string | null; face: string | null; neck: string | null; back: string | null };
 };
 
 // som da tela final: só existe (e só toca) quando a tela final aparece
@@ -44,6 +45,7 @@ export const Quiz = ({
   initialPercentage,
   initialLessonId,
   initalLessonChallenges,
+  equipped,
 }: Props) => {
 
   const { open: openPracticeModel } = usePracticeModal();
@@ -81,6 +83,12 @@ export const Quiz = ({
   const [revealed, setRevealed] = useState(false);
   const [built, setBuilt] = useState<number[]>([]);
   const { autoRead, toggleAutoRead } = useAutoRead();
+
+  // poder do Fone de ouvido: a voz fala mais devagar
+  useEffect(() => {
+    setSpeechSlow(equipped?.hat === "fone");
+    return () => setSpeechSlow(false);
+  }, [equipped?.hat]);
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
@@ -287,6 +295,7 @@ export const Quiz = ({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -48 }}
               transition={{ duration: 0.25 }}
+              style={{ zoom: equipped?.face === "oculos" ? 1.2 : 1 }} // poder dos Óculos: letras maiores
               className="lg:min-h-[350px] max-w-4xl w-full px-6 lg:px-0 flex flex-col gap-y-8 lg:gap-y-10 mx-auto items-center"
             >
               <div className="flex items-center gap-x-3">

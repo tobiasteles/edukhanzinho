@@ -90,6 +90,7 @@ export const AvatarEditor = ({ initial, stats }: Props) => {
                     {!open && <Lock className="h-4 w-4" />}
                     {item.nome}
                   </span>
+                  {item.poder && <span className="text-xs">Poder: {item.poder}</span>}
                   {!open && (
                     <span className="text-xs">
                       Faltam {missing(item, stats)} {RULE_NAME[item.regra.tipo]}

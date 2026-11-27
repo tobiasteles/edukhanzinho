@@ -1,4 +1,4 @@
-import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
+import { getAvatarData, getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
 import { redirect } from "next/navigation";
 import { Quiz } from "./quiz";
 
@@ -10,10 +10,11 @@ const LessonIdPage = async () => {
   const userProgressData = getUserProgress();
   const userSubscriptionData = getUserSubscription();
 
-  const [lesson, userProgress, userSubscription] = await Promise.all([
+  const [lesson, userProgress, userSubscription, avatarData] = await Promise.all([
     lessonData,
     userProgressData,
-    userSubscriptionData
+    userSubscriptionData,
+    getAvatarData(),
   ]);
 
   if (!lesson || !userProgress) {
@@ -31,7 +32,12 @@ const LessonIdPage = async () => {
       initalLessonChallenges={lesson.challenges}
       initialHearts={userProgress.hearts}
       initialPercentage={initialPercentage}
-      userSubscription={userSubscription} 
+      userSubscription={userSubscription}
+      equipped={
+        avatarData?.avatar
+          ? { hat: avatarData.avatar.hat, face: avatarData.avatar.face, neck: avatarData.avatar.neck, back: avatarData.avatar.back }
+          : undefined
+      }
     />
   );
 };

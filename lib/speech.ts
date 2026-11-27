@@ -1,6 +1,12 @@
 // Leitura em voz alta com a Web Speech API nativa do navegador (sem custo, sem IA externa).
 const LANG = "pt-BR";
 
+// poder do "Fone de ouvido": a voz fala mais devagar
+let slow = false;
+export const setSpeechSlow = (value: boolean) => {
+  slow = value;
+};
+
 export const isSpeechSupported = () =>
   typeof window !== "undefined" &&
   "speechSynthesis" in window &&
@@ -23,7 +29,7 @@ export const speak = (text: string) => {
 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = LANG;
-  utterance.rate = 0.85; // um pouco mais devagar para crianças em alfabetização
+  utterance.rate = slow ? 0.7 : 0.85; // um pouco mais devagar para crianças em alfabetização
   utterance.pitch = 1.1;
 
   const voice = pickVoice();
