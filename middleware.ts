@@ -11,6 +11,7 @@ const isLoggedArea = createRouteMatcher([
   '/leaderboard(.*)',
   '/album(.*)',
   '/personagem(.*)',
+  '/professor(.*)',
   '/lesson(.*)',
 ])
 const isAdminArea = createRouteMatcher([

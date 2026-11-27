@@ -180,3 +180,33 @@ export const userSupplies = pgTable("user_supplies", {
   penasGanhas: integer("penas_ganhas").notNull().default(0),
   cordasGanhas: integer("cordas_ganhas").notNull().default(0),
 });
+
+// ---- Escola (Fase 5) ----
+// Professores liberados pelo responsável (script: npm run professor -- adicionar email)
+export const teachers = pgTable("teachers", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").notNull().unique(),
+  nome: text("nome").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const classes = pgTable("classes", {
+  id: serial("id").primaryKey(),
+  teacherUserId: text("teacher_user_id").notNull(),
+  nome: text("nome").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+// nomeInterno: só o professor vê (primeiro nome). apelido + animal: o que as crianças veem.
+// studentUserId: preenchido quando a conta do aluno for criada (etapa 5.2).
+export const classStudents = pgTable("class_students", {
+  id: serial("id").primaryKey(),
+  classId: integer("class_id")
+    .references(() => classes.id, { onDelete: "cascade" })
+    .notNull(),
+  nomeInterno: text("nome_interno").notNull(),
+  apelido: text("apelido").notNull(),
+  animal: text("animal").notNull(),
+  studentUserId: text("student_user_id").unique(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
