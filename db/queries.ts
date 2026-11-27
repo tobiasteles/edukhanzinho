@@ -1,7 +1,7 @@
 import { cache } from "react";
 import db from "@/db/drizzle";
 import { auth } from "@clerk/nextjs/server";
-import { eq } from "drizzle-orm";
+import { and, count, eq } from "drizzle-orm";
 import {
   courses,
   userProgress,
@@ -10,6 +10,7 @@ import {
   lessons,
   userSubscription,
   userStickers,
+  userAvatar,
 } from "@/db/schema";
 
 export const getUserProgress = cache(async () => {
@@ -265,4 +266,27 @@ export const getUserStickers = cache(async () => {
   if (!userId) return [];
 
   return db.select().from(userStickers).where(eq(userStickers.userId, userId));
+});
+
+// Personagem salvo + números usados para liberar peças (atividades, figurinhas, palavras dominadas)
+export const getAvatarData = cache(async () => {
+  const { userId } = await auth();
+
+  if (!userId) return null;
+
+  const [avatar] = await db.select().from(userAvatar).where(eq(userAvatar.userId, userId));
+  const [done] = await db
+    .select({ n: count() })
+    .from(challengeProgress)
+    .where(and(eq(challengeProgress.userId, userId), eq(challengeProgress.completed, true)));
+  const stickers = await db.select().from(userStickers).where(eq(userStickers.userId, userId));
+
+  return {
+    avatar: avatar ?? null,
+    stats: {
+      atividades: done?.n ?? 0,
+      figurinhas: stickers.length,
+      dominadas: stickers.filter((s) => s.times >= 3).length,
+    },
+  };
 });

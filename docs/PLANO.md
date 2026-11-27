@@ -12,8 +12,8 @@ Atualizado a cada etapa. Legenda: [x] feito · [~] em andamento · [ ] a fazer.
 ## Em andamento — Fase 4.5: Álbum, personagem e itens (recompensas)
 Decisões: personagem base = **bichinho** que a criança escolhe e veste; itens com **função pedagógica**
 (sem armas, sem sorteio, sem compra com dinheiro, sem ranking de itens); "chefão" fica para depois da Fase 5.
-- [~] **A. Álbum de figurinhas** — cada palavra com figura vira uma figurinha (1 estrela ao acertar, 3 = dominada).
-- [ ] **B. Personagem e guarda-roupa** — escolher o bichinho e vestir roupas/acessórios (SVG em camadas).
+- [x] **A. Álbum de figurinhas** — cada palavra com figura vira uma figurinha (1 estrela ao acertar, 3 = dominada).
+- [~] **B. Personagem e guarda-roupa** — 6 bichinhos (gato, leão, urso, coelho, elefante, sapo) e 10 peças em 4 posições (chapéu, rosto, pescoço, costas), liberadas por regras: atividades concluídas, figurinhas e palavras dominadas. Página `/personagem`.
 - [ ] **C. Equipamentos e itens de apoio** — Lupa da letra, Fone mágico, Pena da dica, Corda extra, Pulo, Mochila leve.
 - [ ] **D. Avatar no lugar da foto** — perfil e classificação usam só apelido + bichinho.
 

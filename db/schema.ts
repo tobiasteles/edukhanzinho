@@ -159,3 +159,14 @@ export const userStickers = pgTable(
   },
   (t) => [uniqueIndex("user_stickers_user_key").on(t.userId, t.stickerKey)]
 );
+
+// Personagem: bichinho escolhido e peças vestidas (a liberação das peças é calculada pelas atividades concluídas)
+export const userAvatar = pgTable("user_avatar", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").notNull().unique(),
+  animal: text("animal").notNull().default("gato"),
+  hat: text("hat"),
+  face: text("face"),
+  neck: text("neck"),
+  back: text("back"),
+});
