@@ -8,7 +8,9 @@ const db = drizzle(sql, { schema });
 
 const main = async () => {
   try {
-    console.log("Apagando tabelas para aplicar nova estrutura de Interpretação...");
+    console.log(
+      "Apagando tabelas para aplicar nova estrutura de Interpretação...",
+    );
     await db.delete(schema.courses);
     await db.delete(schema.userProgress);
     await db.delete(schema.units);
@@ -33,7 +35,8 @@ const main = async () => {
         id: 1,
         courseId: 1,
         title: "Unidade 1: Detetives de Pistas",
-        description: "Encontre informações escondidas nos textos e entenda a ideia principal.",
+        description:
+          "Encontre informações escondidas nos textos e entenda a ideia principal.",
         order: 1,
       },
     ]);
@@ -62,23 +65,26 @@ const main = async () => {
         lessonId: 1,
         type: "SELECT",
         order: 1,
-        question: '"O cãozinho Totó viu uma borboleta azul no jardim. Ele correu tanto para tentar pegá-la que acabou dormindo na grama de tão cansado." — Qual é a ideia principal do texto?',
+        question:
+          '"O cãozinho Totó viu uma borboleta azul no jardim. Ele correu tanto para tentar pegá-la que acabou dormindo na grama de tão cansado." — Qual é a ideia principal do texto?',
       },
       {
         id: 2,
         lessonId: 1,
         type: "ASSIST",
         order: 2,
-        question: '"O cãozinho Totó viu uma borboleta azul no jardim. Ele correu tanto para tentar pegá-la que acabou dormindo na grama de tão cansado." — Por que Totó dormiu na grama?',
+        question:
+          '"O cãozinho Totó viu uma borboleta azul no jardim. Ele correu tanto para tentar pegá-la que acabou dormindo na grama de tão cansado." — Por que Totó dormiu na grama?',
       },
-      
+
       // --- LIÇÃO 2: Decifrando Tirinhas e Imagens ---
       {
         id: 3,
         lessonId: 2,
         type: "SELECT",
         order: 1,
-        question: '"Na tirinha, o gatinho olha para o prato vazio, depois olha para o dono com olhos gigantes e começa a ronronar bem alto." — O que o gatinho quer dizer com essa atitude?',
+        question:
+          '"Na tirinha, o gatinho olha para o prato vazio, depois olha para o dono com olhos gigantes e começa a ronronar bem alto." — O que o gatinho quer dizer com essa atitude?',
       },
     ]);
 
@@ -145,7 +151,9 @@ const main = async () => {
       },
     ]);
 
-    console.log("Banco de dados populado com sucesso para o Edukhanzinho Leitura! 🎉");
+    console.log(
+      "Banco de dados populado com sucesso para o Edukhanzinho Leitura! 🎉",
+    );
   } catch (error) {
     console.error(error);
     throw new Error("Failed to seed the database");

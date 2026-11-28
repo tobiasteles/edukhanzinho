@@ -20,7 +20,7 @@ const main = async () => {
     await db.delete(schema.challengeProgress);
     await db.delete(schema.userSubscription);
 
-    console.log("Resetting finished")
+    console.log("Resetting finished");
   } catch (error) {
     console.error(error);
     throw new Error("Failed to reset the database");

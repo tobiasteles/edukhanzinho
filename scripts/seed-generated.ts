@@ -23,7 +23,8 @@ type Generated = {
 
 const chunk = <T>(items: T[], size: number) => {
   const out: T[][] = [];
-  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+  for (let i = 0; i < items.length; i += size)
+    out.push(items.slice(i, i + size));
   return out;
 };
 
@@ -45,73 +46,132 @@ const main = async () => {
   }
 
   for (const [id, imageSrc] of Object.entries(data.capasExistentes ?? {})) {
-    await db.update(schema.courses).set({ imageSrc }).where(eq(schema.courses.id, Number(id)));
+    await db
+      .update(schema.courses)
+      .set({ imageSrc })
+      .where(eq(schema.courses.id, Number(id)));
   }
 
   for (const part of chunk(data.units, 50)) {
-    await db.insert(schema.units).values(part).onConflictDoUpdate({
-      target: schema.units.id,
-      set: {
-        title: sql`excluded.title`,
-        description: sql`excluded.description`,
-        courseId: sql`excluded.course_id`,
-        order: sql`excluded."order"`,
-      },
-    });
+    await db
+      .insert(schema.units)
+      .values(part)
+      .onConflictDoUpdate({
+        target: schema.units.id,
+        set: {
+          title: sql`excluded.title`,
+          description: sql`excluded.description`,
+          courseId: sql`excluded.course_id`,
+          order: sql`excluded."order"`,
+        },
+      });
   }
 
   for (const part of chunk(data.lessons, 50)) {
-    await db.insert(schema.lessons).values(part).onConflictDoUpdate({
-      target: schema.lessons.id,
-      set: {
-        title: sql`excluded.title`,
-        unitId: sql`excluded.unit_id`,
-        order: sql`excluded."order"`,
-      },
-    });
+    await db
+      .insert(schema.lessons)
+      .values(part)
+      .onConflictDoUpdate({
+        target: schema.lessons.id,
+        set: {
+          title: sql`excluded.title`,
+          unitId: sql`excluded.unit_id`,
+          order: sql`excluded."order"`,
+        },
+      });
   }
 
   for (const part of chunk(data.challenges, 100)) {
-    await db.insert(schema.challenges).values(part).onConflictDoUpdate({
-      target: schema.challenges.id,
-      set: {
-        lessonId: sql`excluded.lesson_id`,
-        type: sql`excluded.type`,
-        question: sql`excluded.question`,
-        order: sql`excluded."order"`,
-      },
-    });
+    await db
+      .insert(schema.challenges)
+      .values(part)
+      .onConflictDoUpdate({
+        target: schema.challenges.id,
+        set: {
+          lessonId: sql`excluded.lesson_id`,
+          type: sql`excluded.type`,
+          question: sql`excluded.question`,
+          order: sql`excluded."order"`,
+        },
+      });
   }
 
   // opções não têm progresso de usuário: apaga e reinsere, sempre sem duplicar
   const challengeIds = data.challenges.map((c) => c.id as number);
   for (const ids of chunk(challengeIds, 100)) {
-    await db.delete(schema.challengeOptions).where(inArray(schema.challengeOptions.challengeId, ids));
+    await db
+      .delete(schema.challengeOptions)
+      .where(inArray(schema.challengeOptions.challengeId, ids));
   }
   for (const part of chunk(data.options, 200)) {
     await db.insert(schema.challengeOptions).values(part);
   }
 
   // remove só o que sobrou de execuções antigas do gerador (faixa de ids gerados)
-  await db.delete(schema.challenges).where(and(gte(schema.challenges.id, 1_000_000), notInArray(schema.challenges.id, challengeIds)));
-  await db.delete(schema.lessons).where(and(gte(schema.lessons.id, 10_000), notInArray(schema.lessons.id, data.lessons.map((l) => l.id as number))));
-  await db.delete(schema.units).where(and(gte(schema.units.id, 100), notInArray(schema.units.id, data.units.map((u) => u.id as number))));
+  await db
+    .delete(schema.challenges)
+    .where(
+      and(
+        gte(schema.challenges.id, 1_000_000),
+        notInArray(schema.challenges.id, challengeIds),
+      ),
+    );
+  await db.delete(schema.lessons).where(
+    and(
+      gte(schema.lessons.id, 10_000),
+      notInArray(
+        schema.lessons.id,
+        data.lessons.map((l) => l.id as number),
+      ),
+    ),
+  );
+  await db.delete(schema.units).where(
+    and(
+      gte(schema.units.id, 100),
+      notInArray(
+        schema.units.id,
+        data.units.map((u) => u.id as number),
+      ),
+    ),
+  );
 
   // cursos gerados que sumiram do JSON (ex.: --reiniciar): solta os usuários antes, para não apagar o progresso deles
   const courseIds = courseList.map((c) => c.id as number);
   await db
     .update(schema.userProgress)
     .set({ activeCourseId: null })
-    .where(and(gte(schema.userProgress.activeCourseId, 100), notInArray(schema.userProgress.activeCourseId, courseIds)));
-  await db.delete(schema.courses).where(and(gte(schema.courses.id, 100), notInArray(schema.courses.id, courseIds)));
+    .where(
+      and(
+        gte(schema.userProgress.activeCourseId, 100),
+        notInArray(schema.userProgress.activeCourseId, courseIds),
+      ),
+    );
+  await db
+    .delete(schema.courses)
+    .where(
+      and(
+        gte(schema.courses.id, 100),
+        notInArray(schema.courses.id, courseIds),
+      ),
+    );
 
   // ids foram gravados à mão: alinha os contadores para o painel admin não colidir depois
-  for (const table of ["courses", "units", "lessons", "challenges", "challenge_options"]) {
-    await db.execute(sql.raw(`SELECT setval(pg_get_serial_sequence('${table}', 'id'), (SELECT COALESCE(MAX(id), 1) FROM ${table}))`));
+  for (const table of [
+    "courses",
+    "units",
+    "lessons",
+    "challenges",
+    "challenge_options",
+  ]) {
+    await db.execute(
+      sql.raw(
+        `SELECT setval(pg_get_serial_sequence('${table}', 'id'), (SELECT COALESCE(MAX(id), 1) FROM ${table}))`,
+      ),
+    );
   }
 
   console.log(
-    `Pronto: ${courseList.length} cursos, ${data.units.length} unidades, ${data.lessons.length} lições, ${data.challenges.length} desafios, ${data.options.length} opções.`
+    `Pronto: ${courseList.length} cursos, ${data.units.length} unidades, ${data.lessons.length} lições, ${data.challenges.length} desafios, ${data.options.length} opções.`,
   );
 };
 
